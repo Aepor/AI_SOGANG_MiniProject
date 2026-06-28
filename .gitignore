@@ -1,0 +1,6 @@
+__pycache__/
+*.py[cod]
+.venv/
+
+# Local model outputs
+Transformer/kcelectra_nsmc_model/
