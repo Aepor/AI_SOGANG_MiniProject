@@ -6,7 +6,7 @@
       "0": "negative",
       "1": "positive"
     },
-    "saved_model_dir": "Transformer/kcelectra_nsmc_model",
+    "saved_model_dir": "XAI/Transformer/kcelectra_nsmc_model",
     "note": "학습된 모델 가중치와 tokenizer 파일은 용량 문제로 Git에 올리지 않고, 결과 요약만 이 파일에 기록합니다."
   },
   "data": {

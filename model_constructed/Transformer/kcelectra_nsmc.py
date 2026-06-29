@@ -18,7 +18,7 @@ try:
 except ImportError as exc:
     raise SystemExit(
         "Missing dependency: transformers. Install dependencies with "
-        "`pip install -r Transformer/requirements.txt`."
+        "`pip install -r model_constructed/Transformer/requirements.txt`."
     ) from exc
 
 
@@ -372,7 +372,7 @@ def parse_args():
     train_parser.add_argument("--valid-file")
     train_parser.add_argument("--validation-ratio", type=float, default=0.1)
     train_parser.add_argument("--test-file", help=argparse.SUPPRESS)
-    train_parser.add_argument("--output-dir", default="Transformer/kcelectra_nsmc_model")
+    train_parser.add_argument("--output-dir", default="model_constructed/Transformer/kcelectra_nsmc_model")
     train_parser.add_argument("--epochs", type=int, default=3)
     train_parser.add_argument("--batch-size", type=int, default=8)
     train_parser.add_argument("--eval-batch-size", type=int, default=32)
@@ -388,7 +388,7 @@ def parse_args():
     train_parser.set_defaults(func=train)
 
     eval_parser = subparsers.add_parser("eval")
-    eval_parser.add_argument("--model-dir", default="Transformer/kcelectra_nsmc_model")
+    eval_parser.add_argument("--model-dir", default="model_constructed/Transformer/kcelectra_nsmc_model")
     eval_parser.add_argument("--test-file", default="Data/NSMC/ratings_test.txt")
     eval_parser.add_argument("--eval-batch-size", type=int, default=32)
     eval_parser.add_argument("--eval-sample", type=int)
@@ -397,7 +397,7 @@ def parse_args():
     eval_parser.set_defaults(func=evaluate_saved)
 
     predict_parser = subparsers.add_parser("predict")
-    predict_parser.add_argument("--model-dir", default="Transformer/kcelectra_nsmc_model")
+    predict_parser.add_argument("--model-dir", default="model_constructed/Transformer/kcelectra_nsmc_model")
     predict_parser.add_argument("--text", action="append")
     predict_parser.add_argument("--input-file")
     add_common_runtime_args(predict_parser)
