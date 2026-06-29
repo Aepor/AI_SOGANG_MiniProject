@@ -1,0 +1,55 @@
+{
+  "model": {
+    "base_model": "beomi/KcELECTRA-base",
+    "task": "NSMC movie review sentiment classification",
+    "labels": {
+      "0": "negative",
+      "1": "positive"
+    },
+    "saved_model_dir": "Transformer/kcelectra_nsmc_model",
+    "note": "학습된 모델 가중치와 tokenizer 파일은 용량 문제로 Git에 올리지 않고, 결과 요약만 이 파일에 기록합니다."
+  },
+  "data": {
+    "train_file": "Data/NSMC/ratings_train.txt",
+    "test_file": "Data/NSMC/ratings_test.txt",
+    "validation_split": "ratings_train.txt에서 10% 분리",
+    "train_sample": null,
+    "valid_sample": null
+  },
+  "training": {
+    "python": "3.11.9",
+    "model_name": "beomi/KcELECTRA-base",
+    "epochs_configured": 3,
+    "epochs_completed": 1,
+    "batch_size": 8,
+    "eval_batch_size": 32,
+    "learning_rate": 0.00002,
+    "weight_decay": 0.01,
+    "warmup_ratio": 0.1,
+    "gradient_accumulation_steps": 1,
+    "max_grad_norm": 1.0,
+    "max_length": 128,
+    "seed": 42,
+    "device": "auto"
+  },
+  "metrics": [
+    {
+      "split": "validation",
+      "epoch": 1,
+      "loss": 0.28297686450671683,
+      "accuracy": 0.9053936929128609,
+      "precision": 0.9116089613034624,
+      "recall": 0.8973536487570168,
+      "f1": 0.9044251363911903
+    },
+    {
+      "split": "test",
+      "test_file": "Data/NSMC/ratings_test.txt",
+      "loss": 0.29014072216608944,
+      "accuracy": 0.9021541292477548,
+      "precision": 0.9123927278643186,
+      "recall": 0.8912240276508681,
+      "f1": 0.9016841512922544
+    }
+  ]
+}
