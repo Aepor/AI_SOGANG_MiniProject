@@ -130,7 +130,8 @@ def explain_integrated_gradients(model, tokenizer, text, max_length=128, device=
             clean_word = word_str[2:] if word_str.startswith("##") else word_str
         else:
             # BPE subword: 원래 토큰 형태가 'Ġ'로 시작하지 않는 경우 이전 단어에 붙는 어미/조사로 취급
-            is_subword = not token.startswith("Ġ") and (i > 1)
+            # 단, 이전에 생성된 단어가 있어야만 합칠 수 있으므로 len(merged_words) > 0 조건을 사용합니다.
+            is_subword = not token.startswith("Ġ") and (len(merged_words) > 0)
             clean_word = word_str.strip()
             
         if is_subword:
