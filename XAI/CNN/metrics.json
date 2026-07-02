@@ -1,0 +1,68 @@
+[
+  {
+    "epoch": 1,
+    "split": "train",
+    "loss": 0.47284949136173215,
+    "accuracy": 0.769853455352528
+  },
+  {
+    "epoch": 1,
+    "split": "validation",
+    "loss": 0.377451021260448,
+    "accuracy": 0.8301409221507731
+  },
+  {
+    "epoch": 2,
+    "split": "train",
+    "loss": 0.36650380618791656,
+    "accuracy": 0.8400246267976043
+  },
+  {
+    "epoch": 2,
+    "split": "validation",
+    "loss": 0.35149404226322806,
+    "accuracy": 0.8479272130250376
+  },
+  {
+    "epoch": 3,
+    "split": "train",
+    "loss": 0.32482106160339763,
+    "accuracy": 0.861816302331945
+  },
+  {
+    "epoch": 3,
+    "split": "validation",
+    "loss": 0.34702063916499026,
+    "accuracy": 0.849774250923519
+  },
+  {
+    "epoch": 4,
+    "split": "train",
+    "loss": 0.2938853267631578,
+    "accuracy": 0.878933446839561
+  },
+  {
+    "epoch": 4,
+    "split": "validation",
+    "loss": 0.3458218002779276,
+    "accuracy": 0.8548365029415789
+  },
+  {
+    "epoch": 5,
+    "split": "train",
+    "loss": 0.26616403751313344,
+    "accuracy": 0.8907375877899729
+  },
+  {
+    "epoch": 5,
+    "split": "validation",
+    "loss": 0.3582660700345532,
+    "accuracy": 0.853810370775756
+  },
+  {
+    "split": "test",
+    "test_file": "Data/NSMC/ratings_test.txt",
+    "loss": 0.3562905265406242,
+    "accuracy": 0.8495026140732754
+  }
+]
