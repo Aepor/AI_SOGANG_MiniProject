@@ -12,7 +12,7 @@ from typing import Any
 import torch
 
 from XAI.CNN.xai_methods.model import CNN_Sentiment, get_conv_activations
-from XAI.shared.schemas import LABEL_NAMES, SampleRecord
+from XAI.CNN.shared.schemas import LABEL_NAMES, SampleRecord
 
 
 def compute_filter_class_direction(model: CNN_Sentiment) -> list[dict[str, Any]]:

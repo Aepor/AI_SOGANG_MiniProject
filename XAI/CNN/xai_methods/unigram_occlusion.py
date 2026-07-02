@@ -12,7 +12,7 @@ from typing import Any
 import torch
 
 from XAI.CNN.xai_methods.model import CNN_Sentiment, predict_batch_ids, predict_one
-from XAI.shared.schemas import LABEL_NAMES, SampleRecord
+from XAI.CNN.shared.schemas import LABEL_NAMES, SampleRecord
 
 
 def run_unigram_occlusion(

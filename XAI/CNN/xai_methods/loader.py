@@ -15,8 +15,8 @@ from typing import Any
 import torch
 
 from XAI.CNN.xai_methods.model import CNN_Sentiment, infer_architecture_from_state_dict
-from XAI.shared.nsmc_data import clean_nsmc_frame, load_nsmc_raw, split_train_validation
-from XAI.shared.tokenization import make_okt, tokenize_text
+from XAI.CNN.shared.nsmc_data import clean_nsmc_frame, load_nsmc_raw, split_train_validation
+from XAI.CNN.shared.tokenization import make_okt, tokenize_text
 
 
 # 캐시 구조가 바뀌면 숫자를 올려 오래된 pickle을 무시하게 만든다.

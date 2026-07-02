@@ -13,10 +13,10 @@ from pathlib import Path
 def repo_root() -> Path:
     """Return the repository root based on this file location.
 
-    `paths.py`는 `XAI/shared/paths.py`에 있으므로 `parents[2]`가 repo root이다.
+    `paths.py`는 `XAI/CNN/shared/paths.py`에 있으므로 `parents[3]`이 repo root이다.
     cwd에 의존하지 않아서 VS Code/Jupyter 실행 위치가 달라도 안정적이다.
     """
-    return Path(__file__).resolve().parents[2]
+    return Path(__file__).resolve().parents[3]
 
 
 def xai_root() -> Path:

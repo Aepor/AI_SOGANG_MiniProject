@@ -38,13 +38,13 @@ from XAI.CNN.xai_methods.maxpool_positions import run_maxpool_position_analysis 
 from XAI.CNN.xai_methods.model import predict_batch_ids, predict_one  # noqa: E402
 from XAI.CNN.xai_methods.ngram_occlusion import run_ngram_occlusion  # noqa: E402
 from XAI.CNN.xai_methods.unigram_occlusion import run_unigram_occlusion  # noqa: E402
-from XAI.shared.nsmc_data import clean_nsmc_frame, load_nsmc_raw, sample_test_pool  # noqa: E402
-from XAI.shared.paths import (  # noqa: E402
+from XAI.CNN.shared.nsmc_data import clean_nsmc_frame, load_nsmc_raw, sample_test_pool  # noqa: E402
+from XAI.CNN.shared.paths import (  # noqa: E402
     default_cnn_cache_path,
     default_cnn_model_path,
     default_cnn_output_dir,
 )
-from XAI.shared.schemas import (  # noqa: E402
+from XAI.CNN.shared.schemas import (  # noqa: E402
     LABEL_NAMES_KO,
     SampleRecord,
     format_float,
@@ -53,8 +53,8 @@ from XAI.shared.schemas import (  # noqa: E402
     sample_record_to_row,
     write_csv,
 )
-from XAI.shared.tokenization import encode_tokens, make_okt, tokenize_text  # noqa: E402
-from XAI.shared.visualization import HAS_MATPLOTLIB, plot_bar, safe_filename  # noqa: E402
+from XAI.CNN.shared.tokenization import encode_tokens, make_okt, tokenize_text  # noqa: E402
+from XAI.CNN.shared.visualization import HAS_MATPLOTLIB, plot_bar, safe_filename  # noqa: E402
 
 
 DEFAULT_CUSTOM_TEXTS = [

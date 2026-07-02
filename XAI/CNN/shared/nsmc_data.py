@@ -11,7 +11,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from XAI.shared.paths import find_data_file
+from XAI.CNN.shared.paths import find_data_file
 
 
 def load_nsmc_raw() -> tuple[pd.DataFrame, pd.DataFrame, Path, Path]:

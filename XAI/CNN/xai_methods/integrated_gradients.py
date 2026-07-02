@@ -20,7 +20,7 @@ from typing import Any
 import torch
 
 from XAI.CNN.xai_methods.model import CNN_Sentiment, forward_from_embedded_for_xai
-from XAI.shared.schemas import LABEL_NAMES, SampleRecord
+from XAI.CNN.shared.schemas import LABEL_NAMES, SampleRecord
 
 
 def _integrated_gradients_for_one_sample(
