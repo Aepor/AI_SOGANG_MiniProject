@@ -524,6 +524,35 @@ def run_explain(args):
         )
         print(f"분석 결과가 {args.output_file}에 저장되었습니다.")
 
+def run_attention(args):
+    """분리된 explain_attention.py 모듈을 호출하여 어텐션 분석을 수행합니다."""
+    device = get_device(args.device)
+    model, tokenizer = load_model_and_tokenizer(args.model_dir, device)
+
+    texts = args.text or []
+    if args.input_file:
+        texts.extend(
+            line.strip()
+            for line in Path(args.input_file).read_text(encoding="utf-8").splitlines()
+            if line.strip()
+        )
+
+    if not texts:
+        raise ValueError("Provide --text or --input-file.")
+
+    try:
+        from explain_attention import run_attention_pipeline
+        run_attention_pipeline(
+            model=model, 
+            tokenizer=tokenizer, 
+            texts=texts, 
+            output_dir=args.output_dir, 
+            device=device, 
+            max_length=args.max_length, 
+            model_name=args.model_name
+        )
+    except ImportError:
+        print("Error: 'explain_attention.py' 파일을 찾을 수 없습니다. 같은 폴더 내에 해당 모듈이 있는지 확인해 주세요.")
 
 def parse_args():
     """train, eval, predict, explain 서브커맨드와 각 옵션을 정의합니다."""
@@ -578,6 +607,15 @@ def parse_args():
     explain_parser.add_argument("--output-file")
     add_common_runtime_args(explain_parser)
     explain_parser.set_defaults(func=run_explain)
+    
+    attention_parser = subparsers.add_parser("attention")
+    attention_parser.add_argument("--model-name", default="beomi/KcELECTRA-base")
+    attention_parser.add_argument("--model-dir", default="XAI/Transformer/kcelectra_nsmc_model")
+    attention_parser.add_argument("--text", action="append")
+    attention_parser.add_argument("--input-file")
+    attention_parser.add_argument("--output-dir", default="XAI/Transformer/attention_results")
+    add_common_runtime_args(attention_parser)
+    attention_parser.set_defaults(func=run_attention)
 
     return parser.parse_args()
 
