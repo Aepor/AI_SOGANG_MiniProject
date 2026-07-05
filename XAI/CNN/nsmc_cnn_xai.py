@@ -1,7 +1,8 @@
-"""Compatibility wrapper for the modular CNN XAI pipeline.
+"""Compatibility wrapper for the current CNN XAI pipeline.
 
-The implementation now lives under `XAI/CNN/xai_methods/` so each XAI method
-can be read and tested independently. This file keeps the old command working:
+The current implementation exports eojeol-level JSON for the four kept methods:
+unigram occlusion, n-gram occlusion, filter activation, and Integrated
+Gradients. This file keeps the old command working:
 
     python XAI/CNN/nsmc_cnn_xai.py
 """
