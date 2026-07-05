@@ -84,6 +84,7 @@ def run_filter_activation_analysis(
                 negative_weight = float(fc_weight[0, feature_idx])
                 positive_weight = float(fc_weight[1, feature_idx])
                 positive_direction = positive_weight - negative_weight
+                positive_margin_contribution = activation * positive_direction
                 rows.append(
                     {
                         "sample_id": record.sample_id,
@@ -109,6 +110,7 @@ def run_filter_activation_analysis(
                         # contribution은 "이 sample의 activation 크기"와
                         # "target class classifier weight"를 곱한 값이다.
                         "target_contribution": activation * target_weight,
+                        "positive_margin_contribution": positive_margin_contribution,
                     }
                 )
     return rows
