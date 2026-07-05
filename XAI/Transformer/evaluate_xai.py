@@ -69,7 +69,15 @@ def main():
     json_dir = os.path.join(PROJECT_ROOT, "XAI", "outputs_json")
     graph_dir = os.path.join(PROJECT_ROOT, "XAI", "outputs_graph")
     os.makedirs(json_dir, exist_ok=True)
-    os.makedirs(graph_dir, exist_ok=True)
+    
+    # 모델_기법 폴더 경로 생성
+    ig_50_graph_dir = os.path.join(graph_dir, "transformer_ig_50")
+    ig_100_graph_dir = os.path.join(graph_dir, "transformer_ig_100")
+    occ_graph_dir = os.path.join(graph_dir, "transformer_occlusion")
+    
+    os.makedirs(ig_50_graph_dir, exist_ok=True)
+    os.makedirs(ig_100_graph_dir, exist_ok=True)
+    os.makedirs(occ_graph_dir, exist_ok=True)
     
     for i, text in enumerate(lines):
         print(f"[{i+1}/{len(lines)}] 분석 중: {text}")
@@ -111,24 +119,24 @@ def main():
             "scores": occ_res["scores"]
         })
         
-        # 그래프 시각화 및 저장 (단계를 파일명에 명시)
+        # 그래프 시각화 및 저장 (모델_기법 서브폴더 내에 sentence_{번호}.png 로 저장)
         plot_attributions(
             ig_res_50["words"], 
             ig_res_50["scores"], 
             f"Integrated Gradients (Steps 50): {text[:20]}...", 
-            os.path.join(graph_dir, f"sentence_{i+1}_ig_50.png")
+            os.path.join(ig_50_graph_dir, f"sentence_{i+1}.png")
         )
         plot_attributions(
             ig_res_100["words"], 
             ig_res_100["scores"], 
             f"Integrated Gradients (Steps 100): {text[:20]}...", 
-            os.path.join(graph_dir, f"sentence_{i+1}_ig_100.png")
+            os.path.join(ig_100_graph_dir, f"sentence_{i+1}.png")
         )
         plot_attributions(
             occ_res["words"], 
             occ_res["scores"], 
             f"Occlusion: {text[:20]}...", 
-            os.path.join(graph_dir, f"sentence_{i+1}_occlusion.png")
+            os.path.join(occ_graph_dir, f"sentence_{i+1}.png")
         )
         
     # 5. 최종 결과를 각각 분리된 JSON 파일로 저장
