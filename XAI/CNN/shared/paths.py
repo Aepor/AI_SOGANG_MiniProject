@@ -46,8 +46,8 @@ def default_cnn_cache_path() -> Path:
 
 
 def default_cnn_output_dir() -> Path:
-    """Default directory for generated CNN XAI outputs."""
-    return cnn_dir() / "outputs"
+    """Default directory for generated CNN XAI JSON outputs."""
+    return xai_root() / "outputs_json"
 
 
 def find_data_file(filename: str) -> Path:

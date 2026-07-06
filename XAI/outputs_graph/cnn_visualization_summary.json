@@ -1,0 +1,14 @@
+{
+  "input_dir": "XAI\\outputs_json",
+  "output_dir": "XAI\\outputs_graph",
+  "json_files": [
+    "output_cnn_filter_activation.json",
+    "output_cnn_integrated_gradients_steps100.json",
+    "output_cnn_integrated_gradients_steps50.json",
+    "output_cnn_ngram_occlusion.json",
+    "output_cnn_unigram_occlusion.json"
+  ],
+  "sample_chart_count": 150,
+  "comparison_chart_count": 30,
+  "index_html": "XAI\\outputs_graph\\cnn_index.html"
+}

@@ -1,0 +1,353 @@
+﻿sample_id,model,method,prediction,probability,llm_sentiment,prediction_llm_agreement,topk_recall,jaccard,signed_cosine,evidence_mass,polarity_agreement,llm_match_score,xai_top_words,llm_evidence_words,sample_type
+case_001,cnn,unigram_occlusion,positive,0.9897575378417969,positive,True,0.666667,0.5,0.606161,0.994883,1.0,0.659106,영화 | 정말 | 재미있어요,정말 | 재미있어요 | 추천합니다,custom
+case_002,cnn,unigram_occlusion,negative,0.9862291812896729,negative,True,0.6,0.6,0.441302,1.0,0.666667,0.620326,지루하고 | 연기도 | 별로네요,스토리가 | 지루하고 | 배우들 | 연기도 | 별로네요,custom
+case_003,cnn,unigram_occlusion,positive,0.9185996651649475,positive,True,0.6,0.6,0.679938,1.0,1.0,0.679984,지루했는데 | 정말 | 재미있어지네요,처음엔 | 지루했는데 | 갈수록 | 정말 | 재미있어지네요,custom
+case_004,cnn,unigram_occlusion,negative,0.976716160774231,negative,True,0.5,0.5,0.552907,1.0,1.0,0.588227,각본이 | 너무 | 쓰레기네요,배우들의 | 연기는 | 명품인데 | 각본이 | 너무 | 쓰레기네요,custom
+case_005,cnn,unigram_occlusion,negative,0.70521080493927,negative,True,0.375,0.375,0.191678,0.986197,0.333333,0.420849,같은 | 돈을 | 대단하다,이런 | 영화에 | 내 | 피 | 같은 | 돈을 | 쓰다니 | 대단하다,custom
+case_006,cnn,unigram_occlusion,positive,0.8118757009506226,negative,False,0.4,0.333333,-0.136538,0.551861,0.0,0.306112,보면 | 좋은 | 훌륭한,수면제 | 대신 | 보면 | 딱 | 좋은,custom
+case_007,cnn,unigram_occlusion,positive,0.9715786576271057,positive,True,0.75,0.75,0.509773,0.982608,0.666667,0.724834,개존잼!!! | 꼭보세요 | ㅋㅋㅋ,진짜 | 개존잼!!! | 꼭보세요 | ㅋㅋㅋ,custom
+case_008,cnn,unigram_occlusion,negative,0.9990574717521667,negative,True,0.75,0.75,0.589009,0.989772,1.0,0.745718,시간낭비 | 다신 | 안봄,시간낭비 | 다신 | 안봄 | ㅡㅡ,custom
+case_009,cnn,unigram_occlusion,positive,0.7318828701972961,positive,True,0.5,0.4,0.684989,0.81647,1.0,0.568718,지루하긴 | 한데 | 멋있음,스토리가 | 지루하긴 | 배우들은 | 멋있음,custom
+case_010,cnn,unigram_occlusion,positive,0.9811633229255676,positive,True,0.285714,0.25,0.470095,0.814604,1.0,0.402214,"재미있는 | 부모님, | 재밌을",상당히 | 재미있는 | 영화에요 | 더 | 재밌을 | 것 | 같아요,custom
+case_011,cnn,unigram_occlusion,negative,0.997015118598938,negative,True,0.5,0.5,0.67081,1.0,1.0,0.617702,알바들만 | 돈 | 아깝다,평점 | 알바들만 | 넘치네 | 진짜 | 돈 | 아깝다,custom
+case_012,cnn,unigram_occlusion,positive,0.9975270628929138,positive,True,0.5,0.5,0.682928,0.925284,1.0,0.609525,가슴 | 먹먹해지는 | 수작.,백배 | 천배 | 낫다. | 가슴 | 먹먹해지는 | 수작.,custom
+case_013,cnn,unigram_occlusion,negative,0.9921754002571106,negative,True,0.6,0.6,0.620588,0.995236,1.0,0.664432,재미는 | 없음... | 때우기용도,재미는 | 없음... | 시간 | 때우기용도 | 안됨,custom
+case_014,cnn,unigram_occlusion,negative,0.999669075012207,negative,True,0.5,0.5,0.52535,1.0,1.0,0.581337,개연성이 | 밥말아먹었나 | 스토리가,개연성이 | 밥말아먹었나 | 스토리가 | 왜 | 이 | 모양임?,custom
+case_015,cnn,unigram_occlusion,positive,0.925296425819397,positive,True,0.375,0.375,0.32438,1.0,0.333333,0.456095,삼박자가 | 완벽하다. | 극장가서,"연출, | 연기, | 음악 | 삼박자가 | 완벽하다. | 꼭 | 극장가서 | 보세요.",custom
+case_016,cnn,unigram_occlusion,negative,0.9830611348152161,negative,True,0.666667,0.5,0.60763,0.964232,1.0,0.654876,재밌다길래 | 개노잼임 | 절대보지마셈,진짜 | 개노잼임 | 절대보지마셈,custom
+case_017,cnn,unigram_occlusion,positive,0.9999328851699829,positive,True,0.5,0.4,0.75457,0.746223,1.0,0.575576,오랜만에 | 따뜻해지는 | 웰메이드,가슴 | 따뜻해지는 | 웰메이드 | 강추!!,custom
+case_018,cnn,unigram_occlusion,negative,0.9848324656486511,negative,True,0.5,0.5,0.61315,0.977828,1.0,0.599962,억지 | 짜내기 | 극혐,뻔하디 | 뻔한 | 억지 | 감동 | 짜내기 | 극혐,custom
+case_019,cnn,unigram_occlusion,negative,0.9812391996383667,negative,True,0.5,0.5,0.594047,0.914366,1.0,0.585667,돈이랑 | 감독 | 누구냐,돈이랑 | 시간 | 돌려내라 | 감독 | 누구냐 | 진짜,custom
+case_020,cnn,unigram_occlusion,positive,0.959521472454071,positive,True,0.333333,0.285714,0.310444,0.542762,1.0,0.347121,힐링 | ㅠㅠ | 찰떡,힐링 | 제대로 | 하고 | 옴 | 연기도 | 찰떡,custom
+case_021,cnn,unigram_occlusion,negative,0.9880245327949524,negative,True,0.428571,0.428571,0.459567,0.973731,0.666667,0.518094,오? | 산으로 | 어이없음,초반엔 | 오? | 후반 | 갈수록 | 산으로 | 가네 | 어이없음,custom
+case_022,cnn,unigram_occlusion,positive,0.9833064675331116,positive,True,0.4,0.333333,0.663291,0.806541,1.0,0.510137,인생작입니다. | 살면서 | 최고라고,인생작입니다. | 감히 | 최고라고 | 말하고 | 싶네요.,custom
+case_023,cnn,unigram_occlusion,negative,0.9969316720962524,negative,True,0.75,0.75,0.712041,1.0,1.0,0.77801,지루해서 | 중간에 | 돈날림주의;;;,지루해서 | 중간에 | 나왔어요 | 돈날림주의;;;,custom
+case_024,cnn,unigram_occlusion,negative,0.9195727109909058,negative,True,0.333333,0.333333,0.810971,1.0,1.0,0.552743,스토리가 | 엉성해요. | 없는,영상미는 | 좋은데 | 스토리가 | 너무 | 엉성해요. | 남는 | 게 | 없는 | 느낌.,custom
+case_025,cnn,unigram_occlusion,positive,0.6135897040367126,positive,True,0.428571,0.428571,0.506514,0.958149,1.0,0.527494,유치하긴 | 가볍게 | 좋네요,킬링타임으로 | 제격임 | 유치하긴 | 한데 | 가볍게 | 웃기 | 좋네요,custom
+case_026,cnn,unigram_occlusion,positive,0.9844313263893127,positive,True,0.375,0.375,0.524705,1.0,0.666667,0.506176,왜 | 완전 | 명작인데,평점 | 왜 | 이럼? | 생각보다 | 완전 | 명작인데 | 억까들 | 많네,custom
+case_027,cnn,unigram_occlusion,negative,0.9695852398872375,negative,True,0.375,0.375,0.671597,1.0,1.0,0.542899,웹툰이 | 그냥 | 수준,원작 | 웹툰이 | 훨씬 | 나음.. | 실사화는 | 그냥 | 폭망 | 수준,custom
+case_028,cnn,unigram_occlusion,positive,0.9656215906143188,positive,True,0.333333,0.285714,0.468485,0.755965,1.0,0.418611,볼 | 인생 | 설렘,완전 | 인생 | 영화 | 건짐... | 설렘 | 터짐,custom
+case_029,cnn,unigram_occlusion,negative,0.9995947480201721,negative,True,0.428571,0.428571,0.671769,1.0,1.0,0.575085,1점도 | 아깝다 | 엉망진창임,1점도 | 아깝다 | 스토리 | 연출 | 캐스팅 | 다 | 엉망진창임,custom
+case_030,cnn,unigram_occlusion,positive,0.9928559064865112,positive,True,0.166667,0.125,0.469402,0.440037,1.0,0.272939,가슴 | 사실을 | 영화입니다.,잘 | 담아낸 | 의미 | 있는 | 영화입니다. | 먹먹하네요.,custom
+case_001,cnn,ngram_occlusion,positive,0.9897575378417969,positive,True,1.0,1.0,0.962731,0.882903,1.0,0.973118,정말 | 재미있어요 | 추천합니다,정말 | 재미있어요 | 추천합니다,custom
+case_002,cnn,ngram_occlusion,negative,0.9862291812896729,negative,True,0.6,0.6,0.850741,1.0,1.0,0.722685,배우들 | 연기도 | 별로네요,스토리가 | 지루하고 | 배우들 | 연기도 | 별로네요,custom
+case_003,cnn,ngram_occlusion,positive,0.9185996651649475,positive,True,0.6,0.6,0.903201,1.0,1.0,0.7358,갈수록 | 정말 | 재미있어지네요,처음엔 | 지루했는데 | 갈수록 | 정말 | 재미있어지네요,custom
+case_004,cnn,ngram_occlusion,negative,0.976716160774231,negative,True,0.5,0.5,0.719265,1.0,1.0,0.629816,각본이 | 너무 | 쓰레기네요,배우들의 | 연기는 | 명품인데 | 각본이 | 너무 | 쓰레기네요,custom
+case_005,cnn,ngram_occlusion,negative,0.70521080493927,negative,True,0.375,0.375,0.660346,0.974355,1.0,0.53624,피 | 같은 | 돈을,이런 | 영화에 | 내 | 피 | 같은 | 돈을 | 쓰다니 | 대단하다,custom
+case_006,cnn,ngram_occlusion,positive,0.8118757009506226,negative,False,0.2,0.142857,-0.417663,0.487281,0.0,0.178807,좋은 | 훌륭한 | 영화입니다,수면제 | 대신 | 보면 | 딱 | 좋은,custom
+case_007,cnn,ngram_occlusion,positive,0.9715786576271057,positive,True,0.75,0.75,0.829716,0.980394,1.0,0.804488,개존잼!!! | 꼭보세요 | ㅋㅋㅋ,진짜 | 개존잼!!! | 꼭보세요 | ㅋㅋㅋ,custom
+case_008,cnn,ngram_occlusion,negative,0.9990574717521667,negative,True,0.25,0.166667,0.620635,0.686683,1.0,0.387328,시간낭비 | 오지구요 | 지리구요,시간낭비 | 다신 | 안봄 | ㅡㅡ,custom
+case_009,cnn,ngram_occlusion,positive,0.7318828701972961,positive,True,0.5,0.4,0.858939,0.8612,1.0,0.618915,한데 | 배우들은 | 멋있음,스토리가 | 지루하긴 | 배우들은 | 멋있음,custom
+case_010,cnn,ngram_occlusion,positive,0.9811633229255676,positive,True,0.285714,0.25,0.680704,0.749732,1.0,0.445136,재미있는 | 영화에요 | 친구들이나,상당히 | 재미있는 | 영화에요 | 더 | 재밌을 | 것 | 같아요,custom
+case_011,cnn,ngram_occlusion,negative,0.997015118598938,negative,True,0.5,0.5,0.880825,1.0,1.0,0.670206,알바들만 | 돈 | 아깝다,평점 | 알바들만 | 넘치네 | 진짜 | 돈 | 아깝다,custom
+case_012,cnn,ngram_occlusion,positive,0.9975270628929138,positive,True,0.5,0.5,0.691909,0.994255,1.0,0.622115,가슴 | 먹먹해지는 | 수작.,백배 | 천배 | 낫다. | 가슴 | 먹먹해지는 | 수작.,custom
+case_013,cnn,ngram_occlusion,negative,0.9921754002571106,negative,True,0.6,0.6,0.779789,0.973497,1.0,0.700972,없음... | 시간 | 때우기용도,재미는 | 없음... | 시간 | 때우기용도 | 안됨,custom
+case_014,cnn,ngram_occlusion,negative,0.999669075012207,negative,True,0.5,0.5,0.741191,1.0,1.0,0.635298,개연성이 | 밥말아먹었나 | 스토리가,개연성이 | 밥말아먹었나 | 스토리가 | 왜 | 이 | 모양임?,custom
+case_015,cnn,ngram_occlusion,positive,0.925296425819397,positive,True,0.375,0.375,0.609612,1.0,1.0,0.527403,삼박자가 | 완벽하다. | 꼭,"연출, | 연기, | 음악 | 삼박자가 | 완벽하다. | 꼭 | 극장가서 | 보세요.",custom
+case_016,cnn,ngram_occlusion,negative,0.9830611348152161,negative,True,1.0,1.0,0.786075,0.965551,1.0,0.941351,진짜 | 개노잼임 | 절대보지마셈,진짜 | 개노잼임 | 절대보지마셈,custom
+case_017,cnn,ngram_occlusion,positive,0.9999328851699829,positive,True,0.75,0.75,0.762545,0.754318,1.0,0.753784,가슴 | 따뜻해지는 | 웰메이드,가슴 | 따뜻해지는 | 웰메이드 | 강추!!,custom
+case_018,cnn,ngram_occlusion,negative,0.9848324656486511,negative,True,0.333333,0.285714,0.608657,0.647112,1.0,0.437326,한국식 | 억지 | 짜내기,뻔하디 | 뻔한 | 억지 | 감동 | 짜내기 | 극혐,custom
+case_019,cnn,ngram_occlusion,negative,0.9812391996383667,negative,True,0.5,0.5,0.82479,0.856882,1.0,0.63473,돈이랑 | 감독 | 누구냐,돈이랑 | 시간 | 돌려내라 | 감독 | 누구냐 | 진짜,custom
+case_020,cnn,ngram_occlusion,positive,0.959521472454071,positive,True,0.333333,0.285714,0.657018,0.605626,1.0,0.443194,갔다가 | 힐링 | 제대로,힐링 | 제대로 | 하고 | 옴 | 연기도 | 찰떡,custom
+case_021,cnn,ngram_occlusion,negative,0.9880245327949524,negative,True,0.285714,0.25,0.716638,0.765291,1.0,0.456453,산으로 | ㅋㅋㅋ | 어이없음,초반엔 | 오? | 후반 | 갈수록 | 산으로 | 가네 | 어이없음,custom
+case_022,cnn,ngram_occlusion,positive,0.9833064675331116,positive,True,0.4,0.333333,0.711747,0.63728,1.0,0.496862,중에 | 감히 | 최고라고,인생작입니다. | 감히 | 최고라고 | 말하고 | 싶네요.,custom
+case_023,cnn,ngram_occlusion,negative,0.9969316720962524,negative,True,0.75,0.75,0.895224,1.0,1.0,0.823806,중간에 | 나왔어요 | 돈날림주의;;;,지루해서 | 중간에 | 나왔어요 | 돈날림주의;;;,custom
+case_024,cnn,ngram_occlusion,negative,0.9195727109909058,negative,True,0.333333,0.333333,0.774289,1.0,1.0,0.543572,스토리가 | 너무 | 엉성해요.,영상미는 | 좋은데 | 스토리가 | 너무 | 엉성해요. | 남는 | 게 | 없는 | 느낌.,custom
+case_025,cnn,ngram_occlusion,positive,0.6135897040367126,positive,True,0.285714,0.25,0.356188,0.839732,0.5,0.377507,제격임 | ㅋㅋ | 유치하긴,킬링타임으로 | 제격임 | 유치하긴 | 한데 | 가볍게 | 웃기 | 좋네요,custom
+case_026,cnn,ngram_occlusion,positive,0.9844313263893127,positive,True,0.375,0.375,0.710311,1.0,1.0,0.552578,생각보다 | 완전 | 명작인데,평점 | 왜 | 이럼? | 생각보다 | 완전 | 명작인데 | 억까들 | 많네,custom
+case_027,cnn,ngram_occlusion,negative,0.9695852398872375,negative,True,0.375,0.375,0.855806,1.0,1.0,0.588952,그냥 | 폭망 | 수준,원작 | 웹툰이 | 훨씬 | 나음.. | 실사화는 | 그냥 | 폭망 | 수준,custom
+case_028,cnn,ngram_occlusion,positive,0.9656215906143188,positive,True,0.333333,0.285714,0.602057,0.565068,1.0,0.42337,찾다가 | 완전 | 인생,완전 | 인생 | 영화 | 건짐... | 설렘 | 터짐,custom
+case_029,cnn,ngram_occlusion,negative,0.9995947480201721,negative,True,0.428571,0.428571,0.934442,1.0,1.0,0.640753,1점도 | 아깝다 | 엉망진창임,1점도 | 아깝다 | 스토리 | 연출 | 캐스팅 | 다 | 엉망진창임,custom
+case_030,cnn,ngram_occlusion,positive,0.9928559064865112,positive,True,0.166667,0.125,0.497127,0.43768,1.0,0.279517,역사적 | 사실을 | 영화입니다.,잘 | 담아낸 | 의미 | 있는 | 영화입니다. | 먹먹하네요.,custom
+case_001,cnn,filter_activation,positive,0.9897575378417969,positive,True,1.0,1.0,0.998855,0.998059,1.0,0.999423,정말 | 재미있어요 | 추천합니다,정말 | 재미있어요 | 추천합니다,custom
+case_002,cnn,filter_activation,negative,0.9862291812896729,negative,True,0.6,0.6,0.812241,1.0,1.0,0.71306,지루하고 | 배우들 | 별로네요,스토리가 | 지루하고 | 배우들 | 연기도 | 별로네요,custom
+case_003,cnn,filter_activation,positive,0.9185996651649475,positive,True,0.6,0.6,-0.750671,1.0,0.0,0.51,처음엔 | 갈수록 | 정말,처음엔 | 지루했는데 | 갈수록 | 정말 | 재미있어지네요,custom
+case_004,cnn,filter_activation,negative,0.976716160774231,negative,True,0.5,0.5,0.725801,1.0,1.0,0.63145,명품인데 | 너무 | 쓰레기네요,배우들의 | 연기는 | 명품인데 | 각본이 | 너무 | 쓰레기네요,custom
+case_005,cnn,filter_activation,negative,0.70521080493927,negative,True,0.375,0.375,0.612118,0.991804,1.0,0.5268,돈을 | 쓰다니 | 대단하다,이런 | 영화에 | 내 | 피 | 같은 | 돈을 | 쓰다니 | 대단하다,custom
+case_006,cnn,filter_activation,positive,0.8118757009506226,negative,False,0.2,0.142857,0.374249,0.587322,1.0,0.287375,수면제 | 훌륭한 | 영화입니다,수면제 | 대신 | 보면 | 딱 | 좋은,custom
+case_007,cnn,filter_activation,positive,0.9715786576271057,positive,True,0.75,0.75,0.863494,0.927443,1.0,0.80499,개존잼!!! | 꼭보세요 | ㅋㅋㅋ,진짜 | 개존잼!!! | 꼭보세요 | ㅋㅋㅋ,custom
+case_008,cnn,filter_activation,negative,0.9990574717521667,negative,True,0.25,0.166667,0.588554,0.562229,1.0,0.36064,시간낭비 | 오지구요 | 지리구요,시간낭비 | 다신 | 안봄 | ㅡㅡ,custom
+case_009,cnn,filter_activation,positive,0.7318828701972961,positive,True,0.5,0.4,0.089306,0.689026,0.5,0.40068,지루하긴 | 한데 | 배우들은,스토리가 | 지루하긴 | 배우들은 | 멋있음,custom
+case_010,cnn,filter_activation,positive,0.9811633229255676,positive,True,0.285714,0.25,0.493709,0.679609,1.0,0.387869,재미있는 | 영화에요 | 친구들이나,상당히 | 재미있는 | 영화에요 | 더 | 재밌을 | 것 | 같아요,custom
+case_011,cnn,filter_activation,negative,0.997015118598938,negative,True,0.5,0.5,0.664815,1.0,1.0,0.616204,알바들만 | 넘치네 | 진짜,평점 | 알바들만 | 넘치네 | 진짜 | 돈 | 아깝다,custom
+case_012,cnn,filter_activation,positive,0.9975270628929138,positive,True,0.333333,0.285714,0.660878,0.798558,1.0,0.473098,신파보다 | 가슴 | 먹먹해지는,백배 | 천배 | 낫다. | 가슴 | 먹먹해지는 | 수작.,custom
+case_013,cnn,filter_activation,negative,0.9921754002571106,negative,True,0.6,0.6,0.809461,0.941242,1.0,0.703552,재미는 | 없음... | 시간,재미는 | 없음... | 시간 | 때우기용도 | 안됨,custom
+case_014,cnn,filter_activation,negative,0.999669075012207,negative,True,0.5,0.5,0.803631,1.0,1.0,0.650908,개연성이 | 밥말아먹었나 | 스토리가,개연성이 | 밥말아먹었나 | 스토리가 | 왜 | 이 | 모양임?,custom
+case_015,cnn,filter_activation,positive,0.925296425819397,positive,True,0.375,0.375,0.634873,1.0,1.0,0.533718,음악 | 완벽하다. | 꼭,"연출, | 연기, | 음악 | 삼박자가 | 완벽하다. | 꼭 | 극장가서 | 보세요.",custom
+case_016,cnn,filter_activation,negative,0.9830611348152161,negative,True,0.666667,0.5,0.707712,0.830166,1.0,0.659786,재밌다길래 | 개노잼임 | 절대보지마셈,진짜 | 개노잼임 | 절대보지마셈,custom
+case_017,cnn,filter_activation,positive,0.9999328851699829,positive,True,0.75,0.75,0.756405,0.770535,1.0,0.754681,가슴 | 따뜻해지는 | 웰메이드,가슴 | 따뜻해지는 | 웰메이드 | 강추!!,custom
+case_018,cnn,filter_activation,negative,0.9848324656486511,negative,True,0.5,0.5,0.855551,0.861194,1.0,0.643067,억지 | 감동 | 짜내기,뻔하디 | 뻔한 | 억지 | 감동 | 짜내기 | 극혐,custom
+case_019,cnn,filter_activation,negative,0.9812391996383667,negative,True,0.5,0.5,0.846023,0.899368,1.0,0.646411,돈이랑 | 감독 | 누구냐,돈이랑 | 시간 | 돌려내라 | 감독 | 누구냐 | 진짜,custom
+case_020,cnn,filter_activation,positive,0.959521472454071,positive,True,0.333333,0.285714,0.773497,0.721747,1.0,0.489732,힐링 | 옴 | ㅠㅠ,힐링 | 제대로 | 하고 | 옴 | 연기도 | 찰떡,custom
+case_021,cnn,filter_activation,negative,0.9880245327949524,negative,True,0.428571,0.428571,0.763965,0.887632,1.0,0.581279,갈수록 | 산으로 | 가네,초반엔 | 오? | 후반 | 갈수록 | 산으로 | 가네 | 어이없음,custom
+case_022,cnn,filter_activation,positive,0.9833064675331116,positive,True,0.4,0.333333,0.720027,0.640026,1.0,0.499344,인생작입니다. | 시트콤 | 최고라고,인생작입니다. | 감히 | 최고라고 | 말하고 | 싶네요.,custom
+case_023,cnn,filter_activation,negative,0.9969316720962524,negative,True,0.75,0.75,0.851356,1.0,1.0,0.812839,중간에 | 나왔어요 | 돈날림주의;;;,지루해서 | 중간에 | 나왔어요 | 돈날림주의;;;,custom
+case_024,cnn,filter_activation,negative,0.9195727109909058,negative,True,0.333333,0.333333,0.566531,1.0,1.0,0.491633,엉성해요. | 없는 | 느낌.,영상미는 | 좋은데 | 스토리가 | 너무 | 엉성해요. | 남는 | 게 | 없는 | 느낌.,custom
+case_025,cnn,filter_activation,positive,0.6135897040367126,positive,True,0.428571,0.428571,0.04545,0.894308,0.666667,0.402652,유치하긴 | 한데 | 가볍게,킬링타임으로 | 제격임 | 유치하긴 | 한데 | 가볍게 | 웃기 | 좋네요,custom
+case_026,cnn,filter_activation,positive,0.9844313263893127,positive,True,0.375,0.375,0.386663,1.0,0.666667,0.471666,이럼? | 완전 | 명작인데,평점 | 왜 | 이럼? | 생각보다 | 완전 | 명작인데 | 억까들 | 많네,custom
+case_027,cnn,filter_activation,negative,0.9695852398872375,negative,True,0.375,0.375,0.946782,1.0,1.0,0.611696,그냥 | 폭망 | 수준,원작 | 웹툰이 | 훨씬 | 나음.. | 실사화는 | 그냥 | 폭망 | 수준,custom
+case_028,cnn,filter_activation,positive,0.9656215906143188,positive,True,0.333333,0.285714,0.621285,0.549849,1.0,0.425894,로맨틱 | 인생 | 영화,완전 | 인생 | 영화 | 건짐... | 설렘 | 터짐,custom
+case_029,cnn,filter_activation,negative,0.9995947480201721,negative,True,0.428571,0.428571,0.835694,1.0,1.0,0.616066,1점도 | 아깝다 | 스토리,1점도 | 아깝다 | 스토리 | 연출 | 캐스팅 | 다 | 엉망진창임,custom
+case_030,cnn,filter_activation,positive,0.9928559064865112,positive,True,0.0,0.0,0.332897,0.343224,0.0,0.134708,아픈 | 역사적 | 사실을,잘 | 담아낸 | 의미 | 있는 | 영화입니다. | 먹먹하네요.,custom
+case_001,cnn,integrated_gradients_steps50,positive,0.9897575378417969,positive,True,0.666667,0.5,0.628065,0.970196,1.0,0.660879,영화 | 정말 | 재미있어요,정말 | 재미있어요 | 추천합니다,custom
+case_002,cnn,integrated_gradients_steps50,negative,0.9862291812896729,negative,True,0.6,0.6,0.660822,1.0,1.0,0.675205,스토리가 | 지루하고 | 별로네요,스토리가 | 지루하고 | 배우들 | 연기도 | 별로네요,custom
+case_003,cnn,integrated_gradients_steps50,positive,0.9185996651649475,positive,True,0.6,0.6,0.648524,1.0,1.0,0.672131,지루했는데 | 정말 | 재미있어지네요,처음엔 | 지루했는데 | 갈수록 | 정말 | 재미있어지네요,custom
+case_004,cnn,integrated_gradients_steps50,negative,0.976716160774231,negative,True,0.5,0.5,0.738105,1.0,1.0,0.634526,명품인데 | 각본이 | 쓰레기네요,배우들의 | 연기는 | 명품인데 | 각본이 | 너무 | 쓰레기네요,custom
+case_005,cnn,integrated_gradients_steps50,negative,0.70521080493927,negative,True,0.375,0.375,0.413472,0.99255,0.666667,0.477251,돈을 | 쓰다니 | 대단하다,이런 | 영화에 | 내 | 피 | 같은 | 돈을 | 쓰다니 | 대단하다,custom
+case_006,cnn,integrated_gradients_steps50,positive,0.8118757009506226,negative,False,0.4,0.333333,0.230046,0.552628,0.5,0.363739,수면제 | 좋은 | 훌륭한,수면제 | 대신 | 보면 | 딱 | 좋은,custom
+case_007,cnn,integrated_gradients_steps50,positive,0.9715786576271057,positive,True,0.75,0.75,0.675444,0.995967,1.0,0.768256,진짜 | 개존잼!!! | 꼭보세요,진짜 | 개존잼!!! | 꼭보세요 | ㅋㅋㅋ,custom
+case_008,cnn,integrated_gradients_steps50,negative,0.9990574717521667,negative,True,0.75,0.75,0.777661,0.893046,1.0,0.778372,시간낭비 | 다신 | 안봄,시간낭비 | 다신 | 안봄 | ㅡㅡ,custom
+case_009,cnn,integrated_gradients_steps50,positive,0.7318828701972961,positive,True,0.75,0.75,0.48171,0.942184,0.666667,0.711755,지루하긴 | 배우들은 | 멋있음,스토리가 | 지루하긴 | 배우들은 | 멋있음,custom
+case_010,cnn,integrated_gradients_steps50,positive,0.9811633229255676,positive,True,0.428571,0.428571,0.445591,0.78403,1.0,0.486145,재미있는 | 영화에요 | 재밌을,상당히 | 재미있는 | 영화에요 | 더 | 재밌을 | 것 | 같아요,custom
+case_011,cnn,integrated_gradients_steps50,negative,0.997015118598938,negative,True,0.5,0.5,0.500911,1.0,1.0,0.575228,알바들만 | 돈 | 아깝다,평점 | 알바들만 | 넘치네 | 진짜 | 돈 | 아깝다,custom
+case_012,cnn,integrated_gradients_steps50,positive,0.9975270628929138,positive,True,0.5,0.5,0.641717,0.790345,1.0,0.578981,가슴 | 먹먹해지는 | 수작.,백배 | 천배 | 낫다. | 가슴 | 먹먹해지는 | 수작.,custom
+case_013,cnn,integrated_gradients_steps50,negative,0.9921754002571106,negative,True,0.6,0.6,0.768238,0.979105,1.0,0.698925,재미는 | 없음... | 때우기용도,재미는 | 없음... | 시간 | 때우기용도 | 안됨,custom
+case_014,cnn,integrated_gradients_steps50,negative,0.999669075012207,negative,True,0.5,0.5,0.778206,1.0,1.0,0.644552,개연성이 | 밥말아먹었나 | 모양임?,개연성이 | 밥말아먹었나 | 스토리가 | 왜 | 이 | 모양임?,custom
+case_015,cnn,integrated_gradients_steps50,positive,0.925296425819397,positive,True,0.375,0.375,0.297347,1.0,0.666667,0.449337,삼박자가 | 완벽하다. | 꼭,"연출, | 연기, | 음악 | 삼박자가 | 완벽하다. | 꼭 | 극장가서 | 보세요.",custom
+case_016,cnn,integrated_gradients_steps50,negative,0.9830611348152161,negative,True,0.666667,0.5,0.547963,0.665375,1.0,0.59513,재밌다길래 | 개노잼임 | 절대보지마셈,진짜 | 개노잼임 | 절대보지마셈,custom
+case_017,cnn,integrated_gradients_steps50,positive,0.9999328851699829,positive,True,0.75,0.75,0.914844,0.923494,1.0,0.817235,가슴 | 따뜻해지는 | 웰메이드,가슴 | 따뜻해지는 | 웰메이드 | 강추!!,custom
+case_018,cnn,integrated_gradients_steps50,negative,0.9848324656486511,negative,True,0.333333,0.285714,0.549183,0.865854,1.0,0.455269,한국식 | 억지 | 극혐,뻔하디 | 뻔한 | 억지 | 감동 | 짜내기 | 극혐,custom
+case_019,cnn,integrated_gradients_steps50,negative,0.9812391996383667,negative,True,0.5,0.5,0.52674,0.937126,1.0,0.572254,돌려내라 | 감독 | 누구냐,돈이랑 | 시간 | 돌려내라 | 감독 | 누구냐 | 진짜,custom
+case_020,cnn,integrated_gradients_steps50,positive,0.959521472454071,positive,True,0.333333,0.285714,0.475753,0.560058,1.0,0.391042,힐링 | 제대로 | ㅠㅠ,힐링 | 제대로 | 하고 | 옴 | 연기도 | 찰떡,custom
+case_021,cnn,integrated_gradients_steps50,negative,0.9880245327949524,negative,True,0.428571,0.428571,0.510943,0.990213,0.666667,0.533411,오? | 산으로 | 어이없음,초반엔 | 오? | 후반 | 갈수록 | 산으로 | 가네 | 어이없음,custom
+case_022,cnn,integrated_gradients_steps50,positive,0.9833064675331116,positive,True,0.4,0.333333,0.571287,0.741565,1.0,0.47739,인생작입니다. | 시트콤 | 최고라고,인생작입니다. | 감히 | 최고라고 | 말하고 | 싶네요.,custom
+case_023,cnn,integrated_gradients_steps50,negative,0.9969316720962524,negative,True,0.75,0.75,0.675649,1.0,0.666667,0.768912,지루해서 | 중간에 | 돈날림주의;;;,지루해서 | 중간에 | 나왔어요 | 돈날림주의;;;,custom
+case_024,cnn,integrated_gradients_steps50,negative,0.9195727109909058,negative,True,0.333333,0.333333,0.77246,1.0,1.0,0.543115,좋은데 | 너무 | 엉성해요.,영상미는 | 좋은데 | 스토리가 | 너무 | 엉성해요. | 남는 | 게 | 없는 | 느낌.,custom
+case_025,cnn,integrated_gradients_steps50,positive,0.6135897040367126,positive,True,0.428571,0.428571,0.416173,0.998612,0.666667,0.510978,제격임 | 유치하긴 | 좋네요,킬링타임으로 | 제격임 | 유치하긴 | 한데 | 가볍게 | 웃기 | 좋네요,custom
+case_026,cnn,integrated_gradients_steps50,positive,0.9844313263893127,positive,True,0.375,0.375,0.52227,1.0,0.666667,0.505567,왜 | 명작인데 | 억까들,평점 | 왜 | 이럼? | 생각보다 | 완전 | 명작인데 | 억까들 | 많네,custom
+case_027,cnn,integrated_gradients_steps50,negative,0.9695852398872375,negative,True,0.375,0.375,0.609807,1.0,1.0,0.527452,웹툰이 | 그냥 | 수준,원작 | 웹툰이 | 훨씬 | 나음.. | 실사화는 | 그냥 | 폭망 | 수준,custom
+case_028,cnn,integrated_gradients_steps50,positive,0.9656215906143188,positive,True,0.5,0.5,0.517685,0.797081,0.666667,0.548984,인생 | 건짐... | 설렘,완전 | 인생 | 영화 | 건짐... | 설렘 | 터짐,custom
+case_029,cnn,integrated_gradients_steps50,negative,0.9995947480201721,negative,True,0.428571,0.428571,0.655297,1.0,1.0,0.570967,1점도 | 아깝다 | 엉망진창임,1점도 | 아깝다 | 스토리 | 연출 | 캐스팅 | 다 | 엉망진창임,custom
+case_030,cnn,integrated_gradients_steps50,positive,0.9928559064865112,positive,True,0.0,0.0,0.208034,0.241893,0.0,0.088292,가슴 | 아픈 | 사실을,잘 | 담아낸 | 의미 | 있는 | 영화입니다. | 먹먹하네요.,custom
+case_001,cnn,integrated_gradients_steps100,positive,0.9897575378417969,positive,True,0.666667,0.5,0.627065,0.970265,1.0,0.660639,영화 | 정말 | 재미있어요,정말 | 재미있어요 | 추천합니다,custom
+case_002,cnn,integrated_gradients_steps100,negative,0.9862291812896729,negative,True,0.6,0.6,0.661095,1.0,1.0,0.675274,스토리가 | 지루하고 | 별로네요,스토리가 | 지루하고 | 배우들 | 연기도 | 별로네요,custom
+case_003,cnn,integrated_gradients_steps100,positive,0.9185996651649475,positive,True,0.6,0.6,0.647677,1.0,1.0,0.671919,지루했는데 | 정말 | 재미있어지네요,처음엔 | 지루했는데 | 갈수록 | 정말 | 재미있어지네요,custom
+case_004,cnn,integrated_gradients_steps100,negative,0.976716160774231,negative,True,0.5,0.5,0.739319,1.0,1.0,0.63483,명품인데 | 각본이 | 쓰레기네요,배우들의 | 연기는 | 명품인데 | 각본이 | 너무 | 쓰레기네요,custom
+case_005,cnn,integrated_gradients_steps100,negative,0.70521080493927,negative,True,0.375,0.375,0.414546,0.992061,0.666667,0.477446,돈을 | 쓰다니 | 대단하다,이런 | 영화에 | 내 | 피 | 같은 | 돈을 | 쓰다니 | 대단하다,custom
+case_006,cnn,integrated_gradients_steps100,positive,0.8118757009506226,negative,False,0.4,0.333333,0.231015,0.552842,0.5,0.364013,수면제 | 좋은 | 훌륭한,수면제 | 대신 | 보면 | 딱 | 좋은,custom
+case_007,cnn,integrated_gradients_steps100,positive,0.9715786576271057,positive,True,0.75,0.75,0.675112,0.996435,1.0,0.768243,진짜 | 개존잼!!! | 꼭보세요,진짜 | 개존잼!!! | 꼭보세요 | ㅋㅋㅋ,custom
+case_008,cnn,integrated_gradients_steps100,negative,0.9990574717521667,negative,True,0.75,0.75,0.7784,0.894057,1.0,0.778709,시간낭비 | 다신 | 안봄,시간낭비 | 다신 | 안봄 | ㅡㅡ,custom
+case_009,cnn,integrated_gradients_steps100,positive,0.7318828701972961,positive,True,0.75,0.75,0.48249,0.942264,0.666667,0.711962,지루하긴 | 배우들은 | 멋있음,스토리가 | 지루하긴 | 배우들은 | 멋있음,custom
+case_010,cnn,integrated_gradients_steps100,positive,0.9811633229255676,positive,True,0.428571,0.428571,0.445888,0.784046,1.0,0.486222,재미있는 | 영화에요 | 재밌을,상당히 | 재미있는 | 영화에요 | 더 | 재밌을 | 것 | 같아요,custom
+case_011,cnn,integrated_gradients_steps100,negative,0.997015118598938,negative,True,0.5,0.5,0.502864,1.0,1.0,0.575716,알바들만 | 돈 | 아깝다,평점 | 알바들만 | 넘치네 | 진짜 | 돈 | 아깝다,custom
+case_012,cnn,integrated_gradients_steps100,positive,0.9975270628929138,positive,True,0.5,0.5,0.641446,0.790458,1.0,0.57893,가슴 | 먹먹해지는 | 수작.,백배 | 천배 | 낫다. | 가슴 | 먹먹해지는 | 수작.,custom
+case_013,cnn,integrated_gradients_steps100,negative,0.9921754002571106,negative,True,0.6,0.6,0.767274,0.979203,1.0,0.698699,재미는 | 없음... | 때우기용도,재미는 | 없음... | 시간 | 때우기용도 | 안됨,custom
+case_014,cnn,integrated_gradients_steps100,negative,0.999669075012207,negative,True,0.5,0.5,0.778143,1.0,1.0,0.644536,개연성이 | 밥말아먹었나 | 모양임?,개연성이 | 밥말아먹었나 | 스토리가 | 왜 | 이 | 모양임?,custom
+case_015,cnn,integrated_gradients_steps100,positive,0.925296425819397,positive,True,0.375,0.375,0.297672,1.0,0.666667,0.449418,삼박자가 | 완벽하다. | 꼭,"연출, | 연기, | 음악 | 삼박자가 | 완벽하다. | 꼭 | 극장가서 | 보세요.",custom
+case_016,cnn,integrated_gradients_steps100,negative,0.9830611348152161,negative,True,0.666667,0.5,0.547846,0.66545,1.0,0.595112,재밌다길래 | 개노잼임 | 절대보지마셈,진짜 | 개노잼임 | 절대보지마셈,custom
+case_017,cnn,integrated_gradients_steps100,positive,0.9999328851699829,positive,True,0.75,0.75,0.914855,0.923807,1.0,0.817285,가슴 | 따뜻해지는 | 웰메이드,가슴 | 따뜻해지는 | 웰메이드 | 강추!!,custom
+case_018,cnn,integrated_gradients_steps100,negative,0.9848324656486511,negative,True,0.333333,0.285714,0.548558,0.865966,1.0,0.45513,한국식 | 억지 | 극혐,뻔하디 | 뻔한 | 억지 | 감동 | 짜내기 | 극혐,custom
+case_019,cnn,integrated_gradients_steps100,negative,0.9812391996383667,negative,True,0.5,0.5,0.527549,0.936445,1.0,0.572354,돌려내라 | 감독 | 누구냐,돈이랑 | 시간 | 돌려내라 | 감독 | 누구냐 | 진짜,custom
+case_020,cnn,integrated_gradients_steps100,positive,0.959521472454071,positive,True,0.333333,0.285714,0.476927,0.561821,1.0,0.3916,힐링 | 제대로 | ㅠㅠ,힐링 | 제대로 | 하고 | 옴 | 연기도 | 찰떡,custom
+case_021,cnn,integrated_gradients_steps100,negative,0.9880245327949524,negative,True,0.428571,0.428571,0.511058,0.989934,0.666667,0.533398,오? | 산으로 | 어이없음,초반엔 | 오? | 후반 | 갈수록 | 산으로 | 가네 | 어이없음,custom
+case_022,cnn,integrated_gradients_steps100,positive,0.9833064675331116,positive,True,0.4,0.333333,0.571501,0.742728,1.0,0.477618,인생작입니다. | 시트콤 | 최고라고,인생작입니다. | 감히 | 최고라고 | 말하고 | 싶네요.,custom
+case_023,cnn,integrated_gradients_steps100,negative,0.9969316720962524,negative,True,0.75,0.75,0.676375,1.0,0.666667,0.769094,지루해서 | 중간에 | 돈날림주의;;;,지루해서 | 중간에 | 나왔어요 | 돈날림주의;;;,custom
+case_024,cnn,integrated_gradients_steps100,negative,0.9195727109909058,negative,True,0.333333,0.333333,0.77181,1.0,1.0,0.542952,좋은데 | 너무 | 엉성해요.,영상미는 | 좋은데 | 스토리가 | 너무 | 엉성해요. | 남는 | 게 | 없는 | 느낌.,custom
+case_025,cnn,integrated_gradients_steps100,positive,0.6135897040367126,positive,True,0.428571,0.428571,0.416491,0.998818,0.666667,0.511088,제격임 | 유치하긴 | 좋네요,킬링타임으로 | 제격임 | 유치하긴 | 한데 | 가볍게 | 웃기 | 좋네요,custom
+case_026,cnn,integrated_gradients_steps100,positive,0.9844313263893127,positive,True,0.375,0.375,0.521205,1.0,0.666667,0.505301,왜 | 명작인데 | 억까들,평점 | 왜 | 이럼? | 생각보다 | 완전 | 명작인데 | 억까들 | 많네,custom
+case_027,cnn,integrated_gradients_steps100,negative,0.9695852398872375,negative,True,0.375,0.375,0.6086,1.0,1.0,0.52715,웹툰이 | 그냥 | 수준,원작 | 웹툰이 | 훨씬 | 나음.. | 실사화는 | 그냥 | 폭망 | 수준,custom
+case_028,cnn,integrated_gradients_steps100,positive,0.9656215906143188,positive,True,0.5,0.5,0.520197,0.797515,0.666667,0.549677,인생 | 건짐... | 설렘,완전 | 인생 | 영화 | 건짐... | 설렘 | 터짐,custom
+case_029,cnn,integrated_gradients_steps100,negative,0.9995947480201721,negative,True,0.428571,0.428571,0.655561,1.0,1.0,0.571033,1점도 | 아깝다 | 엉망진창임,1점도 | 아깝다 | 스토리 | 연출 | 캐스팅 | 다 | 엉망진창임,custom
+case_030,cnn,integrated_gradients_steps100,positive,0.9928559064865112,positive,True,0.0,0.0,0.210145,0.242926,0.0,0.088975,가슴 | 아픈 | 사실을,잘 | 담아낸 | 의미 | 있는 | 영화입니다. | 먹먹하네요.,custom
+case_001,fnn,occlusion,positive,0.9372,positive,True,0.666667,0.5,0.66161,0.882012,1.0,0.656038,영화 | 재미있어요 | 추천합니다,정말 | 재미있어요 | 추천합니다,custom
+case_002,fnn,occlusion,negative,0.9815,negative,True,0.6,0.6,0.53804,1.0,0.666667,0.64451,스토리가 | 지루하고 | 별로네요,스토리가 | 지루하고 | 배우들 | 연기도 | 별로네요,custom
+case_003,fnn,occlusion,positive,0.6427,positive,True,0.6,0.6,0.51943,1.0,0.666667,0.639858,지루했는데 | 갈수록 | 재미있어지네요,처음엔 | 지루했는데 | 갈수록 | 정말 | 재미있어지네요,custom
+case_004,fnn,occlusion,negative,0.8229,negative,True,0.5,0.5,0.59723,1.0,1.0,0.599308,명품인데 | 각본이 | 쓰레기네요,배우들의 | 연기는 | 명품인데 | 각본이 | 너무 | 쓰레기네요,custom
+case_005,fnn,occlusion,negative,0.8195,negative,True,0.375,0.375,0.510215,0.938339,0.666667,0.493305,피 | 돈을 | 대단하다,이런 | 영화에 | 내 | 피 | 같은 | 돈을 | 쓰다니 | 대단하다,custom
+case_006,fnn,occlusion,positive,0.759,negative,False,0.2,0.142857,-0.086339,0.518888,0.0,0.183547,좋은 | 훌륭한 | 영화입니다,수면제 | 대신 | 보면 | 딱 | 좋은,custom
+case_007,fnn,occlusion,positive,0.9194,positive,True,0.5,0.4,0.382699,0.736017,0.5,0.481077,와 | 개존잼!!! | 꼭보세요,진짜 | 개존잼!!! | 꼭보세요 | ㅋㅋㅋ,custom
+case_008,fnn,occlusion,negative,0.996,negative,True,0.5,0.4,0.61482,0.94499,1.0,0.570454,시간낭비 | 지리구요 | ㅡㅡ,시간낭비 | 다신 | 안봄 | ㅡㅡ,custom
+case_009,fnn,occlusion,negative,0.8264,positive,False,0.5,0.4,0.387846,0.615337,1.0,0.464262,지루하긴 | 한데 | 멋있음,스토리가 | 지루하긴 | 배우들은 | 멋있음,custom
+case_011,fnn,occlusion,negative,0.992,negative,True,0.5,0.5,0.578932,1.0,1.0,0.594733,알바들만 | 돈 | 아깝다,평점 | 알바들만 | 넘치네 | 진짜 | 돈 | 아깝다,custom
+case_012,fnn,occlusion,positive,0.687,positive,True,0.333333,0.285714,0.677487,0.741662,1.0,0.468716,어설픈 | 가슴 | 수작.,백배 | 천배 | 낫다. | 가슴 | 먹먹해지는 | 수작.,custom
+case_013,fnn,occlusion,negative,0.9935,negative,True,0.6,0.6,0.726722,0.947681,1.0,0.683833,없음... | 때우기용도 | 안됨,재미는 | 없음... | 시간 | 때우기용도 | 안됨,custom
+case_014,fnn,occlusion,negative,0.9992,negative,True,0.5,0.5,0.564634,1.0,1.0,0.591158,개연성이 | 밥말아먹었나 | 스토리가,개연성이 | 밥말아먹었나 | 스토리가 | 왜 | 이 | 모양임?,custom
+case_015,fnn,occlusion,positive,0.9935,positive,True,0.375,0.375,0.5219,1.0,1.0,0.505475,음악 | 완벽하다. | 꼭,"연출, | 연기, | 음악 | 삼박자가 | 완벽하다. | 꼭 | 극장가서 | 보세요.",custom
+case_016,fnn,occlusion,negative,0.8794,negative,True,0.666667,0.5,0.616013,0.871308,1.0,0.643033,재밌다길래 | 개노잼임 | 절대보지마셈,진짜 | 개노잼임 | 절대보지마셈,custom
+case_017,fnn,occlusion,positive,0.9998,positive,True,0.75,0.75,0.837183,0.711357,1.0,0.765999,따뜻해지는 | 웰메이드 | 강추!!,가슴 | 따뜻해지는 | 웰메이드 | 강추!!,custom
+case_018,fnn,occlusion,negative,0.9951,negative,True,0.5,0.5,0.759331,0.986761,1.0,0.637847,뻔한 | 억지 | 극혐,뻔하디 | 뻔한 | 억지 | 감동 | 짜내기 | 극혐,custom
+case_019,fnn,occlusion,negative,0.9872,negative,True,0.5,0.5,0.630274,0.896077,1.0,0.59198,돈이랑 | 감독 | 누구냐,돈이랑 | 시간 | 돌려내라 | 감독 | 누구냐 | 진짜,custom
+case_020,fnn,occlusion,positive,0.9265,positive,True,0.333333,0.285714,0.42502,0.685312,1.0,0.397147,힐링 | ㅠㅠ | 연기도,힐링 | 제대로 | 하고 | 옴 | 연기도 | 찰떡,custom
+case_021,fnn,occlusion,negative,0.9548,negative,True,0.428571,0.428571,0.580577,0.929245,1.0,0.541674,초반엔 | 오? | 어이없음,초반엔 | 오? | 후반 | 갈수록 | 산으로 | 가네 | 어이없음,custom
+case_022,fnn,occlusion,positive,0.9681,positive,True,0.4,0.333333,0.448318,0.660683,1.0,0.434515,인생작입니다. | 중에 | 최고라고,인생작입니다. | 감히 | 최고라고 | 말하고 | 싶네요.,custom
+case_023,fnn,occlusion,negative,0.9943,negative,True,0.75,0.75,0.690794,1.0,1.0,0.772698,지루해서 | 나왔어요 | 돈날림주의;;;,지루해서 | 중간에 | 나왔어요 | 돈날림주의;;;,custom
+case_025,fnn,occlusion,positive,0.6236,positive,True,0.428571,0.428571,0.705583,0.912467,1.0,0.570409,유치하긴 | 한데 | 좋네요,킬링타임으로 | 제격임 | 유치하긴 | 한데 | 가볍게 | 웃기 | 좋네요,custom
+case_026,fnn,occlusion,positive,0.6697,positive,True,0.375,0.375,0.600278,1.0,1.0,0.52507,왜 | 명작인데 | 억까들,평점 | 왜 | 이럼? | 생각보다 | 완전 | 명작인데 | 억까들 | 많네,custom
+case_027,fnn,occlusion,negative,0.9725,negative,True,0.375,0.375,0.576755,1.0,1.0,0.519189,웹툰이 | 그냥 | 폭망,원작 | 웹툰이 | 훨씬 | 나음.. | 실사화는 | 그냥 | 폭망 | 수준,custom
+case_028,fnn,occlusion,positive,0.9897,positive,True,0.333333,0.285714,0.569513,0.762259,1.0,0.444812,볼 | 인생 | 설렘,완전 | 인생 | 영화 | 건짐... | 설렘 | 터짐,custom
+case_029,fnn,occlusion,negative,0.9991,negative,True,0.428571,0.428571,0.548648,1.0,1.0,0.544305,1점도 | 아깝다 | 엉망진창임,1점도 | 아깝다 | 스토리 | 연출 | 캐스팅 | 다 | 엉망진창임,custom
+case_030,fnn,occlusion,positive,0.9994,positive,True,0.166667,0.125,0.478757,0.502815,1.0,0.284695,가슴 | 사실을 | 영화입니다.,잘 | 담아낸 | 의미 | 있는 | 영화입니다. | 먹먹하네요.,custom
+case_001,fnn,lime,positive,0.9372,positive,True,0.666667,0.5,0.758928,0.749491,1.0,0.660489,영화 | 재미있어요 | 추천합니다,정말 | 재미있어요 | 추천합니다,custom
+case_002,fnn,lime,negative,0.9815,negative,True,0.6,0.6,0.748838,1.0,1.0,0.697209,지루하고 | 배우들 | 별로네요,스토리가 | 지루하고 | 배우들 | 연기도 | 별로네요,custom
+case_003,fnn,lime,positive,0.6427,positive,True,0.6,0.6,0.604692,1.0,1.0,0.661173,지루했는데 | 정말 | 재미있어지네요,처음엔 | 지루했는데 | 갈수록 | 정말 | 재미있어지네요,custom
+case_004,fnn,lime,negative,0.8229,negative,True,0.5,0.5,0.665617,1.0,1.0,0.616404,명품인데 | 각본이 | 쓰레기네요,배우들의 | 연기는 | 명품인데 | 각본이 | 너무 | 쓰레기네요,custom
+case_005,fnn,lime,negative,0.8195,negative,True,0.25,0.222222,0.383819,0.887535,0.5,0.372141,와... | 돈을 | 대단하다,이런 | 영화에 | 내 | 피 | 같은 | 돈을 | 쓰다니 | 대단하다,custom
+case_006,fnn,lime,positive,0.759,negative,False,0.4,0.333333,0.262335,0.747473,0.5,0.401038,수면제 | 좋은 | 훌륭한,수면제 | 대신 | 보면 | 딱 | 좋은,custom
+case_007,fnn,lime,positive,0.9194,positive,True,0.5,0.4,0.521389,0.891145,1.0,0.539019,와 | 진짜 | 꼭보세요,진짜 | 개존잼!!! | 꼭보세요 | ㅋㅋㅋ,custom
+case_008,fnn,lime,negative,0.996,negative,True,0.75,0.75,0.872327,0.870804,1.0,0.798702,시간낭비 | 다신 | ㅡㅡ,시간낭비 | 다신 | 안봄 | ㅡㅡ,custom
+case_009,fnn,lime,negative,0.8264,positive,False,0.5,0.4,0.41402,0.727471,1.0,0.487626,지루하긴 | 한데 | 멋있음,스토리가 | 지루하긴 | 배우들은 | 멋있음,custom
+case_011,fnn,lime,negative,0.992,negative,True,0.5,0.5,0.638839,1.0,1.0,0.60971,알바들만 | 돈 | 아깝다,평점 | 알바들만 | 넘치네 | 진짜 | 돈 | 아깝다,custom
+case_012,fnn,lime,positive,0.687,positive,True,0.333333,0.285714,0.478698,0.643095,1.0,0.404234,어설픈 | 가슴 | 수작.,백배 | 천배 | 낫다. | 가슴 | 먹먹해지는 | 수작.,custom
+case_013,fnn,lime,negative,0.9935,negative,True,0.6,0.6,0.80826,0.870376,1.0,0.692622,없음... | 때우기용도 | 안됨,재미는 | 없음... | 시간 | 때우기용도 | 안됨,custom
+case_014,fnn,lime,negative,0.9992,negative,True,0.5,0.5,0.676486,1.0,1.0,0.619121,개연성이 | 밥말아먹었나 | 모양임?,개연성이 | 밥말아먹었나 | 스토리가 | 왜 | 이 | 모양임?,custom
+case_015,fnn,lime,positive,0.9935,positive,True,0.375,0.375,0.497193,1.0,0.666667,0.499298,완벽하다. | 꼭 | 극장가서,"연출, | 연기, | 음악 | 삼박자가 | 완벽하다. | 꼭 | 극장가서 | 보세요.",custom
+case_016,fnn,lime,negative,0.8794,negative,True,0.666667,0.5,0.57662,0.680938,1.0,0.604629,재밌다길래 | 개노잼임 | 절대보지마셈,진짜 | 개노잼임 | 절대보지마셈,custom
+case_017,fnn,lime,positive,0.9998,positive,True,0.5,0.4,0.859817,0.685861,1.0,0.592833,오랜만에 | 따뜻해지는 | 웰메이드,가슴 | 따뜻해지는 | 웰메이드 | 강추!!,custom
+case_018,fnn,lime,negative,0.9951,negative,True,0.5,0.5,0.661141,0.969455,0.666667,0.610703,억지 | 감동 | 극혐,뻔하디 | 뻔한 | 억지 | 감동 | 짜내기 | 극혐,custom
+case_019,fnn,lime,negative,0.9872,negative,True,0.5,0.5,0.770351,0.867962,1.0,0.622782,돈이랑 | 감독 | 누구냐,돈이랑 | 시간 | 돌려내라 | 감독 | 누구냐 | 진짜,custom
+case_020,fnn,lime,positive,0.9265,positive,True,0.166667,0.125,0.297561,0.560956,1.0,0.248117,배우들 | 힐링 | ㅠㅠ,힐링 | 제대로 | 하고 | 옴 | 연기도 | 찰떡,custom
+case_021,fnn,lime,negative,0.9548,negative,True,0.428571,0.428571,0.624584,0.926341,1.0,0.55224,갈수록 | 산으로 | 어이없음,초반엔 | 오? | 후반 | 갈수록 | 산으로 | 가네 | 어이없음,custom
+case_022,fnn,lime,positive,0.9681,positive,True,0.4,0.333333,0.472352,0.666779,1.0,0.441438,인생작입니다. | 중에 | 최고라고,인생작입니다. | 감히 | 최고라고 | 말하고 | 싶네요.,custom
+case_023,fnn,lime,negative,0.9943,negative,True,0.75,0.75,0.910393,1.0,1.0,0.827598,지루해서 | 중간에 | 돈날림주의;;;,지루해서 | 중간에 | 나왔어요 | 돈날림주의;;;,custom
+case_025,fnn,lime,positive,0.6236,positive,True,0.428571,0.428571,0.731364,0.937423,1.0,0.580597,제격임 | 유치하긴 | 좋네요,킬링타임으로 | 제격임 | 유치하긴 | 한데 | 가볍게 | 웃기 | 좋네요,custom
+case_026,fnn,lime,positive,0.6697,positive,True,0.375,0.375,0.549577,1.0,1.0,0.512394,왜 | 명작인데 | 억까들,평점 | 왜 | 이럼? | 생각보다 | 완전 | 명작인데 | 억까들 | 많네,custom
+case_027,fnn,lime,negative,0.9725,negative,True,0.375,0.375,0.654037,1.0,1.0,0.538509,훨씬 | 폭망 | 수준,원작 | 웹툰이 | 훨씬 | 나음.. | 실사화는 | 그냥 | 폭망 | 수준,custom
+case_028,fnn,lime,positive,0.9897,positive,True,0.333333,0.285714,0.264917,0.58435,0.5,0.341977,볼 | 건짐... | 설렘,완전 | 인생 | 영화 | 건짐... | 설렘 | 터짐,custom
+case_029,fnn,lime,negative,0.9991,negative,True,0.428571,0.428571,0.8067,1.0,1.0,0.608818,1점도 | 아깝다 | 엉망진창임,1점도 | 아깝다 | 스토리 | 연출 | 캐스팅 | 다 | 엉망진창임,custom
+case_030,fnn,lime,positive,0.9994,positive,True,0.0,0.0,0.067126,0.273935,0.0,0.057872,가슴 | 아픈 | 사실을,잘 | 담아낸 | 의미 | 있는 | 영화입니다. | 먹먹하네요.,custom
+case_001,fnn,integrated_gradients_steps50,positive,0.9372,positive,True,0.666667,0.5,0.822766,0.868914,1.0,0.694362,영화 | 재미있어요 | 추천합니다,정말 | 재미있어요 | 추천합니다,custom
+case_002,fnn,integrated_gradients_steps50,negative,0.9815,negative,True,0.6,0.6,0.659853,1.0,1.0,0.674963,지루하고 | 배우들 | 별로네요,스토리가 | 지루하고 | 배우들 | 연기도 | 별로네요,custom
+case_003,fnn,integrated_gradients_steps50,positive,0.6427,positive,True,0.6,0.6,0.408741,1.0,0.666667,0.612185,처음엔 | 지루했는데 | 재미있어지네요,처음엔 | 지루했는데 | 갈수록 | 정말 | 재미있어지네요,custom
+case_004,fnn,integrated_gradients_steps50,negative,0.8229,negative,True,0.5,0.5,0.63106,1.0,1.0,0.607765,연기는 | 명품인데 | 쓰레기네요,배우들의 | 연기는 | 명품인데 | 각본이 | 너무 | 쓰레기네요,custom
+case_005,fnn,integrated_gradients_steps50,negative,0.8195,negative,True,0.25,0.222222,0.173837,0.893447,0.5,0.320532,와... | 돈을 | 대단하다,이런 | 영화에 | 내 | 피 | 같은 | 돈을 | 쓰다니 | 대단하다,custom
+case_006,fnn,integrated_gradients_steps50,positive,0.759,negative,False,0.4,0.333333,0.172083,0.631647,0.5,0.361101,수면제 | 좋은 | 훌륭한,수면제 | 대신 | 보면 | 딱 | 좋은,custom
+case_007,fnn,integrated_gradients_steps50,positive,0.9194,positive,True,0.5,0.4,0.482648,0.767188,1.0,0.51074,와 | 진짜 | 꼭보세요,진짜 | 개존잼!!! | 꼭보세요 | ㅋㅋㅋ,custom
+case_008,fnn,integrated_gradients_steps50,negative,0.996,negative,True,0.5,0.4,0.706095,0.753694,1.0,0.564578,시간낭비 | 지리구요 | ㅡㅡ,시간낭비 | 다신 | 안봄 | ㅡㅡ,custom
+case_009,fnn,integrated_gradients_steps50,negative,0.8264,positive,False,0.5,0.4,0.508087,0.696633,1.0,0.506517,지루하긴 | 한데 | 멋있음,스토리가 | 지루하긴 | 배우들은 | 멋있음,custom
+case_011,fnn,integrated_gradients_steps50,negative,0.992,negative,True,0.5,0.5,0.504209,1.0,1.0,0.576052,알바들만 | 돈 | 아깝다,평점 | 알바들만 | 넘치네 | 진짜 | 돈 | 아깝다,custom
+case_012,fnn,integrated_gradients_steps50,positive,0.687,positive,True,0.333333,0.285714,0.532436,0.60352,1.0,0.411732,어설픈 | 가슴 | 수작.,백배 | 천배 | 낫다. | 가슴 | 먹먹해지는 | 수작.,custom
+case_013,fnn,integrated_gradients_steps50,negative,0.9935,negative,True,0.6,0.6,0.834322,0.99608,1.0,0.717993,없음... | 때우기용도 | 안됨,재미는 | 없음... | 시간 | 때우기용도 | 안됨,custom
+case_014,fnn,integrated_gradients_steps50,negative,0.9992,negative,True,0.5,0.5,0.722643,1.0,1.0,0.630661,개연성이 | 밥말아먹었나 | 스토리가,개연성이 | 밥말아먹었나 | 스토리가 | 왜 | 이 | 모양임?,custom
+case_015,fnn,integrated_gradients_steps50,positive,0.9935,positive,True,0.375,0.375,0.680494,1.0,1.0,0.545123,음악 | 완벽하다. | 꼭,"연출, | 연기, | 음악 | 삼박자가 | 완벽하다. | 꼭 | 극장가서 | 보세요.",custom
+case_016,fnn,integrated_gradients_steps50,negative,0.8794,negative,True,0.666667,0.5,0.461278,0.603707,1.0,0.564209,재밌다길래 | 개노잼임 | 절대보지마셈,진짜 | 개노잼임 | 절대보지마셈,custom
+case_017,fnn,integrated_gradients_steps50,positive,0.9998,positive,True,0.5,0.4,0.807556,0.647817,1.0,0.574062,오랜만에 | 따뜻해지는 | 강추!!,가슴 | 따뜻해지는 | 웰메이드 | 강추!!,custom
+case_018,fnn,integrated_gradients_steps50,negative,0.9951,negative,True,0.5,0.5,0.545244,0.964835,0.666667,0.581036,억지 | 감동 | 극혐,뻔하디 | 뻔한 | 억지 | 감동 | 짜내기 | 극혐,custom
+case_019,fnn,integrated_gradients_steps50,negative,0.9872,negative,True,0.5,0.5,0.695876,0.814799,1.0,0.596189,돈이랑 | 감독 | 누구냐,돈이랑 | 시간 | 돌려내라 | 감독 | 누구냐 | 진짜,custom
+case_020,fnn,integrated_gradients_steps50,positive,0.9265,positive,True,0.333333,0.285714,0.372293,0.57516,1.0,0.367442,힐링 | ㅠㅠ | 연기도,힐링 | 제대로 | 하고 | 옴 | 연기도 | 찰떡,custom
+case_021,fnn,integrated_gradients_steps50,negative,0.9548,negative,True,0.428571,0.428571,0.681366,0.919846,1.0,0.565461,초반엔 | 산으로 | 어이없음,초반엔 | 오? | 후반 | 갈수록 | 산으로 | 가네 | 어이없음,custom
+case_022,fnn,integrated_gradients_steps50,positive,0.9681,positive,True,0.4,0.333333,0.471322,0.653109,1.0,0.43913,인생작입니다. | 중에 | 최고라고,인생작입니다. | 감히 | 최고라고 | 말하고 | 싶네요.,custom
+case_023,fnn,integrated_gradients_steps50,negative,0.9943,negative,True,0.75,0.75,0.792439,1.0,1.0,0.79811,지루해서 | 나왔어요 | 돈날림주의;;;,지루해서 | 중간에 | 나왔어요 | 돈날림주의;;;,custom
+case_025,fnn,integrated_gradients_steps50,positive,0.6236,positive,True,0.428571,0.428571,0.699423,0.904039,1.0,0.567605,제격임 | 유치하긴 | 좋네요,킬링타임으로 | 제격임 | 유치하긴 | 한데 | 가볍게 | 웃기 | 좋네요,custom
+case_026,fnn,integrated_gradients_steps50,positive,0.6697,positive,True,0.375,0.375,0.584179,1.0,0.666667,0.521045,명작인데 | 억까들 | 많네,평점 | 왜 | 이럼? | 생각보다 | 완전 | 명작인데 | 억까들 | 많네,custom
+case_027,fnn,integrated_gradients_steps50,negative,0.9725,negative,True,0.375,0.375,0.700242,1.0,1.0,0.550061,그냥 | 폭망 | 수준,원작 | 웹툰이 | 훨씬 | 나음.. | 실사화는 | 그냥 | 폭망 | 수준,custom
+case_028,fnn,integrated_gradients_steps50,positive,0.9897,positive,True,0.333333,0.285714,0.490494,0.649567,1.0,0.408154,볼 | 인생 | 설렘,완전 | 인생 | 영화 | 건짐... | 설렘 | 터짐,custom
+case_029,fnn,integrated_gradients_steps50,negative,0.9991,negative,True,0.428571,0.428571,0.705931,1.0,1.0,0.583626,1점도 | 아깝다 | 엉망진창임,1점도 | 아깝다 | 스토리 | 연출 | 캐스팅 | 다 | 엉망진창임,custom
+case_030,fnn,integrated_gradients_steps50,positive,0.9994,positive,True,0.166667,0.125,0.505384,0.493208,1.0,0.289911,가슴 | 사실을 | 영화입니다.,잘 | 담아낸 | 의미 | 있는 | 영화입니다. | 먹먹하네요.,custom
+case_001,fnn,integrated_gradients_steps100,positive,0.9372,positive,True,0.666667,0.5,0.820102,0.865039,1.0,0.693115,영화 | 재미있어요 | 추천합니다,정말 | 재미있어요 | 추천합니다,custom
+case_002,fnn,integrated_gradients_steps100,negative,0.9815,negative,True,0.6,0.6,0.662891,1.0,1.0,0.675723,지루하고 | 배우들 | 별로네요,스토리가 | 지루하고 | 배우들 | 연기도 | 별로네요,custom
+case_003,fnn,integrated_gradients_steps100,positive,0.6427,positive,True,0.6,0.6,0.40634,1.0,0.666667,0.611585,처음엔 | 지루했는데 | 재미있어지네요,처음엔 | 지루했는데 | 갈수록 | 정말 | 재미있어지네요,custom
+case_004,fnn,integrated_gradients_steps100,negative,0.8229,negative,True,0.5,0.5,0.631331,1.0,1.0,0.607833,연기는 | 명품인데 | 쓰레기네요,배우들의 | 연기는 | 명품인데 | 각본이 | 너무 | 쓰레기네요,custom
+case_005,fnn,integrated_gradients_steps100,negative,0.8195,negative,True,0.25,0.222222,0.174457,0.893387,0.5,0.320678,와... | 돈을 | 대단하다,이런 | 영화에 | 내 | 피 | 같은 | 돈을 | 쓰다니 | 대단하다,custom
+case_006,fnn,integrated_gradients_steps100,positive,0.759,negative,False,0.4,0.333333,0.171524,0.63211,0.5,0.361031,수면제 | 좋은 | 훌륭한,수면제 | 대신 | 보면 | 딱 | 좋은,custom
+case_007,fnn,integrated_gradients_steps100,positive,0.9194,positive,True,0.5,0.4,0.485385,0.767816,1.0,0.511519,와 | 진짜 | 꼭보세요,진짜 | 개존잼!!! | 꼭보세요 | ㅋㅋㅋ,custom
+case_008,fnn,integrated_gradients_steps100,negative,0.996,negative,True,0.5,0.4,0.70598,0.751289,1.0,0.564188,시간낭비 | 지리구요 | ㅡㅡ,시간낭비 | 다신 | 안봄 | ㅡㅡ,custom
+case_009,fnn,integrated_gradients_steps100,negative,0.8264,positive,False,0.5,0.4,0.509316,0.697291,1.0,0.506923,지루하긴 | 한데 | 멋있음,스토리가 | 지루하긴 | 배우들은 | 멋있음,custom
+case_011,fnn,integrated_gradients_steps100,negative,0.992,negative,True,0.5,0.5,0.501187,1.0,1.0,0.575297,알바들만 | 돈 | 아깝다,평점 | 알바들만 | 넘치네 | 진짜 | 돈 | 아깝다,custom
+case_012,fnn,integrated_gradients_steps100,positive,0.687,positive,True,0.333333,0.285714,0.532956,0.604235,1.0,0.41197,어설픈 | 가슴 | 수작.,백배 | 천배 | 낫다. | 가슴 | 먹먹해지는 | 수작.,custom
+case_013,fnn,integrated_gradients_steps100,negative,0.9935,negative,True,0.6,0.6,0.834859,0.99692,1.0,0.718253,없음... | 때우기용도 | 안됨,재미는 | 없음... | 시간 | 때우기용도 | 안됨,custom
+case_014,fnn,integrated_gradients_steps100,negative,0.9992,negative,True,0.5,0.5,0.716599,1.0,1.0,0.62915,개연성이 | 밥말아먹었나 | 스토리가,개연성이 | 밥말아먹었나 | 스토리가 | 왜 | 이 | 모양임?,custom
+case_015,fnn,integrated_gradients_steps100,positive,0.9935,positive,True,0.375,0.375,0.691051,1.0,1.0,0.547763,음악 | 완벽하다. | 꼭,"연출, | 연기, | 음악 | 삼박자가 | 완벽하다. | 꼭 | 극장가서 | 보세요.",custom
+case_016,fnn,integrated_gradients_steps100,negative,0.8794,negative,True,0.666667,0.5,0.460643,0.60247,1.0,0.563865,재밌다길래 | 개노잼임 | 절대보지마셈,진짜 | 개노잼임 | 절대보지마셈,custom
+case_017,fnn,integrated_gradients_steps100,positive,0.9998,positive,True,0.5,0.4,0.798311,0.638376,1.0,0.570334,오랜만에 | 따뜻해지는 | 강추!!,가슴 | 따뜻해지는 | 웰메이드 | 강추!!,custom
+case_018,fnn,integrated_gradients_steps100,negative,0.9951,negative,True,0.5,0.5,0.545679,0.961867,0.666667,0.5807,억지 | 감동 | 극혐,뻔하디 | 뻔한 | 억지 | 감동 | 짜내기 | 극혐,custom
+case_019,fnn,integrated_gradients_steps100,negative,0.9872,negative,True,0.5,0.5,0.692414,0.806135,1.0,0.594024,돈이랑 | 감독 | 누구냐,돈이랑 | 시간 | 돌려내라 | 감독 | 누구냐 | 진짜,custom
+case_020,fnn,integrated_gradients_steps100,positive,0.9265,positive,True,0.333333,0.285714,0.37216,0.574847,1.0,0.367362,힐링 | ㅠㅠ | 연기도,힐링 | 제대로 | 하고 | 옴 | 연기도 | 찰떡,custom
+case_021,fnn,integrated_gradients_steps100,negative,0.9548,negative,True,0.428571,0.428571,0.681865,0.92022,1.0,0.565642,초반엔 | 산으로 | 어이없음,초반엔 | 오? | 후반 | 갈수록 | 산으로 | 가네 | 어이없음,custom
+case_022,fnn,integrated_gradients_steps100,positive,0.9681,positive,True,0.4,0.333333,0.463837,0.653969,1.0,0.437388,인생작입니다. | 중에 | 최고라고,인생작입니다. | 감히 | 최고라고 | 말하고 | 싶네요.,custom
+case_023,fnn,integrated_gradients_steps100,negative,0.9943,negative,True,0.75,0.75,0.787007,1.0,1.0,0.796752,지루해서 | 나왔어요 | 돈날림주의;;;,지루해서 | 중간에 | 나왔어요 | 돈날림주의;;;,custom
+case_025,fnn,integrated_gradients_steps100,positive,0.6236,positive,True,0.428571,0.428571,0.698109,0.90372,1.0,0.567228,제격임 | 유치하긴 | 좋네요,킬링타임으로 | 제격임 | 유치하긴 | 한데 | 가볍게 | 웃기 | 좋네요,custom
+case_026,fnn,integrated_gradients_steps100,positive,0.6697,positive,True,0.375,0.375,0.588931,1.0,0.666667,0.522233,명작인데 | 억까들 | 많네,평점 | 왜 | 이럼? | 생각보다 | 완전 | 명작인데 | 억까들 | 많네,custom
+case_027,fnn,integrated_gradients_steps100,negative,0.9725,negative,True,0.375,0.375,0.69601,1.0,0.666667,0.549002,나음.. | 그냥 | 폭망,원작 | 웹툰이 | 훨씬 | 나음.. | 실사화는 | 그냥 | 폭망 | 수준,custom
+case_028,fnn,integrated_gradients_steps100,positive,0.9897,positive,True,0.333333,0.285714,0.493002,0.651059,1.0,0.409004,볼 | 인생 | 설렘,완전 | 인생 | 영화 | 건짐... | 설렘 | 터짐,custom
+case_029,fnn,integrated_gradients_steps100,negative,0.9991,negative,True,0.428571,0.428571,0.711132,1.0,1.0,0.584926,1점도 | 아깝다 | 엉망진창임,1점도 | 아깝다 | 스토리 | 연출 | 캐스팅 | 다 | 엉망진창임,custom
+case_030,fnn,integrated_gradients_steps100,positive,0.9994,positive,True,0.166667,0.125,0.509806,0.496824,1.0,0.291558,가슴 | 사실을 | 영화입니다.,잘 | 담아낸 | 의미 | 있는 | 영화입니다. | 먹먹하네요.,custom
+case_001,transformer,occlusion,positive,0.9878010749816895,positive,True,0.666667,0.5,0.707499,0.739829,1.0,0.646183,영화 | 재미있어요 | 추천합니다,정말 | 재미있어요 | 추천합니다,custom
+case_002,transformer,occlusion,negative,0.9771274924278259,negative,True,0.6,0.6,0.457924,1.0,0.666667,0.624481,배우들 | 연기도 | 별로네요,스토리가 | 지루하고 | 배우들 | 연기도 | 별로네요,custom
+case_003,transformer,occlusion,positive,0.9874565005302429,positive,True,0.6,0.6,0.543028,1.0,0.666667,0.645757,지루했는데 | 갈수록 | 재미있어지네요,처음엔 | 지루했는데 | 갈수록 | 정말 | 재미있어지네요,custom
+case_004,transformer,occlusion,negative,0.973739743232727,negative,True,0.5,0.5,0.309522,1.0,0.666667,0.52738,연기는 | 너무 | 쓰레기네요,배우들의 | 연기는 | 명품인데 | 각본이 | 너무 | 쓰레기네요,custom
+case_005,transformer,occlusion,negative,0.8467217683792114,negative,True,0.375,0.375,0.420068,0.948869,0.666667,0.472347,영화에 | 돈을 | 대단하다,이런 | 영화에 | 내 | 피 | 같은 | 돈을 | 쓰다니 | 대단하다,custom
+case_006,transformer,occlusion,positive,0.8086190819740295,negative,False,0.2,0.142857,0.280359,0.388153,1.0,0.234027,딱 | 훌륭한 | 영화입니다,수면제 | 대신 | 보면 | 딱 | 좋은,custom
+case_007,transformer,occlusion,positive,0.9883561730384827,positive,True,0.75,0.75,0.665905,0.99944,1.0,0.766392,진짜 | 개존잼!!! | 꼭보세요,진짜 | 개존잼!!! | 꼭보세요 | ㅋㅋㅋ,custom
+case_008,transformer,occlusion,negative,0.9747129678726196,negative,True,0.75,0.75,0.123855,0.946054,0.666667,0.622872,다신 | 안봄 | ㅡㅡ,시간낭비 | 다신 | 안봄 | ㅡㅡ,custom
+case_009,transformer,occlusion,positive,0.9827718138694763,positive,True,0.5,0.4,0.48132,0.926944,0.5,0.534372,지루하긴 | 한데 | 멋있음,스토리가 | 지루하긴 | 배우들은 | 멋있음,custom
+case_010,transformer,occlusion,positive,0.9858595728874207,positive,True,0.285714,0.25,0.569648,0.902776,1.0,0.440328,"재미있는 | 영화에요 | 부모님,",상당히 | 재미있는 | 영화에요 | 더 | 재밌을 | 것 | 같아요,custom
+case_011,transformer,occlusion,negative,0.9775413870811462,negative,True,0.5,0.5,0.681032,1.0,1.0,0.620258,알바들만 | 돈 | 아깝다,평점 | 알바들만 | 넘치네 | 진짜 | 돈 | 아깝다,custom
+case_012,transformer,occlusion,positive,0.98736971616745,positive,True,0.333333,0.285714,0.630459,0.810784,1.0,0.467328,신파보다 | 먹먹해지는 | 수작.,백배 | 천배 | 낫다. | 가슴 | 먹먹해지는 | 수작.,custom
+case_013,transformer,occlusion,negative,0.9765632748603821,negative,True,0.6,0.6,-0.233906,0.983176,0.333333,0.507476,재미는 | 없음... | 때우기용도,재미는 | 없음... | 시간 | 때우기용도 | 안됨,custom
+case_014,transformer,occlusion,negative,0.9768575429916382,negative,True,0.5,0.5,0.370184,1.0,0.666667,0.542546,개연성이 | 스토리가 | 왜,개연성이 | 밥말아먹었나 | 스토리가 | 왜 | 이 | 모양임?,custom
+case_015,transformer,occlusion,positive,0.9868469834327698,positive,True,0.375,0.375,0.635243,1.0,1.0,0.533811,완벽하다. | 꼭 | 보세요.,"연출, | 연기, | 음악 | 삼박자가 | 완벽하다. | 꼭 | 극장가서 | 보세요.",custom
+case_016,transformer,occlusion,negative,0.9775549173355103,negative,True,0.666667,0.5,0.596419,0.982983,1.0,0.654886,봤는데 | 개노잼임 | 절대보지마셈,진짜 | 개노잼임 | 절대보지마셈,custom
+case_017,transformer,occlusion,positive,0.9880257248878479,positive,True,0.25,0.166667,0.585953,0.695403,1.0,0.379965,한 | 봤네요. | 강추!!,가슴 | 따뜻해지는 | 웰메이드 | 강추!!,custom
+case_018,transformer,occlusion,negative,0.9758501648902893,negative,True,0.333333,0.285714,-0.013082,0.656627,0.5,0.286589,한국식 | 억지 | 극혐,뻔하디 | 뻔한 | 억지 | 감동 | 짜내기 | 극혐,custom
+case_019,transformer,occlusion,negative,0.9761514067649841,negative,True,0.5,0.5,0.717864,0.917942,1.0,0.617157,돈이랑 | 돌려내라 | 감독,돈이랑 | 시간 | 돌려내라 | 감독 | 누구냐 | 진짜,custom
+case_020,transformer,occlusion,positive,0.9860923886299133,positive,True,0.333333,0.285714,0.61122,0.802016,1.0,0.461203,힐링 | ㅠㅠ | 찰떡,힐링 | 제대로 | 하고 | 옴 | 연기도 | 찰떡,custom
+case_021,transformer,occlusion,negative,0.9777661561965942,negative,True,0.285714,0.25,0.471503,0.915654,1.0,0.417724,산으로 | ㅋㅋㅋ | 어이없음,초반엔 | 오? | 후반 | 갈수록 | 산으로 | 가네 | 어이없음,custom
+case_022,transformer,occlusion,positive,0.9876213669776917,positive,True,0.4,0.333333,0.63604,0.907636,1.0,0.518489,인생작입니다. | 시트콤 | 최고라고,인생작입니다. | 감히 | 최고라고 | 말하고 | 싶네요.,custom
+case_023,transformer,occlusion,negative,0.9757304191589355,negative,True,0.75,0.75,0.213044,1.0,0.666667,0.653261,지루해서 | 나왔어요 | 돈날림주의;;;,지루해서 | 중간에 | 나왔어요 | 돈날림주의;;;,custom
+case_024,transformer,occlusion,negative,0.9773848652839661,negative,True,0.333333,0.333333,0.082106,1.0,0.666667,0.370527,영상미는 | 좋은데 | 스토리가,영상미는 | 좋은데 | 스토리가 | 너무 | 엉성해요. | 남는 | 게 | 없는 | 느낌.,custom
+case_025,transformer,occlusion,positive,0.9873867630958557,positive,True,0.428571,0.428571,0.510466,0.94685,0.666667,0.526787,제격임 | 한데 | 좋네요,킬링타임으로 | 제격임 | 유치하긴 | 한데 | 가볍게 | 웃기 | 좋네요,custom
+case_026,transformer,occlusion,positive,0.985697865486145,positive,True,0.375,0.375,0.474737,1.0,0.333333,0.493684,이럼? | 명작인데 | 억까들,평점 | 왜 | 이럼? | 생각보다 | 완전 | 명작인데 | 억까들 | 많네,custom
+case_027,transformer,occlusion,negative,0.9765997529029846,negative,True,0.375,0.375,0.654081,1.0,1.0,0.53852,실사화는 | 그냥 | 폭망,원작 | 웹툰이 | 훨씬 | 나음.. | 실사화는 | 그냥 | 폭망 | 수준,custom
+case_028,transformer,occlusion,positive,0.9872524738311768,positive,True,0.5,0.5,0.792485,0.92081,1.0,0.636243,인생 | 영화 | 설렘,완전 | 인생 | 영화 | 건짐... | 설렘 | 터짐,custom
+case_029,transformer,occlusion,negative,0.976942777633667,negative,True,0.428571,0.428571,0.131612,1.0,0.666667,0.440046,아깝다 | 캐스팅 | 다,1점도 | 아깝다 | 스토리 | 연출 | 캐스팅 | 다 | 엉망진창임,custom
+case_030,transformer,occlusion,positive,0.9878693222999573,positive,True,0.5,0.5,0.462967,0.897216,1.0,0.550324,담아낸 | 영화입니다. | 먹먹하네요.,잘 | 담아낸 | 의미 | 있는 | 영화입니다. | 먹먹하네요.,custom
+case_001,transformer,integrated_gradients_steps50,positive,0.9878010749816895,positive,True,1.0,1.0,0.957747,0.923732,1.0,0.977997,정말 | 재미있어요 | 추천합니다,정말 | 재미있어요 | 추천합니다,custom
+case_002,transformer,integrated_gradients_steps50,negative,0.9771274924278259,negative,True,0.6,0.6,0.218488,1.0,0.666667,0.564622,지루하고 | 배우들 | 연기도,스토리가 | 지루하고 | 배우들 | 연기도 | 별로네요,custom
+case_003,transformer,integrated_gradients_steps50,positive,0.9874565005302429,positive,True,0.6,0.6,0.68238,1.0,1.0,0.680595,갈수록 | 정말 | 재미있어지네요,처음엔 | 지루했는데 | 갈수록 | 정말 | 재미있어지네요,custom
+case_004,transformer,integrated_gradients_steps50,negative,0.973739743232727,negative,True,0.5,0.5,0.381194,1.0,0.666667,0.545298,명품인데 | 너무 | 쓰레기네요,배우들의 | 연기는 | 명품인데 | 각본이 | 너무 | 쓰레기네요,custom
+case_005,transformer,integrated_gradients_steps50,negative,0.8467217683792114,negative,True,0.375,0.375,0.186989,0.926696,0.333333,0.410752,이런 | 돈을 | 대단하다,이런 | 영화에 | 내 | 피 | 같은 | 돈을 | 쓰다니 | 대단하다,custom
+case_006,transformer,integrated_gradients_steps50,positive,0.8086190819740295,negative,False,0.2,0.142857,-0.08093,0.452956,0.0,0.173658,딱 | 훌륭한 | 영화입니다,수면제 | 대신 | 보면 | 딱 | 좋은,custom
+case_007,transformer,integrated_gradients_steps50,positive,0.9883561730384827,positive,True,0.75,0.75,0.900896,0.994692,1.0,0.824428,개존잼!!! | 꼭보세요 | ㅋㅋㅋ,진짜 | 개존잼!!! | 꼭보세요 | ㅋㅋㅋ,custom
+case_008,transformer,integrated_gradients_steps50,negative,0.9747129678726196,negative,True,0.5,0.4,0.552502,0.951459,1.0,0.555844,지리구요 | 다신 | 안봄,시간낭비 | 다신 | 안봄 | ㅡㅡ,custom
+case_009,transformer,integrated_gradients_steps50,positive,0.9827718138694763,positive,True,0.75,0.75,0.674839,0.960204,0.666667,0.76274,스토리가 | 배우들은 | 멋있음,스토리가 | 지루하긴 | 배우들은 | 멋있음,custom
+case_010,transformer,integrated_gradients_steps50,positive,0.9858595728874207,positive,True,0.285714,0.25,0.44259,0.585227,1.0,0.360931,"재미있는 | 영화에요 | 부모님,",상당히 | 재미있는 | 영화에요 | 더 | 재밌을 | 것 | 같아요,custom
+case_011,transformer,integrated_gradients_steps50,negative,0.9775413870811462,negative,True,0.5,0.5,0.330241,1.0,0.666667,0.53256,진짜 | 돈 | 아깝다,평점 | 알바들만 | 넘치네 | 진짜 | 돈 | 아깝다,custom
+case_012,transformer,integrated_gradients_steps50,positive,0.98736971616745,positive,True,0.5,0.5,0.83248,0.857547,1.0,0.636752,천배 | 가슴 | 수작.,백배 | 천배 | 낫다. | 가슴 | 먹먹해지는 | 수작.,custom
+case_013,transformer,integrated_gradients_steps50,negative,0.9765632748603821,negative,True,0.6,0.6,0.760222,0.987614,1.0,0.698198,재미는 | 없음... | 때우기용도,재미는 | 없음... | 시간 | 때우기용도 | 안됨,custom
+case_014,transformer,integrated_gradients_steps50,negative,0.9768575429916382,negative,True,0.5,0.5,0.691079,1.0,1.0,0.62277,밥말아먹었나 | 스토리가 | 모양임?,개연성이 | 밥말아먹었나 | 스토리가 | 왜 | 이 | 모양임?,custom
+case_015,transformer,integrated_gradients_steps50,positive,0.9868469834327698,positive,True,0.375,0.375,0.722855,1.0,1.0,0.555714,완벽하다. | 극장가서 | 보세요.,"연출, | 연기, | 음악 | 삼박자가 | 완벽하다. | 꼭 | 극장가서 | 보세요.",custom
+case_016,transformer,integrated_gradients_steps50,negative,0.9775549173355103,negative,True,0.666667,0.5,0.753742,0.792961,1.0,0.665713,재밌다길래 | 개노잼임 | 절대보지마셈,진짜 | 개노잼임 | 절대보지마셈,custom
+case_017,transformer,integrated_gradients_steps50,positive,0.9880257248878479,positive,True,0.5,0.4,0.774439,0.678788,1.0,0.570428,웰메이드 | 한 | 강추!!,가슴 | 따뜻해지는 | 웰메이드 | 강추!!,custom
+case_018,transformer,integrated_gradients_steps50,negative,0.9758501648902893,negative,True,0.5,0.5,0.777095,0.803978,1.0,0.61487,억지 | 짜내기 | 극혐,뻔하디 | 뻔한 | 억지 | 감동 | 짜내기 | 극혐,custom
+case_019,transformer,integrated_gradients_steps50,negative,0.9761514067649841,negative,True,0.5,0.5,0.368755,0.9233,0.666667,0.530684,돌려내라 | 감독 | 누구냐,돈이랑 | 시간 | 돌려내라 | 감독 | 누구냐 | 진짜,custom
+case_020,transformer,integrated_gradients_steps50,positive,0.9860923886299133,positive,True,0.5,0.5,0.761051,0.843867,1.0,0.616843,힐링 | 제대로 | 찰떡,힐링 | 제대로 | 하고 | 옴 | 연기도 | 찰떡,custom
+case_021,transformer,integrated_gradients_steps50,negative,0.9777661561965942,negative,True,0.428571,0.428571,0.753156,0.975509,1.0,0.591758,산으로 | 가네 | 어이없음,초반엔 | 오? | 후반 | 갈수록 | 산으로 | 가네 | 어이없음,custom
+case_022,transformer,integrated_gradients_steps50,positive,0.9876213669776917,positive,True,0.4,0.333333,0.609282,0.566289,1.0,0.460597,인생작입니다. | 시트콤 | 최고라고,인생작입니다. | 감히 | 최고라고 | 말하고 | 싶네요.,custom
+case_023,transformer,integrated_gradients_steps50,negative,0.9757304191589355,negative,True,0.75,0.75,0.680784,1.0,1.0,0.770196,지루해서 | 나왔어요 | 돈날림주의;;;,지루해서 | 중간에 | 나왔어요 | 돈날림주의;;;,custom
+case_024,transformer,integrated_gradients_steps50,negative,0.9773848652839661,negative,True,0.333333,0.333333,0.890546,1.0,1.0,0.572637,너무 | 엉성해요. | 없는,영상미는 | 좋은데 | 스토리가 | 너무 | 엉성해요. | 남는 | 게 | 없는 | 느낌.,custom
+case_025,transformer,integrated_gradients_steps50,positive,0.9873867630958557,positive,True,0.428571,0.428571,0.523306,0.991588,0.666667,0.536708,제격임 | 유치하긴 | 좋네요,킬링타임으로 | 제격임 | 유치하긴 | 한데 | 가볍게 | 웃기 | 좋네요,custom
+case_026,transformer,integrated_gradients_steps50,positive,0.985697865486145,positive,True,0.375,0.375,0.761005,1.0,1.0,0.565251,생각보다 | 완전 | 명작인데,평점 | 왜 | 이럼? | 생각보다 | 완전 | 명작인데 | 억까들 | 많네,custom
+case_027,transformer,integrated_gradients_steps50,negative,0.9765997529029846,negative,True,0.375,0.375,0.750376,1.0,1.0,0.562594,실사화는 | 폭망 | 수준,원작 | 웹툰이 | 훨씬 | 나음.. | 실사화는 | 그냥 | 폭망 | 수준,custom
+case_028,transformer,integrated_gradients_steps50,positive,0.9872524738311768,positive,True,0.333333,0.285714,0.803544,0.704454,1.0,0.494649,찾다가 | 인생 | 설렘,완전 | 인생 | 영화 | 건짐... | 설렘 | 터짐,custom
+case_029,transformer,integrated_gradients_steps50,negative,0.976942777633667,negative,True,0.428571,0.428571,0.799032,1.0,1.0,0.606901,스토리 | 연출 | 엉망진창임,1점도 | 아깝다 | 스토리 | 연출 | 캐스팅 | 다 | 엉망진창임,custom
+case_030,transformer,integrated_gradients_steps50,positive,0.9878693222999573,positive,True,0.5,0.5,0.806582,0.773033,1.0,0.6176,담아낸 | 있는 | 영화입니다.,잘 | 담아낸 | 의미 | 있는 | 영화입니다. | 먹먹하네요.,custom
+case_001,transformer,integrated_gradients_steps100,positive,0.9878010749816895,positive,True,1.0,1.0,0.968947,0.935548,1.0,0.982569,정말 | 재미있어요 | 추천합니다,정말 | 재미있어요 | 추천합니다,custom
+case_002,transformer,integrated_gradients_steps100,negative,0.9771274924278259,negative,True,0.6,0.6,0.620036,1.0,1.0,0.665009,지루하고 | 배우들 | 별로네요,스토리가 | 지루하고 | 배우들 | 연기도 | 별로네요,custom
+case_003,transformer,integrated_gradients_steps100,positive,0.9874565005302429,positive,True,0.6,0.6,0.649249,1.0,1.0,0.672312,갈수록 | 정말 | 재미있어지네요,처음엔 | 지루했는데 | 갈수록 | 정말 | 재미있어지네요,custom
+case_004,transformer,integrated_gradients_steps100,negative,0.973739743232727,negative,True,0.5,0.5,0.690541,1.0,1.0,0.622635,각본이 | 너무 | 쓰레기네요,배우들의 | 연기는 | 명품인데 | 각본이 | 너무 | 쓰레기네요,custom
+case_005,transformer,integrated_gradients_steps100,negative,0.8467217683792114,negative,True,0.375,0.375,0.307312,0.934382,0.666667,0.441985,이런 | 영화에 | 돈을,이런 | 영화에 | 내 | 피 | 같은 | 돈을 | 쓰다니 | 대단하다,custom
+case_006,transformer,integrated_gradients_steps100,positive,0.8086190819740295,negative,False,0.2,0.142857,-0.044399,0.503204,0.0,0.181195,딱 | 훌륭한 | 영화입니다,수면제 | 대신 | 보면 | 딱 | 좋은,custom
+case_007,transformer,integrated_gradients_steps100,positive,0.9883561730384827,positive,True,0.75,0.75,0.89332,0.993067,1.0,0.82229,개존잼!!! | 꼭보세요 | ㅋㅋㅋ,진짜 | 개존잼!!! | 꼭보세요 | ㅋㅋㅋ,custom
+case_008,transformer,integrated_gradients_steps100,negative,0.9747129678726196,negative,True,0.75,0.75,0.60479,0.92543,1.0,0.740012,다신 | 안봄 | ㅡㅡ,시간낭비 | 다신 | 안봄 | ㅡㅡ,custom
+case_009,transformer,integrated_gradients_steps100,positive,0.9827718138694763,positive,True,0.75,0.75,0.680702,0.961967,0.666667,0.764471,스토리가 | 배우들은 | 멋있음,스토리가 | 지루하긴 | 배우들은 | 멋있음,custom
+case_010,transformer,integrated_gradients_steps100,positive,0.9858595728874207,positive,True,0.285714,0.25,0.439401,0.553544,1.0,0.355382,"재미있는 | 영화에요 | 부모님,",상당히 | 재미있는 | 영화에요 | 더 | 재밌을 | 것 | 같아요,custom
+case_011,transformer,integrated_gradients_steps100,negative,0.9775413870811462,negative,True,0.5,0.5,0.447671,1.0,0.666667,0.561918,진짜 | 돈 | 아깝다,평점 | 알바들만 | 넘치네 | 진짜 | 돈 | 아깝다,custom
+case_012,transformer,integrated_gradients_steps100,positive,0.98736971616745,positive,True,0.5,0.5,0.844533,0.856286,1.0,0.639576,천배 | 가슴 | 수작.,백배 | 천배 | 낫다. | 가슴 | 먹먹해지는 | 수작.,custom
+case_013,transformer,integrated_gradients_steps100,negative,0.9765632748603821,negative,True,0.6,0.6,0.753243,0.990439,1.0,0.696877,재미는 | 없음... | 때우기용도,재미는 | 없음... | 시간 | 때우기용도 | 안됨,custom
+case_014,transformer,integrated_gradients_steps100,negative,0.9768575429916382,negative,True,0.5,0.5,0.627186,1.0,1.0,0.606797,밥말아먹었나 | 스토리가 | 모양임?,개연성이 | 밥말아먹었나 | 스토리가 | 왜 | 이 | 모양임?,custom
+case_015,transformer,integrated_gradients_steps100,positive,0.9868469834327698,positive,True,0.375,0.375,0.839798,1.0,1.0,0.584949,완벽하다. | 극장가서 | 보세요.,"연출, | 연기, | 음악 | 삼박자가 | 완벽하다. | 꼭 | 극장가서 | 보세요.",custom
+case_016,transformer,integrated_gradients_steps100,negative,0.9775549173355103,negative,True,0.666667,0.5,0.704672,0.758201,1.0,0.648231,재밌다길래 | 개노잼임 | 절대보지마셈,진짜 | 개노잼임 | 절대보지마셈,custom
+case_017,transformer,integrated_gradients_steps100,positive,0.9880257248878479,positive,True,0.5,0.4,0.784787,0.714601,1.0,0.578387,웰메이드 | 한 | 강추!!,가슴 | 따뜻해지는 | 웰메이드 | 강추!!,custom
+case_018,transformer,integrated_gradients_steps100,negative,0.9758501648902893,negative,True,0.5,0.5,0.787361,0.818465,1.0,0.61961,억지 | 짜내기 | 극혐,뻔하디 | 뻔한 | 억지 | 감동 | 짜내기 | 극혐,custom
+case_019,transformer,integrated_gradients_steps100,negative,0.9761514067649841,negative,True,0.5,0.5,0.3281,0.93995,0.666667,0.523018,돌려내라 | 감독 | 누구냐,돈이랑 | 시간 | 돌려내라 | 감독 | 누구냐 | 진짜,custom
+case_020,transformer,integrated_gradients_steps100,positive,0.9860923886299133,positive,True,0.5,0.5,0.803583,0.857471,1.0,0.629516,힐링 | 옴 | 찰떡,힐링 | 제대로 | 하고 | 옴 | 연기도 | 찰떡,custom
+case_021,transformer,integrated_gradients_steps100,negative,0.9777661561965942,negative,True,0.428571,0.428571,0.6803,0.966772,1.0,0.572234,산으로 | 가네 | 어이없음,초반엔 | 오? | 후반 | 갈수록 | 산으로 | 가네 | 어이없음,custom
+case_022,transformer,integrated_gradients_steps100,positive,0.9876213669776917,positive,True,0.4,0.333333,0.656826,0.619139,1.0,0.480411,인생작입니다. | 시트콤 | 최고라고,인생작입니다. | 감히 | 최고라고 | 말하고 | 싶네요.,custom
+case_023,transformer,integrated_gradients_steps100,negative,0.9757304191589355,negative,True,0.75,0.75,0.727481,1.0,1.0,0.78187,지루해서 | 나왔어요 | 돈날림주의;;;,지루해서 | 중간에 | 나왔어요 | 돈날림주의;;;,custom
+case_024,transformer,integrated_gradients_steps100,negative,0.9773848652839661,negative,True,0.333333,0.333333,0.883315,1.0,1.0,0.570829,너무 | 엉성해요. | 없는,영상미는 | 좋은데 | 스토리가 | 너무 | 엉성해요. | 남는 | 게 | 없는 | 느낌.,custom
+case_025,transformer,integrated_gradients_steps100,positive,0.9873867630958557,positive,True,0.428571,0.428571,0.489454,0.996174,0.666667,0.528932,제격임 | 유치하긴 | 좋네요,킬링타임으로 | 제격임 | 유치하긴 | 한데 | 가볍게 | 웃기 | 좋네요,custom
+case_026,transformer,integrated_gradients_steps100,positive,0.985697865486145,positive,True,0.375,0.375,0.747088,1.0,1.0,0.561772,생각보다 | 완전 | 명작인데,평점 | 왜 | 이럼? | 생각보다 | 완전 | 명작인데 | 억까들 | 많네,custom
+case_027,transformer,integrated_gradients_steps100,negative,0.9765997529029846,negative,True,0.375,0.375,0.748905,1.0,1.0,0.562226,실사화는 | 폭망 | 수준,원작 | 웹툰이 | 훨씬 | 나음.. | 실사화는 | 그냥 | 폭망 | 수준,custom
+case_028,transformer,integrated_gradients_steps100,positive,0.9872524738311768,positive,True,0.333333,0.285714,0.813009,0.735059,1.0,0.501606,찾다가 | 인생 | 설렘,완전 | 인생 | 영화 | 건짐... | 설렘 | 터짐,custom
+case_029,transformer,integrated_gradients_steps100,negative,0.976942777633667,negative,True,0.428571,0.428571,0.791085,1.0,1.0,0.604914,스토리 | 연출 | 엉망진창임,1점도 | 아깝다 | 스토리 | 연출 | 캐스팅 | 다 | 엉망진창임,custom
+case_030,transformer,integrated_gradients_steps100,positive,0.9878693222999573,positive,True,0.5,0.5,0.835004,0.774704,1.0,0.624957,담아낸 | 있는 | 영화입니다.,잘 | 담아낸 | 의미 | 있는 | 영화입니다. | 먹먹하네요.,custom

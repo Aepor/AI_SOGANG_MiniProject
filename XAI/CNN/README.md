@@ -8,7 +8,7 @@
 python XAI/CNN/export_word_json.py --input-file inputs.txt
 ```
 
-기본 출력 위치는 `XAI/CNN/outputs/`입니다.
+기본 JSON 출력 위치는 `XAI/outputs_json/`이고, 그래프 출력 위치는 `XAI/outputs_graph/cnn_*/`입니다.
 
 ## 남긴 XAI 방법
 
@@ -29,7 +29,6 @@ XAI/CNN/
   best_cnn_model.pt          # 학습된 CNN checkpoint
   cnn_preprocess_cache.pkl   # checkpoint와 맞춘 vocab cache
   metrics.json               # CNN 평가 지표
-  outputs/                   # 생성된 JSON 결과
   xai_methods/               # 네 가지 XAI 방법 + model/loader
   shared/                    # 경로, 데이터, tokenization, schema helper
   docs/                      # 설명 문서와 이전 분석 계획
