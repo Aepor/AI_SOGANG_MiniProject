@@ -18,7 +18,7 @@ try:
 except ImportError as exc:
     raise SystemExit(
         "Missing dependency: transformers. Install dependencies with "
-        "`pip install -r XAI/Transformer/requirements.txt`."
+        "`pip install -r requirements.txt`."
     ) from exc
 
 

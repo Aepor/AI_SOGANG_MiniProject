@@ -1,0 +1,30 @@
+# XAI 프로젝트 전체 통합 가상환경 정보
+# 팀 프로젝트에서 모두가 동일한 환경으로 실행하기 위한 기준 패키지 목록입니다.
+
+--extra-index-url https://download.pytorch.org/whl/cu126
+
+# 1. 딥러닝 및 핵심 프레임워크 (CUDA 12.6 빌드 포함)
+torch==2.12.1+cu126
+transformers==5.12.1
+
+# 2. 데이터 처리 및 공통 유틸리티
+numpy>=1.24.0
+pandas==3.0.3
+tqdm==4.68.3
+scipy>=1.11.0
+scikit-learn>=1.3.0
+
+# 3. 모델별 데이터 전처리 (KoNLPy 한국어 분석기)
+konlpy>=0.6.0
+
+# 4. XAI 기법 패키지 (IG, Occlusion, LIME, SHAP)
+lime>=0.2.0.1
+shap>=0.42.0
+
+# 5. 시각화 및 분석 리포트 생성
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# 6. 노트북 및 위젯 지원 (컨테이너 내부 테스트용)
+ipywidgets>=8.0.0
+notebook>=7.0.0
