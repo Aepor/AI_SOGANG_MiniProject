@@ -43,7 +43,7 @@ PowerShell에서 가상환경을 활성화합니다.
 ## 패키지 설치
 
 ```powershell
-pip install -r Transformer/requirements.txt
+pip install -r requirements.txt
 ```
 
 이미 `.venv`에 설치되어 있다면 다시 설치하지 않아도 됩니다.

@@ -11,3 +11,8 @@ model_constructed/Transformer/kcelectra_nsmc_model/
 NUL.png
 XAI/FNN/ratings_train.txt
 XAI/FNN/ratings_test.txt
+
+# Large XAI output files (>10MB)
+XAI/outputs_sentiment_direction/projection_scores.csv
+XAI/outputs_sentiment_direction/xai_sentiment_direction_ablation.csv
+

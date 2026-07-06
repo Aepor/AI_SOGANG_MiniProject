@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  xai-app:
+    build: .
+    container_name: xai_container
+    # 현재 폴더를 컨테이너 내부와 마운트하여, 코드 변경 사항이 빌드 없이 즉시 반영되도록 합니다.
+    volumes:
+      - .:/workspace
+    # 컨테이너가 켜진 상태를 유지하고 터미널 접속이 가능하도록 설정
+    tty: true
+    stdin_open: true
+    # GPU(NVIDIA CUDA)를 컨테이너 내부에서 사용할 수 있도록 활성화
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
