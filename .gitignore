@@ -2,6 +2,11 @@ __pycache__/
 *.py[cod]
 .venv/
 
+# Local secrets
+.env
+.env.*
+!.env.example
+
 # Local model outputs
 Transformer/kcelectra_nsmc_model/
 XAI/Transformer/kcelectra_nsmc_model/

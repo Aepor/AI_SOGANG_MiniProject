@@ -1,9 +1,10 @@
 """Visualize CNN XAI JSON outputs.
 
-The exporter writes one JSON file per method under ``XAI/CNN/outputs``. Each
+The exporter writes one JSON file per method under ``XAI/outputs_json``. Each
 JSON item contains whitespace-level ``words`` and one common ``scores`` array.
-This script turns those arrays into presentation-friendly PNG charts and a
-small HTML index. Legacy ``*_scores`` keys are still accepted for old exports.
+This script turns those arrays into presentation-friendly PNG charts under
+``XAI/outputs_graph/cnn_*`` folders, matching the Transformer output layout.
+Legacy unversioned IG files and ``*_scores`` keys are still accepted for old exports.
 """
 
 from __future__ import annotations
@@ -160,6 +161,11 @@ def safe_filename(value: str) -> str:
     return re.sub(r"[^A-Za-z0-9_.-]+", "_", value).strip("._") or "chart"
 
 
+def graph_dir_name(path: Path) -> str:
+    """Return the Transformer-style graph folder name for one CNN JSON file."""
+    return path.stem.replace("output_", "", 1)
+
+
 def symmetric_limit(scores: list[float]) -> float:
     """Choose a symmetric x-axis limit around zero."""
     max_abs = max((abs(score) for score in scores), default=0.0)
@@ -170,7 +176,7 @@ def symmetric_limit(scores: list[float]) -> float:
 
 def sample_label(item: dict[str, Any], item_index: int) -> str:
     """Return a stable label for charts without writing it into JSON."""
-    return str(item.get("sample_id") or f"case_{item_index:03d}")
+    return str(item.get("sample_id") or f"sentence_{item_index}")
 
 
 def draw_bar_chart(
@@ -183,7 +189,7 @@ def draw_bar_chart(
 
     colors = [POSITIVE_COLOR if score > 0 else NEGATIVE_COLOR if score < 0 else ZERO_COLOR for score in scores]
     sample_id = sample_label(item, item_index)
-    filename = safe_filename(f"{output.path.stem}__{sample_id}.png")
+    filename = safe_filename(f"sentence_{item_index}.png")
     out_path = chart_dir / filename
 
     height = max(3.2, 0.48 * len(words) + 1.8)
@@ -363,12 +369,12 @@ def write_summary(
 def parse_args() -> argparse.Namespace:
     """Parse CLI arguments."""
     parser = argparse.ArgumentParser(description="Visualize CNN XAI output_cnn_*.json files.")
-    parser.add_argument("--input-dir", type=Path, default=Path("XAI/CNN/outputs"))
+    parser.add_argument("--input-dir", type=Path, default=Path("XAI/outputs_json"))
     parser.add_argument("--output-dir", type=Path, default=None)
     parser.add_argument(
         "--include-compatibility-files",
         action="store_true",
-        help="Also visualize compatibility files such as output_cnn_integrated_gradients.json.",
+        help="Also visualize legacy files such as output_cnn_integrated_gradients.json.",
     )
     return parser.parse_args()
 
@@ -377,10 +383,9 @@ def main() -> int:
     """Run visualization export."""
     args = parse_args()
     input_dir = args.input_dir
-    output_dir = args.output_dir or input_dir / "visualizations"
-    chart_dir = output_dir / "charts"
-    comparison_dir = output_dir / "comparisons"
-    chart_dir.mkdir(parents=True, exist_ok=True)
+    output_dir = args.output_dir or Path("XAI/outputs_graph")
+    comparison_dir = output_dir / "cnn_comparisons"
+    output_dir.mkdir(parents=True, exist_ok=True)
     comparison_dir.mkdir(parents=True, exist_ok=True)
 
     configure_fonts()
@@ -388,6 +393,8 @@ def main() -> int:
 
     chart_paths: dict[str, list[Path]] = {}
     for output in outputs:
+        chart_dir = output_dir / graph_dir_name(output.path)
+        chart_dir.mkdir(parents=True, exist_ok=True)
         paths: list[Path] = []
         for item_index, item in enumerate(output.items, start=1):
             paths.append(draw_bar_chart(output, item, item_index, chart_dir))
@@ -406,8 +413,8 @@ def main() -> int:
         if (path := draw_comparison_chart(sample_id, outputs, comparison_dir)) is not None
     ]
 
-    html_path = output_dir / "index.html"
-    summary_path = output_dir / "visualization_summary.json"
+    html_path = output_dir / "cnn_index.html"
+    summary_path = output_dir / "cnn_visualization_summary.json"
     write_html_index(html_path, input_dir, chart_paths, comparison_paths)
     write_summary(summary_path, input_dir, output_dir, outputs, chart_paths, comparison_paths, html_path)
 

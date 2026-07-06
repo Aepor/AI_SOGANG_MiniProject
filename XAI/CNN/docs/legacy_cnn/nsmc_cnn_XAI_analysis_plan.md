@@ -1,4 +1,4 @@
-# NSMC CNN 전용 XAI 분석 계획
+﻿# NSMC CNN 전용 XAI 분석 계획
 
 ## 1. 목적과 범위
 
@@ -1181,8 +1181,8 @@ XAI/CNN/xai_outputs/cnn_xai_run_metadata.json
 XAI/CNN/xai_outputs/figures/*.png
 ```
 
-코드 분리, 방법별 notebook 구성, FNN/CNN/Transformer/Opus 비교까지 확장하는 개선 계획은 다음 문서에 정리한다.
+코드 분리, 방법별 notebook 구성, FNN/CNN/Transformer/LLM 비교까지 확장하는 개선 계획은 다음 문서에 정리한다.
 
 ```text
-XAI/XAI_CODE_SPLIT_AND_OPUS_EXTENSION_PLAN.md
+XAI/XAI_CODE_SPLIT_AND_LLM_COMPARISON_PLAN.md
 ```

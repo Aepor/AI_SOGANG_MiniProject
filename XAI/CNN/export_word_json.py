@@ -424,7 +424,7 @@ def main(argv: list[str] | None = None) -> int:
 
     for method in requested_methods:
         if method == "integrated_gradients":
-            for idx, (ig_steps, rows) in enumerate(integrated_gradients_rows_by_step.items()):
+            for ig_steps, rows in integrated_gradients_rows_by_step.items():
                 payload = method_payload(
                     records=records,
                     display=display,
@@ -435,11 +435,6 @@ def main(argv: list[str] | None = None) -> int:
                 output_path = args.output_dir / f"output_cnn_{method}_steps{ig_steps}.json"
                 write_json(output_path, payload)
                 print(f"Wrote {output_path} ({len(payload)} rows)")
-
-                if idx == 0:
-                    compatibility_path = args.output_dir / f"output_cnn_{method}.json"
-                    write_json(compatibility_path, payload)
-                    print(f"Wrote {compatibility_path} ({len(payload)} rows)")
             continue
 
         payload = method_payload(
