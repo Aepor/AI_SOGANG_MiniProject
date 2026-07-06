@@ -100,11 +100,13 @@ def get_word_level_attention(model, tokenizer, text, device, max_length=128):
         "attention_scores": [round(s, 4) for s in normalized_scores],
         "_word_attn_2d": word_attn_2d.numpy() 
     }
-
-def run_attention_pipeline(model, tokenizer, texts, output_dir, device, max_length, model_name):
+def run_attention_pipeline(model, tokenizer, texts, output_graph_dir, output_json_dir, device, max_length, model_name):
     """입력받은 텍스트 목록에 대해 어텐션 분석을 수행하고 히트맵 및 JSON을 저장합니다."""
-    output_path = Path(output_dir)
-    output_path.mkdir(parents=True, exist_ok=True)
+    graph_path = Path(output_graph_dir)
+    graph_path.mkdir(parents=True, exist_ok=True)
+    
+    json_dir_path = Path(output_json_dir)
+    json_dir_path.mkdir(parents=True, exist_ok=True)
     
     json_results = []
 
@@ -134,7 +136,7 @@ def run_attention_pipeline(model, tokenizer, texts, output_dir, device, max_leng
             plt.xlabel("Key (어디에 집중했는가)")
             plt.ylabel("Query (어떤 단어가)")
             
-            save_path = output_path / f"attention_heatmap_{idx}.png"
+            save_path = graph_path / f"sentence_{idx + 1}.png"
             plt.tight_layout()
             plt.savefig(save_path, dpi=300)
             plt.close()
@@ -142,7 +144,7 @@ def run_attention_pipeline(model, tokenizer, texts, output_dir, device, max_leng
 
     # JSON 저장
     model_name_for_file = model_name.split('/')[-1]
-    json_path = output_path / f"output_{model_name_for_file}_attention.json"
+    json_path = json_dir_path / f"output_transformer_attention.json"
     json_path.write_text(
         json.dumps(json_results, indent=2, ensure_ascii=False),
         encoding="utf-8"
