@@ -546,7 +546,8 @@ def run_attention(args):
             model=model, 
             tokenizer=tokenizer, 
             texts=texts, 
-            output_dir=args.output_dir, 
+            output_graph_dir=args.output_graph_dir, 
+            output_json_dir=args.output_json_dir,
             device=device, 
             max_length=args.max_length, 
             model_name=args.model_name
@@ -613,7 +614,8 @@ def parse_args():
     attention_parser.add_argument("--model-dir", default="XAI/Transformer/kcelectra_nsmc_model")
     attention_parser.add_argument("--text", action="append")
     attention_parser.add_argument("--input-file")
-    attention_parser.add_argument("--output-dir", default="XAI/Transformer/attention_results")
+    attention_parser.add_argument("--output-graph-dir", default="XAI/outputs_graph/transformer_attention")
+    attention_parser.add_argument("--output-json-dir", default="XAI/outputs_json")
     add_common_runtime_args(attention_parser)
     attention_parser.set_defaults(func=run_attention)
 
