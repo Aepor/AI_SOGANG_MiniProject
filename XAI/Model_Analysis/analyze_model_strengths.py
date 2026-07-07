@@ -26,17 +26,29 @@ TOP_K = 3
 COVERAGE_THRESHOLD = 0.02
 
 MODEL_LABELS = {
+    "cnn": "CNN",
     "fnn": "FNN",
     "transformer": "Transformer",
 }
 
 METHOD_LABELS = {
+    "attention": "Attention",
+    "filter_activation": "Filter Activation",
     "ig": "Integrated Gradients",
     "ig_50": "Integrated Gradients 50 steps",
     "ig_100": "Integrated Gradients 100 steps",
     "occlusion": "Occlusion",
+    "ngram_occlusion": "N-gram Occlusion",
+    "unigram_occlusion": "Unigram Occlusion",
     "lime": "LIME",
 }
+
+COMPARISON_METHOD_ALIASES = {
+    "ngram_occlusion": "occlusion",
+    "unigram_occlusion": "occlusion",
+}
+
+REFERENCE_ONLY_METHODS = {"attention", "filter_activation", "lime"}
 
 METRIC_INFO = [
     {
@@ -120,8 +132,12 @@ def parse_output_name(path: Path) -> tuple[str, str]:
     return match.group("model"), match.group("method")
 
 
+def comparison_method(method: str) -> str:
+    return COMPARISON_METHOD_ALIASES.get(method, method)
+
+
 def score_key(record: dict) -> str:
-    for key in ("scores", "ig_scores", "occlusion_scores", "lime_scores"):
+    for key in ("scores", "ig_scores", "occlusion_scores", "lime_scores", "attention_scores"):
         if key in record:
             return key
     raise KeyError(f"No score field found in record keys: {list(record.keys())}")
@@ -240,6 +256,52 @@ def record_metrics(record: dict, scores: list[float]) -> dict[str, float]:
     }
 
 
+def average_scores(rows: list[dict]) -> list[float]:
+    min_len = min(len(row["scores"]) for row in rows)
+    if min_len == 0:
+        return []
+    return [
+        mean(row["scores"][idx] for row in rows)
+        for idx in range(min_len)
+    ]
+
+
+def collapse_method_variants(rows: list[dict]) -> list[dict]:
+    grouped = defaultdict(list)
+    for row in rows:
+        grouped[(row["model"], row["method"], row["text"])].append(row)
+
+    collapsed = []
+    for (_, _, _), group_rows in sorted(grouped.items(), key=lambda item: item[0]):
+        if len(group_rows) == 1:
+            row = dict(group_rows[0])
+            row["source_methods"] = [row["source_method"]]
+            collapsed.append(row)
+            continue
+
+        base = dict(group_rows[0])
+        averaged_scores = average_scores(group_rows)
+        words = base.get("words", [])[:len(averaged_scores)]
+        record = {
+            "prediction": base["prediction"],
+            "probability": mean(row["probability"] for row in group_rows),
+            "words": words,
+        }
+        metrics = record_metrics(record, averaged_scores)
+        base.update(
+            {
+                "case_id": min(row["case_id"] for row in group_rows),
+                "probability": record["probability"],
+                "score_key": "averaged_scores",
+                "scores": averaged_scores,
+                "source_methods": sorted({row["source_method"] for row in group_rows}),
+                **metrics,
+            }
+        )
+        collapsed.append(base)
+    return collapsed
+
+
 def load_records() -> list[dict]:
     rows = []
     paths = sorted(INPUT_DIR.glob("output_*.json"))
@@ -248,7 +310,8 @@ def load_records() -> list[dict]:
         paths = [path for path in paths if path.name != "output_fnn_ig.json"]
 
     for path in paths:
-        model, method = parse_output_name(path)
+        model, raw_method = parse_output_name(path)
+        method = comparison_method(raw_method)
         records = json.loads(path.read_text(encoding="utf-8"))
         for idx, record in enumerate(records, start=1):
             key = score_key(record)
@@ -258,15 +321,18 @@ def load_records() -> list[dict]:
                 {
                     "model": model,
                     "method": method,
+                    "source_method": raw_method,
                     "case_id": idx,
                     "text": record.get("text", ""),
                     "prediction": record.get("prediction", ""),
+                    "probability": float(record.get("probability", 0.0)),
+                    "words": record.get("words", []),
                     "score_key": key,
                     "scores": scores,
                     **metrics,
                 }
             )
-    return rows
+    return collapse_method_variants(rows)
 
 
 def aggregate(rows: list[dict], group_keys: tuple[str, ...]) -> list[dict]:
@@ -279,6 +345,8 @@ def aggregate(rows: list[dict], group_keys: tuple[str, ...]) -> list[dict]:
     for group_values, group_rows in sorted(grouped.items()):
         summary = {key: value for key, value in zip(group_keys, group_values)}
         summary["case_count"] = len(group_rows)
+        source_methods = sorted({source for row in group_rows for source in row.get("source_methods", [row.get("source_method", row["method"])])})
+        summary["source_methods"] = source_methods
         for metric in metric_keys:
             values = [row[metric] for row in group_rows]
             summary[metric] = mean_available(values)
@@ -294,7 +362,7 @@ def common_methods(rows: list[dict]) -> set[str]:
         methods_by_model[row["model"]].add(row["method"])
     if not methods_by_model:
         return set()
-    return set.intersection(*methods_by_model.values())
+    return set.intersection(*methods_by_model.values()) - REFERENCE_ONLY_METHODS
 
 
 def filter_common_method_rows(rows: list[dict]) -> tuple[list[dict], set[str]]:
@@ -410,6 +478,8 @@ def localize_summary_rows(rows: list[dict]) -> list[dict]:
             output["모델"] = model_label(row["model"])
         if "method" in row:
             output["XAI 방법"] = method_label(row["method"])
+        if "source_methods" in row:
+            output["원본 방법"] = ", ".join(method_label(method) for method in row["source_methods"])
         if "case_count" in row:
             output["사례 수"] = row["case_count"]
         if "top3_share_case_count" in row:
@@ -600,6 +670,93 @@ def write_methodology(path: Path, common_method_set: set[str], common_text_count
     path.write_text("\n".join(lines) + "\n", encoding="utf-8-sig")
 
 
+def method_note(method: str, source_methods: list[str]) -> str:
+    if method == "attention":
+        return "모델 내부 attention 가중치를 보는 참고형 설명입니다. score가 대부분 양수라 방향성 지표는 보조적으로만 해석합니다."
+    if method == "filter_activation":
+        return "CNN 필터가 강하게 반응한 단어를 보는 모델 특화 설명입니다. 다른 모델과의 최종 비교에는 넣지 않습니다."
+    if method == "lime":
+        return "입력 perturbation으로 만든 local surrogate 설명입니다. FNN 내부 참고용으로 유지합니다."
+    if method == "occlusion" and {"ngram_occlusion", "unigram_occlusion"}.issubset(set(source_methods)):
+        return "Unigram Occlusion과 N-gram Occlusion을 같은 문장 기준으로 평균내 CNN의 Occlusion 계열 설명으로 묶었습니다."
+    if method == "occlusion":
+        return "단어를 가렸을 때 예측 확률이 얼마나 변하는지 보는 제거 기반 설명입니다."
+    if method in {"ig_50", "ig_100", "ig"}:
+        return "baseline에서 입력까지의 gradient 누적값으로 단어 기여도를 계산하는 gradient 기반 설명입니다."
+    return "해당 모델의 XAI 방법별 score 특성을 요약한 결과입니다."
+
+
+def best_method(rows: list[dict], metric: str) -> dict | None:
+    candidates = [row for row in rows if is_available(row.get(metric))]
+    if not candidates:
+        return None
+    return max(candidates, key=lambda row: row[metric])
+
+
+def write_xai_method_profile(path: Path, method_summary: list[dict]) -> None:
+    grouped = defaultdict(list)
+    for row in method_summary:
+        grouped[row["model"]].append(row)
+
+    lines = [
+        "# 모델별 XAI 방법 비교",
+        "",
+        "이 문서는 각 모델 내부에서 어떤 XAI 방법이 어떤 특성을 보이는지 정리합니다.",
+        "`method_strength_summary.csv`를 사람이 읽기 쉽게 해석한 파일이며, 모델 간 최종 우수 모델 비교와는 목적이 다릅니다.",
+        "",
+        "## 해석 기준",
+        "",
+        "- 예측 방향-설명 정합도: 모델 예측 방향과 XAI score 부호가 얼마나 잘 맞는지 봅니다.",
+        "- 유효 단어 커버리지: 전체 설명량의 2% 이상을 받은 단어 비율입니다.",
+        "- 핵심 단어 집중도/상위 3개 단어 집중도: 설명이 소수 단어에 얼마나 모이는지 보는 특성 지표입니다.",
+        "- 평균 절대 score: 단어별 score 크기의 평균입니다. 방법마다 scale이 다를 수 있어 같은 모델 내부 참고값으로만 봅니다.",
+        "",
+    ]
+
+    profile_metrics = [
+        ("alignment", "예측 방향-설명 정합도"),
+        ("coverage", "유효 단어 커버리지"),
+        ("focus", "핵심 단어 집중도"),
+        ("top3_share", "상위 3개 단어 집중도"),
+        ("avg_abs_score", "평균 절대 score"),
+    ]
+
+    for model, rows in sorted(grouped.items()):
+        lines.extend([f"## {model_label(model)}", ""])
+
+        lines.extend(["### 돋보이는 XAI 방법", ""])
+        for metric, label in profile_metrics:
+            winner = best_method(rows, metric)
+            if winner is None:
+                continue
+            lines.append(
+                f"- {label}: **{method_label(winner['method'])}** "
+                f"({format_metric(winner[metric])})"
+            )
+
+        lines.extend(["", "### 방법별 특징", ""])
+        for row in sorted(rows, key=lambda item: item["method"]):
+            source_methods = row.get("source_methods", [row.get("method", "")])
+            source_text = ", ".join(method_label(method) for method in source_methods)
+            lines.extend(
+                [
+                    f"#### {method_label(row['method'])}",
+                    "",
+                    f"- 원본 방법: {source_text}",
+                    f"- 사례 수: {row['case_count']}",
+                    f"- 예측 방향-설명 정합도: {format_metric(row['alignment'])}",
+                    f"- 유효 단어 커버리지: {format_metric(row['coverage'])}",
+                    f"- 핵심 단어 집중도: {format_metric(row['focus'])}",
+                    f"- 상위 3개 단어 집중도: {format_metric(row['top3_share'])}",
+                    f"- 평균 절대 score: {format_metric(row['avg_abs_score'])}",
+                    f"- 특징: {method_note(row['method'], source_methods)}",
+                    "",
+                ]
+            )
+
+    path.write_text("\n".join(lines) + "\n", encoding="utf-8-sig")
+
+
 def main() -> None:
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     rows = load_records()
@@ -622,6 +779,7 @@ def main() -> None:
     write_csv(OUTPUT_DIR / "model_strength_summary.csv", localize_summary_rows(model_summary))
     write_csv(OUTPUT_DIR / "method_agreement_summary.csv", localize_agreement_rows(agreement_summary))
     write_csv(OUTPUT_DIR / "category_winners.csv", localize_winner_rows(winners))
+    write_xai_method_profile(OUTPUT_DIR / "xai_method_profile_by_model.md", method_summary)
 
     report = {
         "입력_폴더": str(INPUT_DIR),
@@ -635,6 +793,7 @@ def main() -> None:
         "방법별_요약": localize_summary_rows(method_summary),
         "방법_일관성_요약": localize_agreement_rows(agreement_summary),
         "부문별_우수_모델": localize_winner_rows(winners),
+        "모델별_XAI_방법_비교_파일": str(OUTPUT_DIR / "xai_method_profile_by_model.md"),
         "raw": {
             "common_methods": sorted(common_method_set),
             "common_text_count": len(common_texts),

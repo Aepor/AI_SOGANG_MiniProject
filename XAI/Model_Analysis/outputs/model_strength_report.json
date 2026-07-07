@@ -109,7 +109,21 @@
   },
   "모델별_요약": [
     {
+      "모델": "CNN",
+      "원본 방법": "Integrated Gradients 100 steps, Integrated Gradients 50 steps, N-gram Occlusion, Unigram Occlusion",
+      "사례 수": 84,
+      "상위 3개 집중도 계산 사례 수": 84,
+      "예측 확신도": 0.9430399813822338,
+      "예측 방향-설명 정합도": 0.878188014481363,
+      "핵심 단어 집중도": 0.46837592276632567,
+      "유효 단어 커버리지": 0.8101224833367691,
+      "상위 3개 단어 집중도": 0.8083309373115707,
+      "평균 절대 score": 0.14605023751089424,
+      "평균 단어 수": 7.25
+    },
+    {
       "모델": "FNN",
+      "원본 방법": "Integrated Gradients 100 steps, Integrated Gradients 50 steps, Occlusion",
       "사례 수": 84,
       "상위 3개 집중도 계산 사례 수": 84,
       "예측 확신도": 0.9046071428571428,
@@ -122,6 +136,7 @@
     },
     {
       "모델": "Transformer",
+      "원본 방법": "Integrated Gradients 100 steps, Integrated Gradients 50 steps, Occlusion",
       "사례 수": 84,
       "상위 3개 집중도 계산 사례 수": 84,
       "예측 확신도": 0.9706795364618301,
@@ -135,8 +150,65 @@
   ],
   "방법별_요약": [
     {
+      "모델": "CNN",
+      "XAI 방법": "Filter Activation",
+      "원본 방법": "Filter Activation",
+      "사례 수": 30,
+      "상위 3개 집중도 계산 사례 수": 30,
+      "예측 확신도": 0.9435285170873006,
+      "예측 방향-설명 정합도": 0.8613242773063186,
+      "핵심 단어 집중도": 0.35848049068560817,
+      "유효 단어 커버리지": 0.8925589225589226,
+      "상위 3개 단어 집중도": 0.7315637372938726,
+      "평균 절대 score": 0.14463323713323714,
+      "평균 단어 수": 7.433333333333334
+    },
+    {
+      "모델": "CNN",
+      "XAI 방법": "Integrated Gradients 100 steps",
+      "원본 방법": "Integrated Gradients 100 steps",
+      "사례 수": 30,
+      "상위 3개 집중도 계산 사례 수": 30,
+      "예측 확신도": 0.9435285170873006,
+      "예측 방향-설명 정합도": 0.833729789964724,
+      "핵심 단어 집중도": 0.44663470611332007,
+      "유효 단어 커버리지": 0.8019071669071669,
+      "상위 3개 단어 집중도": 0.7944577970928884,
+      "평균 절대 score": 0.14463323713323714,
+      "평균 단어 수": 7.433333333333334
+    },
+    {
+      "모델": "CNN",
+      "XAI 방법": "Integrated Gradients 50 steps",
+      "원본 방법": "Integrated Gradients 50 steps",
+      "사례 수": 30,
+      "상위 3개 집중도 계산 사례 수": 30,
+      "예측 확신도": 0.9435285170873006,
+      "예측 방향-설명 정합도": 0.833646545649753,
+      "핵심 단어 집중도": 0.4467423424132864,
+      "유효 단어 커버리지": 0.8019071669071669,
+      "상위 3개 단어 집중도": 0.7943541904678918,
+      "평균 절대 score": 0.14463323713323714,
+      "평균 단어 수": 7.433333333333334
+    },
+    {
+      "모델": "CNN",
+      "XAI 방법": "Occlusion",
+      "원본 방법": "N-gram Occlusion, Unigram Occlusion",
+      "사례 수": 30,
+      "상위 3개 집중도 계산 사례 수": 30,
+      "예측 확신도": 0.9435285170873006,
+      "예측 방향-설명 정합도": 0.9579505223556367,
+      "핵심 단어 집중도": 0.48016869114145744,
+      "유효 단어 커버리지": 0.8163804713804714,
+      "상위 3개 단어 집중도": 0.8056086528386994,
+      "평균 절대 score": 0.13975056555333487,
+      "평균 단어 수": 7.433333333333334
+    },
+    {
       "모델": "FNN",
       "XAI 방법": "Integrated Gradients 100 steps",
+      "원본 방법": "Integrated Gradients 100 steps",
       "사례 수": 30,
       "상위 3개 집중도 계산 사례 수": 29,
       "예측 확신도": 0.9092333333333333,
@@ -150,6 +222,7 @@
     {
       "모델": "FNN",
       "XAI 방법": "Integrated Gradients 50 steps",
+      "원본 방법": "Integrated Gradients 50 steps",
       "사례 수": 30,
       "상위 3개 집중도 계산 사례 수": 29,
       "예측 확신도": 0.9092333333333333,
@@ -163,6 +236,7 @@
     {
       "모델": "FNN",
       "XAI 방법": "LIME",
+      "원본 방법": "LIME",
       "사례 수": 30,
       "상위 3개 집중도 계산 사례 수": 29,
       "예측 확신도": 0.9092333333333333,
@@ -176,6 +250,7 @@
     {
       "모델": "FNN",
       "XAI 방법": "Occlusion",
+      "원본 방법": "Occlusion",
       "사례 수": 30,
       "상위 3개 집중도 계산 사례 수": 29,
       "예측 확신도": 0.9092333333333333,
@@ -188,7 +263,22 @@
     },
     {
       "모델": "Transformer",
+      "XAI 방법": "Attention",
+      "원본 방법": "Attention",
+      "사례 수": 30,
+      "상위 3개 집중도 계산 사례 수": 30,
+      "예측 확신도": 0.9373573799928029,
+      "예측 방향-설명 정합도": 0.5,
+      "핵심 단어 집중도": 0.2501306257920812,
+      "유효 단어 커버리지": 0.9944444444444445,
+      "상위 3개 단어 집중도": 0.5976040617675361,
+      "평균 절대 score": 0.14463297643097642,
+      "평균 단어 수": 7.433333333333334
+    },
+    {
+      "모델": "Transformer",
       "XAI 방법": "Integrated Gradients 100 steps",
+      "원본 방법": "Integrated Gradients 100 steps",
       "사례 수": 30,
       "상위 3개 집중도 계산 사례 수": 30,
       "예측 확신도": 0.9714090486367544,
@@ -202,6 +292,7 @@
     {
       "모델": "Transformer",
       "XAI 방법": "Integrated Gradients 50 steps",
+      "원본 방법": "Integrated Gradients 50 steps",
       "사례 수": 30,
       "상위 3개 집중도 계산 사례 수": 30,
       "예측 확신도": 0.9714090486367544,
@@ -215,6 +306,7 @@
     {
       "모델": "Transformer",
       "XAI 방법": "Occlusion",
+      "원본 방법": "Occlusion",
       "사례 수": 30,
       "상위 3개 집중도 계산 사례 수": 30,
       "예측 확신도": 0.9714090486367544,
@@ -227,6 +319,13 @@
     }
   ],
   "방법_일관성_요약": [
+    {
+      "모델": "CNN",
+      "비교한 방법 쌍 수": 84,
+      "Top-3 단어 겹침도": 0.7238095238095238,
+      "절대 score 순위 상관": 0.7956864564007421,
+      "XAI 방법 간 일관성": 0.7597479901051329
+    },
     {
       "모델": "FNN",
       "비교한 방법 쌍 수": 84,
@@ -258,8 +357,8 @@
     {
       "평가 부문": "핵심 단어 집중도",
       "사용 지표": "핵심 단어 집중도",
-      "우수 모델": "Transformer",
-      "점수": 0.4603945650418463
+      "우수 모델": "CNN",
+      "점수": 0.46837592276632567
     },
     {
       "평가 부문": "유효 단어 커버리지",
@@ -270,8 +369,8 @@
     {
       "평가 부문": "상위 3개 단어 집중도",
       "사용 지표": "상위 3개 단어 집중도",
-      "우수 모델": "Transformer",
-      "점수": 0.8031978143411175
+      "우수 모델": "CNN",
+      "점수": 0.8083309373115707
     },
     {
       "평가 부문": "XAI 방법 간 일관성",
@@ -280,6 +379,7 @@
       "점수": 0.8731988249845393
     }
   ],
+  "모델별_XAI_방법_비교_파일": "C:\\Users\\cwdkh\\OneDrive\\바탕 화면\\새싹프로젝트\\AI_SOGANG_MiniProject\\XAI\\Model_Analysis\\outputs\\xai_method_profile_by_model.md",
   "raw": {
     "common_methods": [
       "ig_100",
@@ -319,8 +419,31 @@
     ],
     "model_summary": [
       {
+        "model": "cnn",
+        "case_count": 84,
+        "source_methods": [
+          "ig_100",
+          "ig_50",
+          "ngram_occlusion",
+          "unigram_occlusion"
+        ],
+        "confidence": 0.9430399813822338,
+        "alignment": 0.878188014481363,
+        "focus": 0.46837592276632567,
+        "coverage": 0.8101224833367691,
+        "top3_share": 0.8083309373115707,
+        "top3_share_case_count": 84,
+        "avg_abs_score": 0.14605023751089424,
+        "word_count": 7.25
+      },
+      {
         "model": "fnn",
         "case_count": 84,
+        "source_methods": [
+          "ig_100",
+          "ig_50",
+          "occlusion"
+        ],
         "confidence": 0.9046071428571428,
         "alignment": 0.8158667509306072,
         "focus": 0.41350685367639806,
@@ -333,6 +456,11 @@
       {
         "model": "transformer",
         "case_count": 84,
+        "source_methods": [
+          "ig_100",
+          "ig_50",
+          "occlusion"
+        ],
         "confidence": 0.9706795364618301,
         "alignment": 0.8950578668718154,
         "focus": 0.4603945650418463,
@@ -345,9 +473,77 @@
     ],
     "method_summary": [
       {
+        "model": "cnn",
+        "method": "filter_activation",
+        "case_count": 30,
+        "source_methods": [
+          "filter_activation"
+        ],
+        "confidence": 0.9435285170873006,
+        "alignment": 0.8613242773063186,
+        "focus": 0.35848049068560817,
+        "coverage": 0.8925589225589226,
+        "top3_share": 0.7315637372938726,
+        "top3_share_case_count": 30,
+        "avg_abs_score": 0.14463323713323714,
+        "word_count": 7.433333333333334
+      },
+      {
+        "model": "cnn",
+        "method": "ig_100",
+        "case_count": 30,
+        "source_methods": [
+          "ig_100"
+        ],
+        "confidence": 0.9435285170873006,
+        "alignment": 0.833729789964724,
+        "focus": 0.44663470611332007,
+        "coverage": 0.8019071669071669,
+        "top3_share": 0.7944577970928884,
+        "top3_share_case_count": 30,
+        "avg_abs_score": 0.14463323713323714,
+        "word_count": 7.433333333333334
+      },
+      {
+        "model": "cnn",
+        "method": "ig_50",
+        "case_count": 30,
+        "source_methods": [
+          "ig_50"
+        ],
+        "confidence": 0.9435285170873006,
+        "alignment": 0.833646545649753,
+        "focus": 0.4467423424132864,
+        "coverage": 0.8019071669071669,
+        "top3_share": 0.7943541904678918,
+        "top3_share_case_count": 30,
+        "avg_abs_score": 0.14463323713323714,
+        "word_count": 7.433333333333334
+      },
+      {
+        "model": "cnn",
+        "method": "occlusion",
+        "case_count": 30,
+        "source_methods": [
+          "ngram_occlusion",
+          "unigram_occlusion"
+        ],
+        "confidence": 0.9435285170873006,
+        "alignment": 0.9579505223556367,
+        "focus": 0.48016869114145744,
+        "coverage": 0.8163804713804714,
+        "top3_share": 0.8056086528386994,
+        "top3_share_case_count": 30,
+        "avg_abs_score": 0.13975056555333487,
+        "word_count": 7.433333333333334
+      },
+      {
         "model": "fnn",
         "method": "ig_100",
         "case_count": 30,
+        "source_methods": [
+          "ig_100"
+        ],
         "confidence": 0.9092333333333333,
         "alignment": 0.7957827852370571,
         "focus": 0.37850908562340574,
@@ -361,6 +557,9 @@
         "model": "fnn",
         "method": "ig_50",
         "case_count": 30,
+        "source_methods": [
+          "ig_50"
+        ],
         "confidence": 0.9092333333333333,
         "alignment": 0.7960824584068092,
         "focus": 0.3791125377470288,
@@ -374,6 +573,9 @@
         "model": "fnn",
         "method": "lime",
         "case_count": 30,
+        "source_methods": [
+          "lime"
+        ],
         "confidence": 0.9092333333333333,
         "alignment": 0.7905050785512578,
         "focus": 0.3804558162345519,
@@ -387,6 +589,9 @@
         "model": "fnn",
         "method": "occlusion",
         "case_count": 30,
+        "source_methods": [
+          "occlusion"
+        ],
         "confidence": 0.9092333333333333,
         "alignment": 0.8651585737328724,
         "focus": 0.5072099078842631,
@@ -398,8 +603,27 @@
       },
       {
         "model": "transformer",
+        "method": "attention",
+        "case_count": 30,
+        "source_methods": [
+          "attention"
+        ],
+        "confidence": 0.9373573799928029,
+        "alignment": 0.5,
+        "focus": 0.2501306257920812,
+        "coverage": 0.9944444444444445,
+        "top3_share": 0.5976040617675361,
+        "top3_share_case_count": 30,
+        "avg_abs_score": 0.14463297643097642,
+        "word_count": 7.433333333333334
+      },
+      {
+        "model": "transformer",
         "method": "ig_100",
         "case_count": 30,
+        "source_methods": [
+          "ig_100"
+        ],
         "confidence": 0.9714090486367544,
         "alignment": 0.9259348966941224,
         "focus": 0.416440746376927,
@@ -413,6 +637,9 @@
         "model": "transformer",
         "method": "ig_50",
         "case_count": 30,
+        "source_methods": [
+          "ig_50"
+        ],
         "confidence": 0.9714090486367544,
         "alignment": 0.8947718524702312,
         "focus": 0.40674024988996943,
@@ -426,6 +653,9 @@
         "model": "transformer",
         "method": "occlusion",
         "case_count": 30,
+        "source_methods": [
+          "occlusion"
+        ],
         "confidence": 0.9714090486367544,
         "alignment": 0.869946052293614,
         "focus": 0.5340770689308365,
@@ -437,6 +667,13 @@
       }
     ],
     "method_agreement": [
+      {
+        "model": "cnn",
+        "pair_count": 84,
+        "top3_jaccard": 0.7238095238095238,
+        "spearman_abs": 0.7956864564007421,
+        "method_agreement": 0.7597479901051329
+      },
       {
         "model": "fnn",
         "pair_count": 84,
@@ -468,8 +705,8 @@
       {
         "category": "핵심 단어 집중도",
         "metric": "focus",
-        "winner": "transformer",
-        "score": 0.4603945650418463
+        "winner": "cnn",
+        "score": 0.46837592276632567
       },
       {
         "category": "유효 단어 커버리지",
@@ -480,8 +717,8 @@
       {
         "category": "상위 3개 단어 집중도",
         "metric": "top3_share",
-        "winner": "transformer",
-        "score": 0.8031978143411175
+        "winner": "cnn",
+        "score": 0.8083309373115707
       },
       {
         "category": "XAI 방법 간 일관성",
