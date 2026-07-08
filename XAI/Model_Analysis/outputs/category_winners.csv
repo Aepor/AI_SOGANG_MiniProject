@@ -1,4 +1,4 @@
-﻿Evaluation Category,Metric,Best Model,Score
+﻿Evaluation Category,Metric,Most Prominent Model,Score
 Attribution Sign Agreement,Attribution Sign Agreement,Transformer,0.8619554551686835
 Max Attribution Share,Max Attribution Share,CNN,0.5074312639607951
 Attribution Coverage,Attribution Coverage,FNN,0.8606794131794132

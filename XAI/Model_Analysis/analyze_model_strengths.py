@@ -1,7 +1,7 @@
 """XAI output JSON을 이용해 모델별 설명 특성을 비교한다.
 
 이 스크립트는 XAI/outputs_json/output_*.json을 읽고, 예측 확률과 단어별
-XAI score를 기반으로 모델이 어떤 설명 부문에서 강한지 요약한다.
+XAI score를 기반으로 모델별 설명 특성이 어떻게 다른지 요약한다.
 """
 
 from __future__ import annotations
@@ -51,31 +51,31 @@ METRIC_INFO = [
         "key": "alignment",
         "category": "Attribution Sign Agreement",
         "meaning": "예측 감성과 같은 방향의 attribution score가 전체 설명량에서 차지하는 비율입니다.",
-        "ranking_rule": "예측 방향과 같은 부호의 설명량 비율이 높은 모델을 우수 모델로 봅니다.",
+        "ranking_rule": "예측 방향과 같은 부호의 설명량 비율이 높을수록 이 특성이 두드러진 것으로 봅니다.",
     },
     {
         "key": "focus",
         "category": "Max Attribution Share",
         "meaning": "가장 큰 절대 score를 가진 단어 하나가 전체 설명량에서 차지하는 비율입니다.",
-        "ranking_rule": "핵심 단어를 더 뚜렷하게 잡아내는 모델을 우수 모델로 봅니다.",
+        "ranking_rule": "핵심 단어 하나에 설명량이 더 모일수록 이 특성이 두드러진 것으로 봅니다.",
     },
     {
         "key": "coverage",
         "category": "Attribution Coverage",
         "meaning": "문장 내 단어 중 전체 설명량의 2% 이상을 차지한 단어의 비율입니다.",
-        "ranking_rule": "의미 있는 크기의 설명 신호를 더 많은 단어에 부여한 모델을 우수 모델로 봅니다.",
+        "ranking_rule": "의미 있는 크기의 설명 신호가 더 많은 단어에 분포할수록 이 특성이 두드러진 것으로 봅니다.",
     },
     {
         "key": "top3_share",
         "category": "Top-3 Attribution Mass",
         "meaning": "절대 score 기준 상위 3개 단어가 전체 설명량에서 차지하는 비율입니다.",
-        "ranking_rule": "중요 단어 3개에 설명이 선명하게 모이는 모델을 우수 모델로 봅니다.",
+        "ranking_rule": "중요 단어 3개에 설명이 선명하게 모일수록 이 특성이 두드러진 것으로 봅니다.",
     },
     {
         "key": "method_agreement",
         "category": "Explanation Agreement",
         "meaning": "같은 모델 안에서 여러 XAI 방법이 비슷한 핵심 단어를 고르는 정도입니다.",
-        "ranking_rule": "Top-3 단어 겹침과 절대 score 순위 상관이 높은 모델을 우수 모델로 봅니다.",
+        "ranking_rule": "Top-3 단어 겹침과 절대 score 순위 상관이 높을수록 이 특성이 두드러진 것으로 봅니다.",
     },
 ]
 
@@ -472,7 +472,7 @@ def localize_winner_rows(rows: list[dict]) -> list[dict]:
         {
             "Evaluation Category": row["category"],
             "Metric": METRIC_INFO_BY_KEY.get(row["metric"], {}).get("category", row["metric"]),
-            "Best Model": model_label(row["winner"]),
+            "Most Prominent Model": model_label(row["winner"]),
             "Score": row["score"],
         }
         for row in rows
@@ -515,18 +515,18 @@ def write_markdown(
     agreement_by_model = {row["model"]: row for row in agreement_summary}
     common_methods_text = ", ".join(method_label(method) for method in sorted(common_method_set))
     lines = [
-        "# 모델 강점 분석 리포트",
+        "# 모델 설명 특성 분석 리포트",
         "",
         "이 리포트는 `XAI/outputs_json`에 저장된 예측 확률과 단어별 XAI score를 사용해 모델별 설명 특성을 비교합니다.",
-        "최종 모델 순위는 모든 모델에 공통으로 존재하는 XAI 방법만 사용해 계산합니다.",
-        f"최종 모델 순위는 모든 모델에 공통으로 존재하는 입력 문장 **{common_text_count}개**만 사용해 계산합니다.",
+        "최종 모델 비교는 모든 모델에 공통으로 존재하는 XAI 방법만 사용해 계산합니다.",
+        f"최종 모델 비교는 모든 모델에 공통으로 존재하는 입력 문장 **{common_text_count}개**만 사용해 계산합니다.",
         "현재 모델 비교에 사용된 공통 방법: "
         f"**{common_methods_text}**.",
         "",
         "주의: `outputs_json`에는 정답 라벨이 없으므로 이 분석은 분류 정확도 평가가 아닙니다. "
         "대신 모델의 설명 score 형태를 비교합니다.",
         "",
-        "## 부문별 우수 모델",
+        "## 부문별 특성이 두드러진 모델",
         "",
     ]
     for row in winners:
@@ -544,7 +544,7 @@ def write_markdown(
             f"Explanation Agreement={format_metric(agreement.get('method_agreement'))}"
         )
 
-    lines.extend(["", "## 순위 산정 방법", ""])
+    lines.extend(["", "## 지표 해석 기준", ""])
     for item in METRIC_INFO:
         lines.append(f"- **{item['category']}**: {item['meaning']} {item['ranking_rule']}")
 
@@ -558,7 +558,7 @@ def write_markdown(
             f"- `Top-3 Attribution Mass`와 `Top-3 Jaccard Overlap`은 단어 수가 {TOP_K + 1}개 이상인 문장에 대해서만 계산합니다.",
             "- `Attribution Sign Agreement`는 positive 예측이면 양수 score, negative 예측이면 음수 score를 예측을 지지하는 설명으로 봅니다.",
             "- `Explanation Agreement`는 같은 문장에 대해 방법별 상위 3개 단어 겹침도와 절대 score 순위 상관을 평균낸 값입니다.",
-            "- FNN에만 있는 LIME처럼 특정 모델에만 존재하는 방법은 방법별 참고표에는 남기지만, 최종 모델 순위에는 포함하지 않습니다.",
+            "- FNN에만 있는 LIME처럼 특정 모델에만 존재하는 방법은 방법별 참고표에는 남기지만, 최종 모델 비교에는 포함하지 않습니다.",
         ]
     )
     path.write_text("\n".join(lines) + "\n", encoding="utf-8-sig")
@@ -571,7 +571,7 @@ def write_methodology(path: Path, common_method_set: set[str], common_text_count
         "",
         "## 분석 목적",
         "",
-        "이 프로그램은 `outputs_json`에 들어 있는 모델별 XAI 결과를 이용해 어떤 모델이 어떤 설명 특성에서 강한지 비교합니다.",
+        "이 프로그램은 `outputs_json`에 들어 있는 모델별 XAI 결과를 이용해 모델마다 어떤 설명 특성이 두드러지는지 비교합니다.",
         "정답 라벨이 포함되어 있지 않기 때문에 정확도, 재현율, F1-score 같은 분류 성능을 계산하지 않습니다.",
         "",
         "## 비교 범위",
@@ -579,7 +579,7 @@ def write_methodology(path: Path, common_method_set: set[str], common_text_count
         f"- 최종 모델 비교에는 모든 모델에 공통으로 존재하는 방법만 사용합니다: **{common_methods_text}**.",
         f"- 최종 모델 비교에는 모든 모델과 공통 XAI 방법에 모두 존재하는 입력 문장만 사용합니다. 현재 공통 입력 문장 수는 **{common_text_count}개**입니다.",
         "- 특정 모델에만 있는 방법은 `method_strength_summary.csv`에서 참고용으로 확인합니다.",
-        "- 예를 들어 FNN의 LIME은 FNN 내부 설명 특성을 보는 데는 유용하지만, Transformer에 대응 방법이 없으면 최종 모델 순위에는 넣지 않습니다.",
+        "- 예를 들어 FNN의 LIME은 FNN 내부 설명 특성을 보는 데는 유용하지만, Transformer에 대응 방법이 없으면 최종 모델 비교에는 넣지 않습니다.",
         f"- Top-3 기반 지표는 단어 수가 {TOP_K + 1}개 이상인 문장에 대해서만 계산합니다.",
         "",
         "## 수식 기호",
@@ -592,7 +592,7 @@ def write_methodology(path: Path, common_method_set: set[str], common_text_count
         "- `direction(y_hat_i)`: 예측이 positive이면 양수, negative이면 음수 방향입니다.",
         "- 각 지표는 먼저 문장 단위로 계산한 뒤, 모델별 평균을 냅니다.",
         "",
-        "## 지표별 순위 산정",
+        "## 지표별 해석 기준",
         "",
     ]
     for item in METRIC_INFO:
@@ -602,7 +602,7 @@ def write_methodology(path: Path, common_method_set: set[str], common_text_count
                 f"### {item['category']}",
                 "",
                 f"- 의미: {item['meaning']}",
-                f"- 순위 기준: {item['ranking_rule']}",
+                f"- 해석 기준: {item['ranking_rule']}",
                 f"- 간단 수식: `{math_info['formula']}`",
                 f"- 차용한 방식: {math_info['basis']}",
                 f"- 해석 메모: {math_info['notes']}",
@@ -613,7 +613,7 @@ def write_methodology(path: Path, common_method_set: set[str], common_text_count
         [
             "## 산출 파일 해석",
             "",
-            "- `category_winners.csv`: 평가 부문별로 어느 모델이 가장 높은 점수를 받았는지 정리한 표입니다.",
+            "- `category_winners.csv`: 평가 부문별로 어느 모델에서 해당 특성이 가장 크게 나타났는지 정리한 표입니다.",
             "- `model_strength_summary.csv`: 공통 XAI 방법만 사용해 모델별 평균 지표를 계산한 표입니다.",
             "- `method_strength_summary.csv`: 모델-방법 조합별 지표입니다. 공통 방법이 아닌 LIME도 참고용으로 포함됩니다.",
             "- `method_agreement_summary.csv`: 같은 모델 안에서 여러 XAI 방법이 얼마나 일관된 설명을 내는지 정리한 표입니다.",
@@ -658,7 +658,7 @@ def write_xai_method_profile(path: Path, method_summary: list[dict]) -> None:
         "# 모델별 XAI 방법 비교",
         "",
         "이 문서는 각 모델 내부에서 어떤 XAI 방법이 어떤 특성을 보이는지 정리합니다.",
-        "`method_strength_summary.csv`를 사람이 읽기 쉽게 해석한 파일이며, 모델 간 최종 우수 모델 비교와는 목적이 다릅니다.",
+        "`method_strength_summary.csv`를 사람이 읽기 쉽게 해석한 파일이며, 모델 간 최종 특성 비교와는 목적이 다릅니다.",
         "",
         "## 해석 기준",
         "",
@@ -783,7 +783,7 @@ def main() -> None:
         "모델별_요약": localize_summary_rows(model_summary),
         "방법별_요약": localize_summary_rows(method_summary),
         "방법_일관성_요약": localize_agreement_rows(agreement_summary),
-        "부문별_우수_모델": localize_winner_rows(winners),
+        "부문별_두드러진_모델": localize_winner_rows(winners),
         "모델별_XAI_방법_비교_파일": str(OUTPUT_DIR / "xai_method_profile_by_model.md"),
         "raw": {
             "common_methods": sorted(common_method_set),
@@ -792,7 +792,15 @@ def main() -> None:
             "model_summary": model_summary,
             "method_summary": method_summary,
             "method_agreement": agreement_summary,
-            "category_winners": winners,
+            "category_prominent_models": [
+                {
+                    "category": row["category"],
+                    "metric": row["metric"],
+                    "model": row["winner"],
+                    "score": row["score"],
+                }
+                for row in winners
+            ],
         },
     }
     (OUTPUT_DIR / "model_strength_report.json").write_text(
