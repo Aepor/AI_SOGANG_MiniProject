@@ -43,12 +43,8 @@ METHOD_LABELS = {
     "lime": "LIME",
 }
 
-COMPARISON_METHOD_ALIASES = {
-    "ngram_occlusion": "occlusion",
-    "unigram_occlusion": "occlusion",
-}
-
 REFERENCE_ONLY_METHODS = {"attention", "filter_activation", "lime"}
+MODEL_COMPARISON_METHODS = {"ig_50", "ig_100", "occlusion", "unigram_occlusion"}
 
 METRIC_INFO = [
     {
@@ -130,10 +126,6 @@ def parse_output_name(path: Path) -> tuple[str, str]:
     if not match:
         raise ValueError(f"Unsupported output filename: {path.name}")
     return match.group("model"), match.group("method")
-
-
-def comparison_method(method: str) -> str:
-    return COMPARISON_METHOD_ALIASES.get(method, method)
 
 
 def score_key(record: dict) -> str:
@@ -256,52 +248,6 @@ def record_metrics(record: dict, scores: list[float]) -> dict[str, float]:
     }
 
 
-def average_scores(rows: list[dict]) -> list[float]:
-    min_len = min(len(row["scores"]) for row in rows)
-    if min_len == 0:
-        return []
-    return [
-        mean(row["scores"][idx] for row in rows)
-        for idx in range(min_len)
-    ]
-
-
-def collapse_method_variants(rows: list[dict]) -> list[dict]:
-    grouped = defaultdict(list)
-    for row in rows:
-        grouped[(row["model"], row["method"], row["text"])].append(row)
-
-    collapsed = []
-    for (_, _, _), group_rows in sorted(grouped.items(), key=lambda item: item[0]):
-        if len(group_rows) == 1:
-            row = dict(group_rows[0])
-            row["source_methods"] = [row["source_method"]]
-            collapsed.append(row)
-            continue
-
-        base = dict(group_rows[0])
-        averaged_scores = average_scores(group_rows)
-        words = base.get("words", [])[:len(averaged_scores)]
-        record = {
-            "prediction": base["prediction"],
-            "probability": mean(row["probability"] for row in group_rows),
-            "words": words,
-        }
-        metrics = record_metrics(record, averaged_scores)
-        base.update(
-            {
-                "case_id": min(row["case_id"] for row in group_rows),
-                "probability": record["probability"],
-                "score_key": "averaged_scores",
-                "scores": averaged_scores,
-                "source_methods": sorted({row["source_method"] for row in group_rows}),
-                **metrics,
-            }
-        )
-        collapsed.append(base)
-    return collapsed
-
-
 def load_records() -> list[dict]:
     rows = []
     paths = sorted(INPUT_DIR.glob("output_*.json"))
@@ -311,7 +257,6 @@ def load_records() -> list[dict]:
 
     for path in paths:
         model, raw_method = parse_output_name(path)
-        method = comparison_method(raw_method)
         records = json.loads(path.read_text(encoding="utf-8"))
         for idx, record in enumerate(records, start=1):
             key = score_key(record)
@@ -320,8 +265,9 @@ def load_records() -> list[dict]:
             rows.append(
                 {
                     "model": model,
-                    "method": method,
+                    "method": raw_method,
                     "source_method": raw_method,
+                    "source_methods": [raw_method],
                     "case_id": idx,
                     "text": record.get("text", ""),
                     "prediction": record.get("prediction", ""),
@@ -332,7 +278,28 @@ def load_records() -> list[dict]:
                     **metrics,
                 }
             )
-    return collapse_method_variants(rows)
+    return rows
+
+
+def model_comparison_rows(rows: list[dict]) -> list[dict]:
+    """Build rows for model-level comparison.
+
+    CNN has both unigram and n-gram occlusion in the method profile. For the
+    model-level comparison, unigram occlusion is used as CNN's representative
+    Occlusion result so each model contributes one Occlusion method.
+    """
+    comparison_rows = []
+    for row in rows:
+        if row["method"] in REFERENCE_ONLY_METHODS:
+            continue
+        if row["method"] not in MODEL_COMPARISON_METHODS:
+            continue
+
+        comparison_row = dict(row)
+        if row["method"] == "unigram_occlusion":
+            comparison_row["method"] = "occlusion"
+        comparison_rows.append(comparison_row)
+    return comparison_rows
 
 
 def aggregate(rows: list[dict], group_keys: tuple[str, ...]) -> list[dict]:
@@ -677,8 +644,10 @@ def method_note(method: str, source_methods: list[str]) -> str:
         return "CNN 필터가 강하게 반응한 단어를 보는 모델 특화 설명입니다. 다른 모델과의 최종 비교에는 넣지 않습니다."
     if method == "lime":
         return "입력 perturbation으로 만든 local surrogate 설명입니다. FNN 내부 참고용으로 유지합니다."
-    if method == "occlusion" and {"ngram_occlusion", "unigram_occlusion"}.issubset(set(source_methods)):
-        return "Unigram Occlusion과 N-gram Occlusion을 같은 문장 기준으로 평균내 CNN의 Occlusion 계열 설명으로 묶었습니다."
+    if method == "unigram_occlusion":
+        return "단어를 하나씩 가렸을 때 예측 확률이 얼마나 변하는지 보는 제거 기반 설명입니다. 모델 간 최종 비교에서 CNN의 Occlusion 대표값으로 사용합니다."
+    if method == "ngram_occlusion":
+        return "연속된 여러 단어 묶음을 가렸을 때 예측 확률 변화를 보는 제거 기반 설명입니다. CNN 내부 방법 비교용으로 유지합니다."
     if method == "occlusion":
         return "단어를 가렸을 때 예측 확률이 얼마나 변하는지 보는 제거 기반 설명입니다."
     if method in {"ig_50", "ig_100", "ig"}:
@@ -708,17 +677,14 @@ def write_xai_method_profile(path: Path, method_summary: list[dict]) -> None:
         "",
         "- 예측 방향-설명 정합도: 모델 예측 방향과 XAI score 부호가 얼마나 잘 맞는지 봅니다.",
         "- 유효 단어 커버리지: 전체 설명량의 2% 이상을 받은 단어 비율입니다.",
-        "- 핵심 단어 집중도/상위 3개 단어 집중도: 설명이 소수 단어에 얼마나 모이는지 보는 특성 지표입니다.",
-        "- 평균 절대 score: 단어별 score 크기의 평균입니다. 방법마다 scale이 다를 수 있어 같은 모델 내부 참고값으로만 봅니다.",
+        "- 상위 3개 단어 집중도: 설명이 주요 단어 묶음에 얼마나 모이는지 보는 특성 지표입니다.",
         "",
     ]
 
     profile_metrics = [
         ("alignment", "예측 방향-설명 정합도"),
         ("coverage", "유효 단어 커버리지"),
-        ("focus", "핵심 단어 집중도"),
         ("top3_share", "상위 3개 단어 집중도"),
-        ("avg_abs_score", "평균 절대 score"),
     ]
 
     for model, rows in sorted(grouped.items()):
@@ -746,9 +712,7 @@ def write_xai_method_profile(path: Path, method_summary: list[dict]) -> None:
                     f"- 사례 수: {row['case_count']}",
                     f"- 예측 방향-설명 정합도: {format_metric(row['alignment'])}",
                     f"- 유효 단어 커버리지: {format_metric(row['coverage'])}",
-                    f"- 핵심 단어 집중도: {format_metric(row['focus'])}",
                     f"- 상위 3개 단어 집중도: {format_metric(row['top3_share'])}",
-                    f"- 평균 절대 score: {format_metric(row['avg_abs_score'])}",
                     f"- 특징: {method_note(row['method'], source_methods)}",
                     "",
                 ]
@@ -764,7 +728,8 @@ def main() -> None:
         raise SystemExit(f"No output_*.json files found in {INPUT_DIR}")
 
     method_summary = aggregate(rows, ("model", "method"))
-    common_rows, common_method_set = filter_common_method_rows(rows)
+    comparison_rows = model_comparison_rows(rows)
+    common_rows, common_method_set = filter_common_method_rows(comparison_rows)
     if not common_rows:
         raise SystemExit("No common XAI methods found across models.")
     common_rows, common_texts = filter_common_text_rows(common_rows, common_method_set)
