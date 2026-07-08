@@ -41,48 +41,37 @@
   ],
   "지표_설명": [
     {
-      "key": "confidence",
-      "category": "예측 확신도",
-      "meaning": "모델이 자신이 예측한 클래스에 부여한 평균 확률입니다.",
-      "ranking_rule": "평균 예측 확률이 높은 모델을 우수 모델로 봅니다."
-    },
-    {
       "key": "alignment",
-      "category": "예측 방향-설명 정합도",
+      "category": "Attribution Sign Agreement",
       "meaning": "예측 감성과 같은 방향의 attribution score가 전체 설명량에서 차지하는 비율입니다.",
       "ranking_rule": "예측 방향과 같은 부호의 설명량 비율이 높은 모델을 우수 모델로 봅니다."
     },
     {
       "key": "focus",
-      "category": "핵심 단어 집중도",
+      "category": "Max Attribution Share",
       "meaning": "가장 큰 절대 score를 가진 단어 하나가 전체 설명량에서 차지하는 비율입니다.",
       "ranking_rule": "핵심 단어를 더 뚜렷하게 잡아내는 모델을 우수 모델로 봅니다."
     },
     {
       "key": "coverage",
-      "category": "유효 단어 커버리지",
+      "category": "Attribution Coverage",
       "meaning": "문장 내 단어 중 전체 설명량의 2% 이상을 차지한 단어의 비율입니다.",
       "ranking_rule": "의미 있는 크기의 설명 신호를 더 많은 단어에 부여한 모델을 우수 모델로 봅니다."
     },
     {
       "key": "top3_share",
-      "category": "상위 3개 단어 집중도",
+      "category": "Top-3 Attribution Mass",
       "meaning": "절대 score 기준 상위 3개 단어가 전체 설명량에서 차지하는 비율입니다.",
       "ranking_rule": "중요 단어 3개에 설명이 선명하게 모이는 모델을 우수 모델로 봅니다."
     },
     {
       "key": "method_agreement",
-      "category": "XAI 방법 간 일관성",
+      "category": "Explanation Agreement",
       "meaning": "같은 모델 안에서 여러 XAI 방법이 비슷한 핵심 단어를 고르는 정도입니다.",
       "ranking_rule": "Top-3 단어 겹침과 절대 score 순위 상관이 높은 모델을 우수 모델로 봅니다."
     }
   ],
   "지표_수식": {
-    "confidence": {
-      "formula": "confidence = mean_i p_i(y_hat_i)",
-      "basis": "모델의 softmax/sigmoid 예측 확률을 평균내는 방식입니다.",
-      "notes": "정답 여부가 아니라 모델이 자기 예측에 부여한 확신을 봅니다."
-    },
     "alignment": {
       "formula": "alignment_i = sum(|s_ij| for sign(s_ij)=direction(y_hat_i)) / sum_j |s_ij|",
       "basis": "signed attribution의 부호가 예측 감성 방향과 일치하는 비율을 봅니다.",
@@ -111,288 +100,266 @@
   },
   "모델별_요약": [
     {
-      "모델": "CNN",
-      "원본 방법": "Integrated Gradients 100 steps, Integrated Gradients 50 steps, Unigram Occlusion",
-      "사례 수": 90,
-      "상위 3개 집중도 계산 사례 수": 87,
-      "예측 확신도": 0.9429199318091075,
-      "예측 방향-설명 정합도": 0.8609381434787275,
-      "핵심 단어 집중도": 0.5074312639607951,
-      "유효 단어 커버리지": 0.7860205226871894,
-      "상위 3개 단어 집중도": 0.8156401164473068,
-      "평균 절대 score": 0.15734367484367484,
-      "평균 단어 수": 7.233333333333333
+      "Model": "CNN",
+      "Source Method(s)": "Integrated Gradients 100 steps, Integrated Gradients 50 steps, Unigram Occlusion",
+      "Case Count": 90,
+      "Top-3 Eligible Case Count": 87,
+      "Attribution Sign Agreement": 0.8609381434787275,
+      "Max Attribution Share": 0.5074312639607951,
+      "Attribution Coverage": 0.7860205226871894,
+      "Top-3 Attribution Mass": 0.8156401164473068,
+      "Mean Absolute Score": 0.15734367484367484,
+      "Mean Word Count": 7.233333333333333
     },
     {
-      "모델": "FNN",
-      "원본 방법": "Integrated Gradients 100 steps, Integrated Gradients 50 steps, Occlusion",
-      "사례 수": 90,
-      "상위 3개 집중도 계산 사례 수": 87,
-      "예측 확신도": 0.9092333333333333,
-      "예측 방향-설명 정합도": 0.8190079391255796,
-      "핵심 단어 집중도": 0.42161051041823255,
-      "유효 단어 커버리지": 0.8606794131794132,
-      "상위 3개 단어 집중도": 0.7760022991754698,
-      "평균 절대 score": 0.11861621493907328,
-      "평균 단어 수": 7.233333333333333
+      "Model": "FNN",
+      "Source Method(s)": "Integrated Gradients 100 steps, Integrated Gradients 50 steps, Occlusion",
+      "Case Count": 90,
+      "Top-3 Eligible Case Count": 87,
+      "Attribution Sign Agreement": 0.8190079391255796,
+      "Max Attribution Share": 0.42161051041823255,
+      "Attribution Coverage": 0.8606794131794132,
+      "Top-3 Attribution Mass": 0.7760022991754698,
+      "Mean Absolute Score": 0.11861621493907328,
+      "Mean Word Count": 7.233333333333333
     },
     {
-      "모델": "Transformer",
-      "원본 방법": "Integrated Gradients 100 steps, Integrated Gradients 50 steps, Occlusion",
-      "사례 수": 90,
-      "상위 3개 집중도 계산 사례 수": 87,
-      "예측 확신도": 0.9721491714318593,
-      "예측 방향-설명 정합도": 0.8619554551686835,
-      "핵심 단어 집중도": 0.4381573657009124,
-      "유효 단어 커버리지": 0.8598725348725349,
-      "상위 3개 단어 집중도": 0.775407877458273,
-      "평균 절대 score": 0.1573436736790446,
-      "평균 단어 수": 7.233333333333333
+      "Model": "Transformer",
+      "Source Method(s)": "Integrated Gradients 100 steps, Integrated Gradients 50 steps, Occlusion",
+      "Case Count": 90,
+      "Top-3 Eligible Case Count": 87,
+      "Attribution Sign Agreement": 0.8619554551686835,
+      "Max Attribution Share": 0.4381573657009124,
+      "Attribution Coverage": 0.8598725348725349,
+      "Top-3 Attribution Mass": 0.775407877458273,
+      "Mean Absolute Score": 0.1573436736790446,
+      "Mean Word Count": 7.233333333333333
     }
   ],
   "방법별_요약": [
     {
-      "모델": "CNN",
-      "XAI 방법": "Filter Activation",
-      "원본 방법": "Filter Activation",
-      "사례 수": 30,
-      "상위 3개 집중도 계산 사례 수": 29,
-      "예측 확신도": 0.9429199318091075,
-      "예측 방향-설명 정합도": 0.8518582660575612,
-      "핵심 단어 집중도": 0.3586407253263172,
-      "유효 단어 커버리지": 0.9032491582491583,
-      "상위 3개 단어 집중도": 0.7216938550828753,
-      "평균 절대 score": 0.15734367484367484,
-      "평균 단어 수": 7.233333333333333
+      "Model": "CNN",
+      "XAI Method": "Filter Activation",
+      "Source Method(s)": "Filter Activation",
+      "Case Count": 30,
+      "Top-3 Eligible Case Count": 29,
+      "Attribution Sign Agreement": 0.8518582660575612,
+      "Max Attribution Share": 0.3586407253263172,
+      "Attribution Coverage": 0.9032491582491583,
+      "Top-3 Attribution Mass": 0.7216938550828753,
+      "Mean Absolute Score": 0.15734367484367484,
+      "Mean Word Count": 7.233333333333333
     },
     {
-      "모델": "CNN",
-      "XAI 방법": "Integrated Gradients 100 steps",
-      "원본 방법": "Integrated Gradients 100 steps",
-      "사례 수": 30,
-      "상위 3개 집중도 계산 사례 수": 29,
-      "예측 확신도": 0.9429199318091075,
-      "예측 방향-설명 정합도": 0.8349987474752018,
-      "핵심 단어 집중도": 0.46060105856281736,
-      "유효 단어 커버리지": 0.8186580086580086,
-      "상위 3개 단어 집중도": 0.7972817753340455,
-      "평균 절대 score": 0.15734367484367484,
-      "평균 단어 수": 7.233333333333333
+      "Model": "CNN",
+      "XAI Method": "Integrated Gradients 100 steps",
+      "Source Method(s)": "Integrated Gradients 100 steps",
+      "Case Count": 30,
+      "Top-3 Eligible Case Count": 29,
+      "Attribution Sign Agreement": 0.8349987474752018,
+      "Max Attribution Share": 0.46060105856281736,
+      "Attribution Coverage": 0.8186580086580086,
+      "Top-3 Attribution Mass": 0.7972817753340455,
+      "Mean Absolute Score": 0.15734367484367484,
+      "Mean Word Count": 7.233333333333333
     },
     {
-      "모델": "CNN",
-      "XAI 방법": "Integrated Gradients 50 steps",
-      "원본 방법": "Integrated Gradients 50 steps",
-      "사례 수": 30,
-      "상위 3개 집중도 계산 사례 수": 29,
-      "예측 확신도": 0.9429199318091075,
-      "예측 방향-설명 정합도": 0.8348808132881932,
-      "핵심 단어 집중도": 0.46069375817907526,
-      "유효 단어 커버리지": 0.8186580086580086,
-      "상위 3개 단어 집중도": 0.7971602302844003,
-      "평균 절대 score": 0.15734367484367484,
-      "평균 단어 수": 7.233333333333333
+      "Model": "CNN",
+      "XAI Method": "Integrated Gradients 50 steps",
+      "Source Method(s)": "Integrated Gradients 50 steps",
+      "Case Count": 30,
+      "Top-3 Eligible Case Count": 29,
+      "Attribution Sign Agreement": 0.8348808132881932,
+      "Max Attribution Share": 0.46069375817907526,
+      "Attribution Coverage": 0.8186580086580086,
+      "Top-3 Attribution Mass": 0.7971602302844003,
+      "Mean Absolute Score": 0.15734367484367484,
+      "Mean Word Count": 7.233333333333333
     },
     {
-      "모델": "CNN",
-      "XAI 방법": "N-gram Occlusion",
-      "원본 방법": "N-gram Occlusion",
-      "사례 수": 30,
-      "상위 3개 집중도 계산 사례 수": 29,
-      "예측 확신도": 0.9429199318091075,
-      "예측 방향-설명 정합도": 0.9638338855770568,
-      "핵심 단어 집중도": 0.38607369275436076,
-      "유효 단어 커버리지": 0.8345310245310246,
-      "상위 3개 단어 집중도": 0.762381206789289,
-      "평균 절대 score": 0.15734367484367484,
-      "평균 단어 수": 7.233333333333333
+      "Model": "CNN",
+      "XAI Method": "N-gram Occlusion",
+      "Source Method(s)": "N-gram Occlusion",
+      "Case Count": 30,
+      "Top-3 Eligible Case Count": 29,
+      "Attribution Sign Agreement": 0.9638338855770568,
+      "Max Attribution Share": 0.38607369275436076,
+      "Attribution Coverage": 0.8345310245310246,
+      "Top-3 Attribution Mass": 0.762381206789289,
+      "Mean Absolute Score": 0.15734367484367484,
+      "Mean Word Count": 7.233333333333333
     },
     {
-      "모델": "CNN",
-      "XAI 방법": "Unigram Occlusion",
-      "원본 방법": "Unigram Occlusion",
-      "사례 수": 30,
-      "상위 3개 집중도 계산 사례 수": 29,
-      "예측 확신도": 0.9429199318091075,
-      "예측 방향-설명 정합도": 0.9129348696727875,
-      "핵심 단어 집중도": 0.6009989751404927,
-      "유효 단어 커버리지": 0.7207455507455507,
-      "상위 3개 단어 집중도": 0.8524783437234746,
-      "평균 절대 score": 0.15734367484367484,
-      "평균 단어 수": 7.233333333333333
+      "Model": "CNN",
+      "XAI Method": "Unigram Occlusion",
+      "Source Method(s)": "Unigram Occlusion",
+      "Case Count": 30,
+      "Top-3 Eligible Case Count": 29,
+      "Attribution Sign Agreement": 0.9129348696727875,
+      "Max Attribution Share": 0.6009989751404927,
+      "Attribution Coverage": 0.7207455507455507,
+      "Top-3 Attribution Mass": 0.8524783437234746,
+      "Mean Absolute Score": 0.15734367484367484,
+      "Mean Word Count": 7.233333333333333
     },
     {
-      "모델": "FNN",
-      "XAI 방법": "Integrated Gradients 100 steps",
-      "원본 방법": "Integrated Gradients 100 steps",
-      "사례 수": 30,
-      "상위 3개 집중도 계산 사례 수": 29,
-      "예측 확신도": 0.9092333333333333,
-      "예측 방향-설명 정합도": 0.7957827852370571,
-      "핵심 단어 집중도": 0.37850908562340574,
-      "유효 단어 커버리지": 0.8756313131313131,
-      "상위 3개 단어 집중도": 0.7524344978115053,
-      "평균 절대 score": 0.13954838173400674,
-      "평균 단어 수": 7.233333333333333
+      "Model": "FNN",
+      "XAI Method": "Integrated Gradients 100 steps",
+      "Source Method(s)": "Integrated Gradients 100 steps",
+      "Case Count": 30,
+      "Top-3 Eligible Case Count": 29,
+      "Attribution Sign Agreement": 0.7957827852370571,
+      "Max Attribution Share": 0.37850908562340574,
+      "Attribution Coverage": 0.8756313131313131,
+      "Top-3 Attribution Mass": 0.7524344978115053,
+      "Mean Absolute Score": 0.13954838173400674,
+      "Mean Word Count": 7.233333333333333
     },
     {
-      "모델": "FNN",
-      "XAI 방법": "Integrated Gradients 50 steps",
-      "원본 방법": "Integrated Gradients 50 steps",
-      "사례 수": 30,
-      "상위 3개 집중도 계산 사례 수": 29,
-      "예측 확신도": 0.9092333333333333,
-      "예측 방향-설명 정합도": 0.7960824584068092,
-      "핵심 단어 집중도": 0.3791125377470288,
-      "유효 단어 커버리지": 0.8868350168350169,
-      "상위 3개 단어 집중도": 0.7530594331051766,
-      "평균 절대 score": 0.14176021646945647,
-      "평균 단어 수": 7.233333333333333
+      "Model": "FNN",
+      "XAI Method": "Integrated Gradients 50 steps",
+      "Source Method(s)": "Integrated Gradients 50 steps",
+      "Case Count": 30,
+      "Top-3 Eligible Case Count": 29,
+      "Attribution Sign Agreement": 0.7960824584068092,
+      "Max Attribution Share": 0.3791125377470288,
+      "Attribution Coverage": 0.8868350168350169,
+      "Top-3 Attribution Mass": 0.7530594331051766,
+      "Mean Absolute Score": 0.14176021646945647,
+      "Mean Word Count": 7.233333333333333
     },
     {
-      "모델": "FNN",
-      "XAI 방법": "LIME",
-      "원본 방법": "LIME",
-      "사례 수": 30,
-      "상위 3개 집중도 계산 사례 수": 29,
-      "예측 확신도": 0.9092333333333333,
-      "예측 방향-설명 정합도": 0.7905050785512578,
-      "핵심 단어 집중도": 0.3804558162345519,
-      "유효 단어 커버리지": 0.8547414622414622,
-      "상위 3개 단어 집중도": 0.7606853377473929,
-      "평균 절대 score": 0.09241729728715728,
-      "평균 단어 수": 7.233333333333333
+      "Model": "FNN",
+      "XAI Method": "LIME",
+      "Source Method(s)": "LIME",
+      "Case Count": 30,
+      "Top-3 Eligible Case Count": 29,
+      "Attribution Sign Agreement": 0.7905050785512578,
+      "Max Attribution Share": 0.3804558162345519,
+      "Attribution Coverage": 0.8547414622414622,
+      "Top-3 Attribution Mass": 0.7606853377473929,
+      "Mean Absolute Score": 0.09241729728715728,
+      "Mean Word Count": 7.233333333333333
     },
     {
-      "모델": "FNN",
-      "XAI 방법": "Occlusion",
-      "원본 방법": "Occlusion",
-      "사례 수": 30,
-      "상위 3개 집중도 계산 사례 수": 29,
-      "예측 확신도": 0.9092333333333333,
-      "예측 방향-설명 정합도": 0.8651585737328724,
-      "핵심 단어 집중도": 0.5072099078842631,
-      "유효 단어 커버리지": 0.8195719095719096,
-      "상위 3개 단어 집중도": 0.8225129666097273,
-      "평균 절대 score": 0.07454004661375661,
-      "평균 단어 수": 7.233333333333333
+      "Model": "FNN",
+      "XAI Method": "Occlusion",
+      "Source Method(s)": "Occlusion",
+      "Case Count": 30,
+      "Top-3 Eligible Case Count": 29,
+      "Attribution Sign Agreement": 0.8651585737328724,
+      "Max Attribution Share": 0.5072099078842631,
+      "Attribution Coverage": 0.8195719095719096,
+      "Top-3 Attribution Mass": 0.8225129666097273,
+      "Mean Absolute Score": 0.07454004661375661,
+      "Mean Word Count": 7.233333333333333
     },
     {
-      "모델": "Transformer",
-      "XAI 방법": "Attention",
-      "원본 방법": "Attention",
-      "사례 수": 30,
-      "상위 3개 집중도 계산 사례 수": 29,
-      "예측 확신도": 0.9721491575241089,
-      "예측 방향-설명 정합도": 0.4,
-      "핵심 단어 집중도": 0.2728113643902032,
-      "유효 단어 커버리지": 1.0,
-      "상위 3개 단어 집중도": 0.6038476186477763,
-      "평균 절대 score": 0.15734471332371333,
-      "평균 단어 수": 7.233333333333333
+      "Model": "Transformer",
+      "XAI Method": "Attention",
+      "Source Method(s)": "Attention",
+      "Case Count": 30,
+      "Top-3 Eligible Case Count": 29,
+      "Attribution Sign Agreement": 0.4,
+      "Max Attribution Share": 0.2728113643902032,
+      "Attribution Coverage": 1.0,
+      "Top-3 Attribution Mass": 0.6038476186477763,
+      "Mean Absolute Score": 0.15734471332371333,
+      "Mean Word Count": 7.233333333333333
     },
     {
-      "모델": "Transformer",
-      "XAI 방법": "Integrated Gradients 100 steps",
-      "원본 방법": "Integrated Gradients 100 steps",
-      "사례 수": 30,
-      "상위 3개 집중도 계산 사례 수": 29,
-      "예측 확신도": 0.9721491714318593,
-      "예측 방향-설명 정합도": 0.8440627303401689,
-      "핵심 단어 집중도": 0.40106553560535724,
-      "유효 단어 커버리지": 0.9041967291967292,
-      "상위 3개 단어 집중도": 0.7429922375369842,
-      "평균 절대 score": 0.15734367485572318,
-      "평균 단어 수": 7.233333333333333
+      "Model": "Transformer",
+      "XAI Method": "Integrated Gradients 100 steps",
+      "Source Method(s)": "Integrated Gradients 100 steps",
+      "Case Count": 30,
+      "Top-3 Eligible Case Count": 29,
+      "Attribution Sign Agreement": 0.8440627303401689,
+      "Max Attribution Share": 0.40106553560535724,
+      "Attribution Coverage": 0.9041967291967292,
+      "Top-3 Attribution Mass": 0.7429922375369842,
+      "Mean Absolute Score": 0.15734367485572318,
+      "Mean Word Count": 7.233333333333333
     },
     {
-      "모델": "Transformer",
-      "XAI 방법": "Integrated Gradients 50 steps",
-      "원본 방법": "Integrated Gradients 50 steps",
-      "사례 수": 30,
-      "상위 3개 집중도 계산 사례 수": 29,
-      "예측 확신도": 0.9721491714318593,
-      "예측 방향-설명 정합도": 0.7963262507480205,
-      "핵심 단어 집중도": 0.38743788816933966,
-      "유효 단어 커버리지": 0.8866462241462242,
-      "상위 3개 단어 집중도": 0.740596701188509,
-      "평균 절대 score": 0.15734367133773572,
-      "평균 단어 수": 7.233333333333333
+      "Model": "Transformer",
+      "XAI Method": "Integrated Gradients 50 steps",
+      "Source Method(s)": "Integrated Gradients 50 steps",
+      "Case Count": 30,
+      "Top-3 Eligible Case Count": 29,
+      "Attribution Sign Agreement": 0.7963262507480205,
+      "Max Attribution Share": 0.38743788816933966,
+      "Attribution Coverage": 0.8866462241462242,
+      "Top-3 Attribution Mass": 0.740596701188509,
+      "Mean Absolute Score": 0.15734367133773572,
+      "Mean Word Count": 7.233333333333333
     },
     {
-      "모델": "Transformer",
-      "XAI 방법": "Occlusion",
-      "원본 방법": "Occlusion",
-      "사례 수": 30,
-      "상위 3개 집중도 계산 사례 수": 29,
-      "예측 확신도": 0.9721491714318593,
-      "예측 방향-설명 정합도": 0.9454773844178614,
-      "핵심 단어 집중도": 0.5259686733280403,
-      "유효 단어 커버리지": 0.7887746512746513,
-      "상위 3개 단어 집중도": 0.842634693649326,
-      "평균 절대 score": 0.15734367484367484,
-      "평균 단어 수": 7.233333333333333
+      "Model": "Transformer",
+      "XAI Method": "Occlusion",
+      "Source Method(s)": "Occlusion",
+      "Case Count": 30,
+      "Top-3 Eligible Case Count": 29,
+      "Attribution Sign Agreement": 0.9454773844178614,
+      "Max Attribution Share": 0.5259686733280403,
+      "Attribution Coverage": 0.7887746512746513,
+      "Top-3 Attribution Mass": 0.842634693649326,
+      "Mean Absolute Score": 0.15734367484367484,
+      "Mean Word Count": 7.233333333333333
     }
   ],
   "방법_일관성_요약": [
     {
-      "모델": "CNN",
-      "비교한 방법 쌍 수": 87,
-      "Top-3 단어 겹침도": 0.7862068965517242,
-      "절대 score 순위 상관": 0.8167866616142477,
-      "XAI 방법 간 일관성": 0.8014967790829859
+      "Model": "CNN",
+      "Method Pair Count": 87,
+      "Top-3 Jaccard Overlap": 0.7862068965517242,
+      "Spearman Rank Correlation (Absolute Scores)": 0.8167866616142477,
+      "Explanation Agreement": 0.8014967790829859
     },
     {
-      "모델": "FNN",
-      "비교한 방법 쌍 수": 87,
-      "Top-3 단어 겹침도": 0.8448275862068966,
-      "절대 score 순위 상관": 0.8846739467429122,
-      "XAI 방법 간 일관성": 0.8647507664749043
+      "Model": "FNN",
+      "Method Pair Count": 87,
+      "Top-3 Jaccard Overlap": 0.8448275862068966,
+      "Spearman Rank Correlation (Absolute Scores)": 0.8846739467429122,
+      "Explanation Agreement": 0.8647507664749043
     },
     {
-      "모델": "Transformer",
-      "비교한 방법 쌍 수": 87,
-      "Top-3 단어 겹침도": 0.6126436781609196,
-      "절대 score 순위 상관": 0.5425767718871167,
-      "XAI 방법 간 일관성": 0.5776102250240182
+      "Model": "Transformer",
+      "Method Pair Count": 87,
+      "Top-3 Jaccard Overlap": 0.6126436781609196,
+      "Spearman Rank Correlation (Absolute Scores)": 0.5425767718871167,
+      "Explanation Agreement": 0.5776102250240182
     }
   ],
   "부문별_우수_모델": [
     {
-      "평가 부문": "예측 확신도",
-      "사용 지표": "예측 확신도",
-      "우수 모델": "Transformer",
-      "점수": 0.9721491714318593
+      "Evaluation Category": "Attribution Sign Agreement",
+      "Metric": "Attribution Sign Agreement",
+      "Best Model": "Transformer",
+      "Score": 0.8619554551686835
     },
     {
-      "평가 부문": "예측 방향-설명 정합도",
-      "사용 지표": "예측 방향-설명 정합도",
-      "우수 모델": "Transformer",
-      "점수": 0.8619554551686835
+      "Evaluation Category": "Max Attribution Share",
+      "Metric": "Max Attribution Share",
+      "Best Model": "CNN",
+      "Score": 0.5074312639607951
     },
     {
-      "평가 부문": "핵심 단어 집중도",
-      "사용 지표": "핵심 단어 집중도",
-      "우수 모델": "CNN",
-      "점수": 0.5074312639607951
+      "Evaluation Category": "Attribution Coverage",
+      "Metric": "Attribution Coverage",
+      "Best Model": "FNN",
+      "Score": 0.8606794131794132
     },
     {
-      "평가 부문": "유효 단어 커버리지",
-      "사용 지표": "유효 단어 커버리지",
-      "우수 모델": "FNN",
-      "점수": 0.8606794131794132
+      "Evaluation Category": "Top-3 Attribution Mass",
+      "Metric": "Top-3 Attribution Mass",
+      "Best Model": "CNN",
+      "Score": 0.8156401164473068
     },
     {
-      "평가 부문": "상위 3개 단어 집중도",
-      "사용 지표": "상위 3개 단어 집중도",
-      "우수 모델": "CNN",
-      "점수": 0.8156401164473068
-    },
-    {
-      "평가 부문": "XAI 방법 간 일관성",
-      "사용 지표": "XAI 방법 간 일관성",
-      "우수 모델": "FNN",
-      "점수": 0.8647507664749043
+      "Evaluation Category": "Explanation Agreement",
+      "Metric": "Explanation Agreement",
+      "Best Model": "FNN",
+      "Score": 0.8647507664749043
     }
   ],
   "모델별_XAI_방법_비교_파일": "C:\\Users\\cwdkh\\OneDrive\\바탕 화면\\새싹프로젝트\\AI_SOGANG_MiniProject\\XAI\\Model_Analysis\\outputs\\xai_method_profile_by_model.md",
@@ -444,7 +411,6 @@
           "ig_50",
           "unigram_occlusion"
         ],
-        "confidence": 0.9429199318091075,
         "alignment": 0.8609381434787275,
         "focus": 0.5074312639607951,
         "coverage": 0.7860205226871894,
@@ -461,7 +427,6 @@
           "ig_50",
           "occlusion"
         ],
-        "confidence": 0.9092333333333333,
         "alignment": 0.8190079391255796,
         "focus": 0.42161051041823255,
         "coverage": 0.8606794131794132,
@@ -478,7 +443,6 @@
           "ig_50",
           "occlusion"
         ],
-        "confidence": 0.9721491714318593,
         "alignment": 0.8619554551686835,
         "focus": 0.4381573657009124,
         "coverage": 0.8598725348725349,
@@ -496,7 +460,6 @@
         "source_methods": [
           "filter_activation"
         ],
-        "confidence": 0.9429199318091075,
         "alignment": 0.8518582660575612,
         "focus": 0.3586407253263172,
         "coverage": 0.9032491582491583,
@@ -512,7 +475,6 @@
         "source_methods": [
           "ig_100"
         ],
-        "confidence": 0.9429199318091075,
         "alignment": 0.8349987474752018,
         "focus": 0.46060105856281736,
         "coverage": 0.8186580086580086,
@@ -528,7 +490,6 @@
         "source_methods": [
           "ig_50"
         ],
-        "confidence": 0.9429199318091075,
         "alignment": 0.8348808132881932,
         "focus": 0.46069375817907526,
         "coverage": 0.8186580086580086,
@@ -544,7 +505,6 @@
         "source_methods": [
           "ngram_occlusion"
         ],
-        "confidence": 0.9429199318091075,
         "alignment": 0.9638338855770568,
         "focus": 0.38607369275436076,
         "coverage": 0.8345310245310246,
@@ -560,7 +520,6 @@
         "source_methods": [
           "unigram_occlusion"
         ],
-        "confidence": 0.9429199318091075,
         "alignment": 0.9129348696727875,
         "focus": 0.6009989751404927,
         "coverage": 0.7207455507455507,
@@ -576,7 +535,6 @@
         "source_methods": [
           "ig_100"
         ],
-        "confidence": 0.9092333333333333,
         "alignment": 0.7957827852370571,
         "focus": 0.37850908562340574,
         "coverage": 0.8756313131313131,
@@ -592,7 +550,6 @@
         "source_methods": [
           "ig_50"
         ],
-        "confidence": 0.9092333333333333,
         "alignment": 0.7960824584068092,
         "focus": 0.3791125377470288,
         "coverage": 0.8868350168350169,
@@ -608,7 +565,6 @@
         "source_methods": [
           "lime"
         ],
-        "confidence": 0.9092333333333333,
         "alignment": 0.7905050785512578,
         "focus": 0.3804558162345519,
         "coverage": 0.8547414622414622,
@@ -624,7 +580,6 @@
         "source_methods": [
           "occlusion"
         ],
-        "confidence": 0.9092333333333333,
         "alignment": 0.8651585737328724,
         "focus": 0.5072099078842631,
         "coverage": 0.8195719095719096,
@@ -640,7 +595,6 @@
         "source_methods": [
           "attention"
         ],
-        "confidence": 0.9721491575241089,
         "alignment": 0.4,
         "focus": 0.2728113643902032,
         "coverage": 1.0,
@@ -656,7 +610,6 @@
         "source_methods": [
           "ig_100"
         ],
-        "confidence": 0.9721491714318593,
         "alignment": 0.8440627303401689,
         "focus": 0.40106553560535724,
         "coverage": 0.9041967291967292,
@@ -672,7 +625,6 @@
         "source_methods": [
           "ig_50"
         ],
-        "confidence": 0.9721491714318593,
         "alignment": 0.7963262507480205,
         "focus": 0.38743788816933966,
         "coverage": 0.8866462241462242,
@@ -688,7 +640,6 @@
         "source_methods": [
           "occlusion"
         ],
-        "confidence": 0.9721491714318593,
         "alignment": 0.9454773844178614,
         "focus": 0.5259686733280403,
         "coverage": 0.7887746512746513,
@@ -723,37 +674,31 @@
     ],
     "category_winners": [
       {
-        "category": "예측 확신도",
-        "metric": "confidence",
-        "winner": "transformer",
-        "score": 0.9721491714318593
-      },
-      {
-        "category": "예측 방향-설명 정합도",
+        "category": "Attribution Sign Agreement",
         "metric": "alignment",
         "winner": "transformer",
         "score": 0.8619554551686835
       },
       {
-        "category": "핵심 단어 집중도",
+        "category": "Max Attribution Share",
         "metric": "focus",
         "winner": "cnn",
         "score": 0.5074312639607951
       },
       {
-        "category": "유효 단어 커버리지",
+        "category": "Attribution Coverage",
         "metric": "coverage",
         "winner": "fnn",
         "score": 0.8606794131794132
       },
       {
-        "category": "상위 3개 단어 집중도",
+        "category": "Top-3 Attribution Mass",
         "metric": "top3_share",
         "winner": "cnn",
         "score": 0.8156401164473068
       },
       {
-        "category": "XAI 방법 간 일관성",
+        "category": "Explanation Agreement",
         "metric": "method_agreement",
         "winner": "fnn",
         "score": 0.8647507664749043

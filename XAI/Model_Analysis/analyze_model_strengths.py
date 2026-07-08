@@ -48,38 +48,32 @@ MODEL_COMPARISON_METHODS = {"ig_50", "ig_100", "occlusion", "unigram_occlusion"}
 
 METRIC_INFO = [
     {
-        "key": "confidence",
-        "category": "예측 확신도",
-        "meaning": "모델이 자신이 예측한 클래스에 부여한 평균 확률입니다.",
-        "ranking_rule": "평균 예측 확률이 높은 모델을 우수 모델로 봅니다.",
-    },
-    {
         "key": "alignment",
-        "category": "예측 방향-설명 정합도",
+        "category": "Attribution Sign Agreement",
         "meaning": "예측 감성과 같은 방향의 attribution score가 전체 설명량에서 차지하는 비율입니다.",
         "ranking_rule": "예측 방향과 같은 부호의 설명량 비율이 높은 모델을 우수 모델로 봅니다.",
     },
     {
         "key": "focus",
-        "category": "핵심 단어 집중도",
+        "category": "Max Attribution Share",
         "meaning": "가장 큰 절대 score를 가진 단어 하나가 전체 설명량에서 차지하는 비율입니다.",
         "ranking_rule": "핵심 단어를 더 뚜렷하게 잡아내는 모델을 우수 모델로 봅니다.",
     },
     {
         "key": "coverage",
-        "category": "유효 단어 커버리지",
+        "category": "Attribution Coverage",
         "meaning": "문장 내 단어 중 전체 설명량의 2% 이상을 차지한 단어의 비율입니다.",
         "ranking_rule": "의미 있는 크기의 설명 신호를 더 많은 단어에 부여한 모델을 우수 모델로 봅니다.",
     },
     {
         "key": "top3_share",
-        "category": "상위 3개 단어 집중도",
+        "category": "Top-3 Attribution Mass",
         "meaning": "절대 score 기준 상위 3개 단어가 전체 설명량에서 차지하는 비율입니다.",
         "ranking_rule": "중요 단어 3개에 설명이 선명하게 모이는 모델을 우수 모델로 봅니다.",
     },
     {
         "key": "method_agreement",
-        "category": "XAI 방법 간 일관성",
+        "category": "Explanation Agreement",
         "meaning": "같은 모델 안에서 여러 XAI 방법이 비슷한 핵심 단어를 고르는 정도입니다.",
         "ranking_rule": "Top-3 단어 겹침과 절대 score 순위 상관이 높은 모델을 우수 모델로 봅니다.",
     },
@@ -88,11 +82,6 @@ METRIC_INFO = [
 METRIC_INFO_BY_KEY = {item["key"]: item for item in METRIC_INFO}
 
 METRIC_MATH = {
-    "confidence": {
-        "formula": "confidence = mean_i p_i(y_hat_i)",
-        "basis": "모델의 softmax/sigmoid 예측 확률을 평균내는 방식입니다.",
-        "notes": "정답 여부가 아니라 모델이 자기 예측에 부여한 확신을 봅니다.",
-    },
     "alignment": {
         "formula": "alignment_i = sum(|s_ij| for sign(s_ij)=direction(y_hat_i)) / sum_j |s_ij|",
         "basis": "signed attribution의 부호가 예측 감성 방향과 일치하는 비율을 봅니다.",
@@ -307,7 +296,7 @@ def aggregate(rows: list[dict], group_keys: tuple[str, ...]) -> list[dict]:
     for row in rows:
         grouped[tuple(row[key] for key in group_keys)].append(row)
 
-    metric_keys = ("confidence", "alignment", "focus", "coverage", "top3_share", "avg_abs_score", "word_count")
+    metric_keys = ("alignment", "focus", "coverage", "top3_share", "avg_abs_score", "word_count")
     summaries = []
     for group_values, group_rows in sorted(grouped.items()):
         summary = {key: value for key, value in zip(group_keys, group_values)}
@@ -442,24 +431,23 @@ def localize_summary_rows(rows: list[dict]) -> list[dict]:
     for row in rows:
         output = {}
         if "model" in row:
-            output["모델"] = model_label(row["model"])
+            output["Model"] = model_label(row["model"])
         if "method" in row:
-            output["XAI 방법"] = method_label(row["method"])
+            output["XAI Method"] = method_label(row["method"])
         if "source_methods" in row:
-            output["원본 방법"] = ", ".join(method_label(method) for method in row["source_methods"])
+            output["Source Method(s)"] = ", ".join(method_label(method) for method in row["source_methods"])
         if "case_count" in row:
-            output["사례 수"] = row["case_count"]
+            output["Case Count"] = row["case_count"]
         if "top3_share_case_count" in row:
-            output["상위 3개 집중도 계산 사례 수"] = row["top3_share_case_count"]
+            output["Top-3 Eligible Case Count"] = row["top3_share_case_count"]
         output.update(
             {
-                "예측 확신도": display_value(row.get("confidence")),
-                "예측 방향-설명 정합도": display_value(row.get("alignment")),
-                "핵심 단어 집중도": display_value(row.get("focus")),
-                "유효 단어 커버리지": display_value(row.get("coverage")),
-                "상위 3개 단어 집중도": display_value(row.get("top3_share")),
-                "평균 절대 score": display_value(row.get("avg_abs_score")),
-                "평균 단어 수": display_value(row.get("word_count")),
+                "Attribution Sign Agreement": display_value(row.get("alignment")),
+                "Max Attribution Share": display_value(row.get("focus")),
+                "Attribution Coverage": display_value(row.get("coverage")),
+                "Top-3 Attribution Mass": display_value(row.get("top3_share")),
+                "Mean Absolute Score": display_value(row.get("avg_abs_score")),
+                "Mean Word Count": display_value(row.get("word_count")),
             }
         )
         localized.append(output)
@@ -469,11 +457,11 @@ def localize_summary_rows(rows: list[dict]) -> list[dict]:
 def localize_agreement_rows(rows: list[dict]) -> list[dict]:
     return [
         {
-            "모델": model_label(row["model"]),
-            "비교한 방법 쌍 수": row["pair_count"],
-            "Top-3 단어 겹침도": display_value(row["top3_jaccard"]),
-            "절대 score 순위 상관": display_value(row["spearman_abs"]),
-            "XAI 방법 간 일관성": display_value(row["method_agreement"]),
+            "Model": model_label(row["model"]),
+            "Method Pair Count": row["pair_count"],
+            "Top-3 Jaccard Overlap": display_value(row["top3_jaccard"]),
+            "Spearman Rank Correlation (Absolute Scores)": display_value(row["spearman_abs"]),
+            "Explanation Agreement": display_value(row["method_agreement"]),
         }
         for row in rows
     ]
@@ -482,10 +470,10 @@ def localize_agreement_rows(rows: list[dict]) -> list[dict]:
 def localize_winner_rows(rows: list[dict]) -> list[dict]:
     return [
         {
-            "평가 부문": row["category"],
-            "사용 지표": METRIC_INFO_BY_KEY.get(row["metric"], {}).get("category", row["metric"]),
-            "우수 모델": model_label(row["winner"]),
-            "점수": row["score"],
+            "Evaluation Category": row["category"],
+            "Metric": METRIC_INFO_BY_KEY.get(row["metric"], {}).get("category", row["metric"]),
+            "Best Model": model_label(row["winner"]),
+            "Score": row["score"],
         }
         for row in rows
     ]
@@ -536,7 +524,7 @@ def write_markdown(
         f"**{common_methods_text}**.",
         "",
         "주의: `outputs_json`에는 정답 라벨이 없으므로 이 분석은 분류 정확도 평가가 아닙니다. "
-        "대신 모델의 예측 확신도와 설명 score의 형태를 비교합니다.",
+        "대신 모델의 설명 score 형태를 비교합니다.",
         "",
         "## 부문별 우수 모델",
         "",
@@ -549,12 +537,11 @@ def write_markdown(
         agreement = agreement_by_model.get(row["model"], {})
         lines.append(
             "- "
-            f"**{model_label(row['model'])}**: 예측 확신도={row['confidence']:.4f}, "
-            f"예측 방향-설명 정합도={row['alignment']:.4f}, "
-            f"핵심 단어 집중도={row['focus']:.4f}, "
-            f"유효 단어 커버리지={row['coverage']:.4f}, "
-            f"상위 3개 단어 집중도={format_metric(row['top3_share'])}, "
-            f"XAI 방법 간 일관성={format_metric(agreement.get('method_agreement'))}"
+            f"**{model_label(row['model'])}**: Attribution Sign Agreement={row['alignment']:.4f}, "
+            f"Max Attribution Share={row['focus']:.4f}, "
+            f"Attribution Coverage={row['coverage']:.4f}, "
+            f"Top-3 Attribution Mass={format_metric(row['top3_share'])}, "
+            f"Explanation Agreement={format_metric(agreement.get('method_agreement'))}"
         )
 
     lines.extend(["", "## 순위 산정 방법", ""])
@@ -567,10 +554,10 @@ def write_markdown(
             "## 계산 방식 요약",
             "",
             "- 단어별 score는 모델과 XAI 방법마다 크기 범위가 다를 수 있으므로, 문장 단위에서 절대값 합을 기준으로 비율형 지표를 계산합니다.",
-            f"- `유효 단어 커버리지`는 정규화된 절대 score가 {COVERAGE_THRESHOLD:.2f} 이상인 단어만 유효 설명 단어로 계산합니다.",
-            f"- `상위 3개 단어 집중도`와 `Top-3 단어 겹침도`는 단어 수가 {TOP_K + 1}개 이상인 문장에 대해서만 계산합니다.",
-            "- `예측 방향-설명 정합도`는 positive 예측이면 양수 score, negative 예측이면 음수 score를 예측을 지지하는 설명으로 봅니다.",
-            "- `XAI 방법 간 일관성`은 같은 문장에 대해 방법별 상위 3개 단어 겹침도와 절대 score 순위 상관을 평균낸 값입니다.",
+            f"- `Attribution Coverage`는 정규화된 절대 score가 {COVERAGE_THRESHOLD:.2f} 이상인 단어만 유효 설명 단어로 계산합니다.",
+            f"- `Top-3 Attribution Mass`와 `Top-3 Jaccard Overlap`은 단어 수가 {TOP_K + 1}개 이상인 문장에 대해서만 계산합니다.",
+            "- `Attribution Sign Agreement`는 positive 예측이면 양수 score, negative 예측이면 음수 score를 예측을 지지하는 설명으로 봅니다.",
+            "- `Explanation Agreement`는 같은 문장에 대해 방법별 상위 3개 단어 겹침도와 절대 score 순위 상관을 평균낸 값입니다.",
             "- FNN에만 있는 LIME처럼 특정 모델에만 존재하는 방법은 방법별 참고표에는 남기지만, 최종 모델 순위에는 포함하지 않습니다.",
         ]
     )
@@ -675,16 +662,16 @@ def write_xai_method_profile(path: Path, method_summary: list[dict]) -> None:
         "",
         "## 해석 기준",
         "",
-        "- 예측 방향-설명 정합도: 모델 예측 방향과 XAI score 부호가 얼마나 잘 맞는지 봅니다.",
-        "- 유효 단어 커버리지: 전체 설명량의 2% 이상을 받은 단어 비율입니다.",
-        "- 상위 3개 단어 집중도: 설명이 주요 단어 묶음에 얼마나 모이는지 보는 특성 지표입니다.",
+        "- Attribution Sign Agreement: 모델 예측 방향과 XAI score 부호가 얼마나 잘 맞는지 봅니다.",
+        "- Attribution Coverage: 전체 설명량의 2% 이상을 받은 단어 비율입니다.",
+        "- Top-3 Attribution Mass: 설명이 주요 단어 묶음에 얼마나 모이는지 보는 특성 지표입니다.",
         "",
     ]
 
     profile_metrics = [
-        ("alignment", "예측 방향-설명 정합도"),
-        ("coverage", "유효 단어 커버리지"),
-        ("top3_share", "상위 3개 단어 집중도"),
+        ("alignment", "Attribution Sign Agreement"),
+        ("coverage", "Attribution Coverage"),
+        ("top3_share", "Top-3 Attribution Mass"),
     ]
 
     for model, rows in sorted(grouped.items()):
@@ -710,14 +697,52 @@ def write_xai_method_profile(path: Path, method_summary: list[dict]) -> None:
                     "",
                     f"- 원본 방법: {source_text}",
                     f"- 사례 수: {row['case_count']}",
-                    f"- 예측 방향-설명 정합도: {format_metric(row['alignment'])}",
-                    f"- 유효 단어 커버리지: {format_metric(row['coverage'])}",
-                    f"- 상위 3개 단어 집중도: {format_metric(row['top3_share'])}",
+                    f"- Attribution Sign Agreement: {format_metric(row['alignment'])}",
+                    f"- Attribution Coverage: {format_metric(row['coverage'])}",
+                    f"- Top-3 Attribution Mass: {format_metric(row['top3_share'])}",
                     f"- 특징: {method_note(row['method'], source_methods)}",
                     "",
                 ]
             )
 
+    path.write_text("\n".join(lines) + "\n", encoding="utf-8-sig")
+
+
+def write_metric_naming_notes(path: Path) -> None:
+    lines = [
+        "# XAI Metric Naming Notes",
+        "",
+        "이 문서는 Model Analysis에서 쓰는 지표명이 기존 XAI 문헌의 표준 지표명인지,",
+        "또는 프로젝트 비교 목적에 맞게 만든 커스텀 지표인지 구분합니다.",
+        "",
+        "## Literature-Aligned Names Used",
+        "",
+        "| Current Name | Why This Name Is Used | Standardness |",
+        "|---|---|---|",
+        "| Top-3 Jaccard Overlap | Top-k 집합 유사도를 Jaccard overlap으로 계산합니다. Jaccard는 표준 유사도 지표입니다. | Standard component |",
+        "| Spearman Rank Correlation (Absolute Scores) | 절대 attribution score 순위의 상관을 Spearman correlation으로 계산합니다. Spearman은 표준 순위 상관 지표입니다. | Standard component |",
+        "| Top-3 Attribution Mass | 상위 k개 feature가 전체 attribution mass에서 차지하는 비율입니다. top-k attribution/rationale 분석에서 흔한 표현입니다. | Literature-aligned, project-specific k=3 |",
+        "",
+        "## Project-Specific Metrics",
+        "",
+        "| Current Name | Computation | Why It Is Project-Specific |",
+        "|---|---|---|",
+        "| Attribution Sign Agreement | 예측이 positive이면 양수 attribution, negative이면 음수 attribution이 전체 절대 attribution에서 차지하는 비율입니다. | signed attribution을 예측 감성 방향과 맞춘 프로젝트 지표입니다. 기존 논문에서 이 이름으로 고정된 표준 지표는 아닙니다. |",
+        "| Attribution Coverage | 전체 attribution mass의 2% 이상을 받은 단어의 비율입니다. | coverage/sparsity 계열 아이디어는 흔하지만 2% threshold와 단어 비율 계산은 프로젝트 설정입니다. |",
+        "| Max Attribution Share | 가장 큰 단일 단어 attribution mass가 전체 attribution mass에서 차지하는 비율입니다. | sparsity/concentration 아이디어를 단어 하나 기준으로 단순화한 프로젝트 지표입니다. |",
+        "| Top-3 Attribution Mass | 절대 score 기준 상위 3개 단어의 attribution mass 비율입니다. | top-k attribution mass라는 표현은 문헌 친화적이지만 k=3과 단어 단위 계산은 프로젝트 설정입니다. |",
+        "| Explanation Agreement | Top-3 Jaccard Overlap과 Spearman Rank Correlation을 평균낸 값입니다. | 구성요소는 표준적이지만 둘을 단순 평균해 하나의 점수로 만든 것은 프로젝트 지표입니다. |",
+        "",
+        "## More Standard Alternatives Not Used Here",
+        "",
+        "- Comprehensiveness: 중요한 rationale을 제거했을 때 예측이 얼마나 변하는지 보는 ERASER 계열 지표입니다.",
+        "- Sufficiency: rationale만 남겼을 때 예측이 얼마나 유지되는지 보는 ERASER 계열 지표입니다.",
+        "- Infidelity: explanation과 입력 perturbation에 따른 출력 변화가 얼마나 맞는지 보는 지표입니다.",
+        "- Sensitivity: 작은 입력 변화에 explanation이 얼마나 안정적인지 보는 지표입니다.",
+        "- ROAR: 중요한 feature를 제거하고 재학습해 feature importance를 평가하는 benchmark 방식입니다.",
+        "",
+        "현재 프로젝트는 저장된 JSON의 단어별 score만 사용하므로, 재추론/제거 실험이 필요한 Comprehensiveness, Sufficiency, ROAR는 최종 지표로 쓰지 않았습니다.",
+    ]
     path.write_text("\n".join(lines) + "\n", encoding="utf-8-sig")
 
 
@@ -745,6 +770,7 @@ def main() -> None:
     write_csv(OUTPUT_DIR / "method_agreement_summary.csv", localize_agreement_rows(agreement_summary))
     write_csv(OUTPUT_DIR / "category_winners.csv", localize_winner_rows(winners))
     write_xai_method_profile(OUTPUT_DIR / "xai_method_profile_by_model.md", method_summary)
+    write_metric_naming_notes(OUTPUT_DIR / "metric_naming_notes.md")
 
     report = {
         "입력_폴더": str(INPUT_DIR),

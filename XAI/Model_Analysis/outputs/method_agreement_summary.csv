@@ -1,4 +1,4 @@
-﻿모델,비교한 방법 쌍 수,Top-3 단어 겹침도,절대 score 순위 상관,XAI 방법 간 일관성
+﻿Model,Method Pair Count,Top-3 Jaccard Overlap,Spearman Rank Correlation (Absolute Scores),Explanation Agreement
 CNN,87,0.7862068965517242,0.8167866616142477,0.8014967790829859
 FNN,87,0.8448275862068966,0.8846739467429122,0.8647507664749043
 Transformer,87,0.6126436781609196,0.5425767718871167,0.5776102250240182
