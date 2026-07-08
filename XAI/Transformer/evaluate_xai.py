@@ -47,6 +47,8 @@ def main():
     
     # 2. 모델 및 토크나이저 로드
     model_dir = os.path.join(BASE_DIR, "kcelectra_nsmc_model")
+    if not os.path.exists(model_dir):
+        model_dir = os.path.join(PROJECT_ROOT, "Transformer", "kcelectra_nsmc_model")
     print(f"Loading model from {model_dir}...")
     tokenizer = AutoTokenizer.from_pretrained(model_dir)
     model = AutoModelForSequenceClassification.from_pretrained(model_dir).to(device)
